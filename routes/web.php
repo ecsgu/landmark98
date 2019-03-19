@@ -12,9 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('hello', function () {
-    echo "Hello";
+    return view('pages/landmark');
 });
