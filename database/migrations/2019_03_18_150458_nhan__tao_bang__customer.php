@@ -19,6 +19,7 @@ class NhanTaoBangCustomer extends Migration
             $table->string('Ten');
             $table->string('sdt');
             $table->string('email');
+            $table->string('phong');
             $table->timestamps();
         });
     }

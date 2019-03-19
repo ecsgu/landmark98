@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('pages/landmark');
 });
+Route::resource('Customer','CustomerController');
