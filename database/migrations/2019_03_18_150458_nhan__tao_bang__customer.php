@@ -15,11 +15,12 @@ class NhanTaoBangCustomer extends Migration
     {
         //
         Schema::create('Customer',function(Blueprint $table){
-            $table->increments('id');
-            $table->string('Ten');
-            $table->string('sdt');
+            $table->string('id',50)->primary();
+            $table->string('name');
+            $table->string('gender');
             $table->string('email');
-            $table->string('phong');
+            $table->string('phone_number');
+            $table->string('room');
             $table->timestamps();
         });
     }
