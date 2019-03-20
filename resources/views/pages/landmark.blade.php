@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
-@section('NoiDung')
+@section('Container')
 <h2>Yeah!!! Được rồi</h2>
 @endsection

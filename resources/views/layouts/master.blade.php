@@ -7,12 +7,22 @@
         <link href="{{ asset('css/VH.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('css/Animation.css') }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <script src="Scripts/VH.js" type="text/javascript"></script>
+        <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
+        <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
+        <style>
+          body{
+            background-color:black;
+            color:white;
+          }
+        </style>
     </head>
     <body> 
     <!-- Header -->
-    @yield('NoiDung')
+    <div class="vh-container">
+          <img src="{{ asset('logo.ico') }}">
+    <div>
 		<!-- Container -->
+    @yield('Container')
 		<!-- Footter -->
     </body>
 </html>
