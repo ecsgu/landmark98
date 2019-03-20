@@ -18,9 +18,10 @@
     </head>
     <body> 
     <!-- Header -->
-    <div class="vh-container">
-          <img src="{{ asset('logo.ico') }}">
-    <div>
+    <div class="vh-container vh-safety-blue">
+        <div class="vh-margin" href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="50px"></div>
+          
+    </div>
 		<!-- Container -->
     @yield('Container')
 		<!-- Footter -->
