@@ -142,7 +142,7 @@ h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-
 .vh-search{width:130px;box-sizing:border-box;border:2px solid #ccc;border-radius:4px;background-color:white;background-image:url('../Images/searchicon.png');background-position:10px 10px;background-repeat:no-repeat;padding:12px 20px 12px 40px;-webkit-transition:width 0.4s ease-in-out;transition:width 0.4s ease-in-out}
 .vh-search:focus{width:100%}
 .vh-switch,.vh-switch-round{position:relative;display:inline-block;width:60px;height:34px}
-.vh-switch input{opacity:0;width:0;height:0}
+.vh-switch input,.vh-switch-round input{opacity:0;width:0;height:0}
 .vh-switch-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s}
 .vh-switch-slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s}
 .vh-switch-round .vh-switch-slider{border-radius:34px}
