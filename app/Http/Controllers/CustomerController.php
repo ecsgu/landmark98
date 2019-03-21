@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Customer;
-
+use App\Account;
 class CustomerController extends Controller
 {
      /**
@@ -27,12 +26,23 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer;
-        $customer->username = $request->input("username");
-        $customer->Ten = $request->input("Ten");
-        $customer->sdt = $request->input("sdt");
+        $customer->id = $request->input("username");
+        $customer->name = $request->input("name");
+        $customer->gender = $request->input("gender");
         $customer->email = $request->input("email");
-        $customer->phong = $request->input("phong");
+        $customer->phone_number = $request->input("phone_number");
+        $customer->room = $request->input("room");
+        $customer->created_at = now();
+        $customer->updated_at = now();
         $customer->save();
+        $account = new Account;
+        $account->username = $request->input("username");
+        $account ->password = hash('sha256', $request->input("password"));
+        $account ->email = $request->input("email");
+        $account ->role = 1;
+        $account->created_at = now();
+        $account->updated_at = now();
+        $account->save();
         return response($customer,201);
     }
 
@@ -45,6 +55,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         //
+        $Customer = Customer::find($id);
+        return $Customer;
     }
 
     /**
@@ -56,6 +68,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -64,7 +77,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         //
     }
