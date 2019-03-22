@@ -20,11 +20,16 @@
     <!-- Header -->
     <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster" id="navbar" style="z-index:4">
         <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="40px"></a></div>
-        <div class="vh-bar-item vh-right" style="margin:8px 16px;"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
+        <div class="vh-bar-item vh-right" style="margin:8px 16px;" onclick="hideShowBarBlock();"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
         <label class="vh-switch-round vh-right" style="margin:8px 16px;">
             <input type="checkbox">
             <span class="vh-switch-slider" onclick="checknightmode();"></span>
         </label>
+    </div>
+    <div id="dropdown" class="vh-bar-block vh-card vh-safety-blue vh-hide" style="position:fixed;z-index:1;right:0px">
+      <a href="#" class="vh-bar-item vh-button">Link 1</a>
+      <a href="#" class="vh-bar-item vh-button">Link 2</a>
+      <a href="#" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     <!-- Container -->
     <div class="vh-container" style="margin-top:70px;">
@@ -38,12 +43,18 @@
           document.getElementById("navbar").style.top = "0";
         } else {
           document.getElementById("navbar").style.top = "-68px";
+          if(document.getElementById('dropdown').className.indexOf('vh-hide') == -1) {
+            hideShowBarBlock();
+          }
         }
         prevScrollpos = currentScrollPos;
       }
       function checknightmode(){
         var nig = document.getElementById('main');
         nig.classList.toggle('night-mode');
+      }
+      function hideShowBarBlock(){
+        document.getElementById('dropdown').classList.toggle("vh-hide");
       }
     </script>
     </body>

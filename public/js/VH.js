@@ -1,4 +1,5 @@
 // JavaScript Document
+"use strict"
 /* This function to close the tab with parameter is tab's id */
 function closeTab(id){
 	document.getElementById(id).className = document.getElementById(id).className.replace(" vh-show"," vh-hide");
