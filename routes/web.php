@@ -14,4 +14,11 @@
 Route::get('/', function () {
     return view('pages/landmark');
 });
+
+Route::get('file','FileController@index');
+Route::post('file','Filecontroller@doUpload');
+
+
 Route::resource('Customer','CustomerController');
+Route::resource('Account','AccountController');
+Route::resource('Advertise','AdvertiseController');
