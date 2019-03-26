@@ -9,6 +9,15 @@
             </div>
         </div>
         <div class="vh-col l8 m12 s12">
+            <!-- Phần đăng tin -->
+            <div class="vh-card-4 vh-round vh-padding vh-margin-top">
+                <!-- User post -->
+                <div class="vh-row">
+                    <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"> </div>
+                    <div class="vh-col l10 m10 s10"> 
+                    <textarea style="resize:none"></textarea></div>
+                </div>
+            </div>
             <!-- Bài post -->
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
@@ -31,7 +40,7 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
                         <div class="vh-col l11 m11 s11">
-                            <input class="vh-input" type="text" />
+                            <input class="vh-input" type="text" placeholder="Viết bình luận" />
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
@@ -73,7 +82,7 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
                         <div class="vh-col l11 m11 s11">
-                            <input class="vh-input" type="text" />
+                            <input class="vh-input" type="text" placeholder="Viết bình luận" />
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
