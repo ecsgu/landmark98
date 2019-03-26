@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('pages/landmark');
+    return view('pages/landmark/Topic');
 });
 
 Route::get('file','FileController@index');
