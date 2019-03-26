@@ -22,3 +22,5 @@ Route::post('file','Filecontroller@doUpload');
 Route::resource('Customer','CustomerController');
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
+Route::resource('Topic','TopicController');
+Route::resource('Comment','CommentController');
