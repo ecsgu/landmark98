@@ -17,7 +17,7 @@
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{$topic->image}}" width="40px"> </div>
+                    <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ $topic->customer->image }}" width="40px"> </div>
                     <div class="vh-col l11 m11 s11">
                         <a href="#">{{ $topic->customer->name }}</a>
                         <div class="vh-small vh-text-gray">{{ $topic->created_at }}</div>
@@ -28,8 +28,8 @@
                     {{ $topic->caption }}
                 </div>
                 <!-- Image -->
-                @if(isset($topic_image))
-                <img class="vh-image" src=\"{{ $topic_image }}\" />
+                @if(isset($topic->image))
+                <img class="vh-image" src="{{ $topic->image }}" />
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">
