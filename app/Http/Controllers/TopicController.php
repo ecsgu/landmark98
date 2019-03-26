@@ -15,7 +15,7 @@ class TopicController extends Controller
     {
         //
         $Topic = Topic::all();
-        return $Topic;
+        return view('/pages/landmark', compact('Topic'));
     }
 
     /**
