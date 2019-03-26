@@ -95,10 +95,7 @@
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
-                        <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
-=======
                         <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ $comment->customer->image }}" width="40px"></div>
->>>>>>> 52785835b06194206b3fa6213828673704d81e6b
                         <div class="vh-col l11 m11 s11">
                             <a href="#">{{ $comment->customer->name }}</a> 
                             {{ $comment->caption }}
