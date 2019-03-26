@@ -14,6 +14,10 @@
             background-color:black;
             color:white;
           }
+          .warring{
+
+          }
+          
         </style>
     </head>
     <body id="main"> 
