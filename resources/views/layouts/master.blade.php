@@ -36,7 +36,7 @@
       <a href="#" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     <!-- Container -->
-    <div class="vh-container" style="margin-top:70px;">
+    <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
     @yield('Container')
     </div>
     <script>
