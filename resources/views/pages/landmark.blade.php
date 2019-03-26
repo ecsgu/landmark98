@@ -5,15 +5,29 @@
     <div class="vh-row-padding">
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l2 m12 s12">
-            
             <div class="">
                 <h4 class="vh-center"> Thông báo </h4>
             </div>
         </div>
         <!-- Bài post -->
         <div class="vh-col l8 m12 s12">
+            <div class="vh-card-4 vh-round vh-padding vh-margin-top">
+                <!-- User post -->
+                <div class="vh-row">
+                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"> </div>
+                    <div class="vh-col l9 m9 s8">
+                        <textarea placehover="Hôm nay bạn nghĩ gì" style="resize:none;width:100%" rows=3></textarea>
+                    </div>
+                    <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
+                </div>
+                <div class="vh-row">
+                    <div class="vh-button vh-col l12 m12 s12 vh-hover-blue vh-hover-text-white">Chia sẻ</div>
+                </div>
+            </div>
+            <script>
+                
+            </script>
         @foreach($Topic as $topic)
-            
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
@@ -34,8 +48,8 @@
                 <!-- Comments -->
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">
-                        <div class="vh-col l1 m1 s1"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
-                        <div class="vh-col l11 m11 s11">
+                        <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
+                        <div class="vh-col l11 m11 s10">
                             <input class="vh-input" type="text" />
                         </div>
                     </div>
