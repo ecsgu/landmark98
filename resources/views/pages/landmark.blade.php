@@ -28,7 +28,9 @@
                     {{ $topic->caption }}
                 </div>
                 <!-- Image -->
-                <img class="vh-image" src="{{ $topic->image }}" />
+                @if(isset($topic_image))
+                <img class="vh-image" src=\"{{ $topic_image }}\" />
+                @endif
                 <!-- Comments -->
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">

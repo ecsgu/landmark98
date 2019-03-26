@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/landmark');
-});
-
+Route::get('/', 'TopicController@index');
 Route::get('file','FileController@index');
 Route::post('file','Filecontroller@doUpload');
 
