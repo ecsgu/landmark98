@@ -11,4 +11,7 @@ class Comment extends Model
     public function topic(){
     	return $this->belongsTo('App\Topic','idtopic','id');
     }
+    public function customer(){
+    	return $this->hasOne('App\Customer','id','username');
+    }
 }

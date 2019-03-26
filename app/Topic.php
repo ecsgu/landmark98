@@ -12,4 +12,7 @@ class Topic extends Model
     public function comment(){
     	return $this->hasMany('App\Comment','idtopic','id');
     }
+    public function customer(){
+    	return $this->hasOne('App\Customer','id','username');
+    }
 }
