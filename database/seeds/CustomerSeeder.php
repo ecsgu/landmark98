@@ -27,7 +27,8 @@ class CustomerSeeder extends Seeder
 	            'phone_number' => rand(1111111111,9999999999),
 	            'room' => str_random(5),
 	            'created_at' => now(),
-	            'updated_at' => now()
+	            'updated_at' => now(),
+	            'image' => 'upload/'.$faker->word()
 	        ]);
 	        DB::table('account')->insert([
 	           	'username' => $username,
