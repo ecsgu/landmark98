@@ -3,15 +3,17 @@
 
 @section('Container')
     <div class="vh-row-padding">
+        <!-- Quảng cáo bên trái -->
         <div class="vh-col l2 m12 s12">
-            <!-- Quảng cáo bên trái -->
+            
             <div class="">
                 <h4 class="vh-center"> Thông báo </h4>
             </div>
         </div>
-        @foreach($Topic as $topic)
+        <!-- Bài post -->
         <div class="vh-col l8 m12 s12">
-            <!-- Bài post -->
+        @foreach($Topic as $topic)
+            
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
@@ -48,8 +50,11 @@
                 </div>
                 <a href="#">Xem thêm</a>
             </div>
-            <!-- Quảng cáo bên phải -->
+            @endforeach
+            <!-- Quảng cáo bên trái -->
+            <div class="vh-col l2 m12 s12">
+            
+            </div>
         </div>
-        @endforeach
     </div>
 @endsection
