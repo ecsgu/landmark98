@@ -21,3 +21,6 @@ Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
 Route::resource('Topic','TopicController');
 Route::resource('Comment','CommentController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

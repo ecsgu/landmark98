@@ -15,10 +15,10 @@ class NhanTaoBangAccount extends Migration
     {
         //
         Schema::create('account',function(Blueprint $table){
-            $table->string('Username',50)->primary();
-            $table->string('Password');
-            $table->string('Email');
-            $table->Integer('Role');
+            $table->string('username',50)->primary();
+            $table->string('password');
+            $table->string('email');
+            $table->Integer('role');
             $table->timestamps();
         });
     }

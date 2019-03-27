@@ -20,7 +20,7 @@ class AdvertiseSeeder extends Seeder
             DB::table('advertise')->insert([
                 'linkad' => 'http://'.$faker->domainName,
                 'image' => 'image/'.$faker->word,
-                'username' => $account->random()->Username,
+                'username' => $account->random()->username,
                 'start' => now(),
                 'end' => now(), 
                 'position' => $faker->word,

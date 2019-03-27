@@ -22,7 +22,7 @@ class TopicSeeder extends Seeder
             DB::table('topic')->insert([
                 'caption' => $faker->sentence,
                 'image' => 'image/'.$faker->word,
-                'username' => $account->random()->Username, 
+                'username' => $account->random()->username, 
                 'status' => rand(1,3),
                 'created_at' => now(),
                 'updated_at' => now()
