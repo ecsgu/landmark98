@@ -14,10 +14,24 @@
             background-color:black;
             color:white;
           }
-          .warring{
-
+          .danger{
+            background-color: #ffdddd;
+            border-left: 6px solid #f44336;
+            color:black;
           }
-          
+          .warring{
+            background-color: #ffffcc;
+            border-left: 6px solid #ffeb3b;
+            color:black;
+          }
+          .info{
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            color:black;
+          }
+          .danger, .warring, .info {
+            padding: 4px 12px;
+          }
         </style>
     </head>
     <body id="main"> 
