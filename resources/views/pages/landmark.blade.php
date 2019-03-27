@@ -30,7 +30,7 @@
                     <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
                 </div>
                 <div class="vh-row">
-                    <div class="vh-button vh-col l12 m12 s12 vh-hover-blue vh-hover-text-white">Chia sẻ</div>
+                    <div class="vh-button vh-col l12 m12 s12 vh-hover-safety-blue">Chia sẻ</div>
                 </div>
             </div>
             <div class="vh-card-4 vh-round vh-padding vh-margin-top vh-hide-large vh-hide-medium">
