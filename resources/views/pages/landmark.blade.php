@@ -11,12 +11,12 @@
                 <div class="warring">Lầu 3,4 cúp nước</div>
                 <div class="info">Đề nghị bà con giữ gìn vệ sinh chung</div>
             </div>
-            <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
-            </div>
-            <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
-            </div>
+                <div class="vh-margin-top">
+                    <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
+                </div>
+                <div class="vh-margin-top">
+                    <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
+                </div>
         </div>
         <!-- Bài post -->
         <div class="vh-col l8 m8 s12">
