@@ -28,10 +28,10 @@
     <!-- Container -->
     <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
             <div class="vh-row-padding">
-            <div class="vh-col l6 vh-center">
-                <img class="vh-image" src="{{asset('upload/vh.jpg')}}">
-            </div>
-            <div class="vh-col l6">
+                <div class="vh-col l6 vh-center">
+                    <img class="vh-image" src="{{asset('upload/vh.jpg')}}">
+                </div>
+            <div class="vh-col l6 tablink" id="tab1">
                 <div class="vh-row vh-margin-top">
                    <h2>Đăng Kí</h2> 
                 </div>
@@ -79,11 +79,67 @@
                     </div>
                 </div>
                 <div class="vh-row vh-display-container vh-margin-top">
-                    <button class="vh-button vh-border vh-round-medium vh-yellow vh-display-middle vh-margin-top vh-hover-blue">Đăng Kí</button>
+                    <button class="vh-button vh-border vh-round-medium vh-safety-blue vh-display-middle vh-margin-top vh-hover-blue"onclick="openTab('tab2')">Tiếp theo >></button>
+                </div>
+            </div>
+            <div class="vh-col l6 tablink" id="tab2" style="display:none">
+                    <div class="vh-row vh-margin-top">
+                       <h2>Xin mời nhập thông tin cá nhân</h2> 
+                    </div>
+                    <div class="vh-row">
+                        <h4>Thông tin của bạn sẽ được bảo mật</h4> 
+                    </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Họ và tên:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="username" placeholder="Nhập Họ và Tên">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Giới tính:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="Password" name="repasswork" placeholder="Nhập Lại Mật khẩu">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Ngày sinh:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="Email" placeholder="Nhập Email">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l6">
+                        <button class="vh-button vh-border vh-round-medium vh-red vh-margin-top vh-hover-blue vh-right"onclick="openTab('tab1')"><< Quay Lại</button>
+                    </div>
+                    <div class="vh-col l6">
+                        <button class="vh-button vh-border vh-round-medium vh-safety-blue vh-margin-top vh-hover-blue">Đăng kí</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+            function openTab(cityName) {
+              var i;
+              var x = document.getElementsByClassName("tablink");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              document.getElementById(cityName).style.display = "block";  
+            }
+        </script>
     </body>
 </html>
 
