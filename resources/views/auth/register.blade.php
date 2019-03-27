@@ -1,77 +1,89 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Landmark 98</title>
+        <link href="{{ asset('css/VH.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
+        <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
+        <style>
+          .night-mode{
+            background-color:black;
+            color:white;
+          }
+          .warring{
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+          }
+          
+        </style>
+    </head>
+    <body id="main"> 
+    <!-- Header -->
+    <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster" id="navbar" style="z-index:4">
+        <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="40px"></a></div>
+    </div>
+    <!-- Container -->
+    <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
+            <div class="vh-row-padding">
+            <div class="vh-col l6 vh-center">
+                <img class="vh-image" src="{{asset('upload/vh.jpg')}}">
+            </div>
+            <div class="vh-col l6 vh-border-deep-purple">
+                <div class="vh-row vh-center vh-margin-top">
+                   <h2>Đăng Kí Tài Khoản</h2> 
+                </div>
+                <div class="vh-row vh-center">
+                   <h4>Miễn phí cho mọi người</h4> 
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Tên đăng nhập:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-hover-border-blue" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Mật khẩu:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-hover-border-blue" type="Password" name="password" placeholder="Nhập Mật khẩu">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Nhập lại mật khẩu:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-hover-border-blue" type="Password" name="repasswork" placeholder="Nhập Lại Mật khẩu">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-margin-top">
+                    <div class="vh-col l4 vh-padding">
+                        Email:
+                    </div>
+                    <div class="vh-col l6">
+                        <input class="vh-input vh-hover-border-blue" type="text" name="Email" placeholder="Nhập Email">
+                    </div>
+                    <div class="vh-col l2">
+                    </div>
+                </div>
+                <div class="vh-row vh-bar vh-margin-top">
+                    <button class="vh-button vh-center">Đăng Kí</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    </body>
+</html>
+
