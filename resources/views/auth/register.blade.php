@@ -31,11 +31,11 @@
             <div class="vh-col l6 vh-center">
                 <img class="vh-image" src="{{asset('upload/vh.jpg')}}">
             </div>
-            <div class="vh-col l6 vh-border-deep-purple">
-                <div class="vh-row vh-center vh-margin-top">
-                   <h2>Đăng Kí Tài Khoản</h2> 
+            <div class="vh-col l6">
+                <div class="vh-row vh-margin-top">
+                   <h2>Đăng Kí</h2> 
                 </div>
-                <div class="vh-row vh-center">
+                <div class="vh-row">
                    <h4>Miễn phí cho mọi người</h4> 
                 </div>
                 <div class="vh-row vh-margin-top">
@@ -43,7 +43,7 @@
                         Tên đăng nhập:
                     </div>
                     <div class="vh-col l6">
-                        <input class="vh-input vh-hover-border-blue" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
                     </div>
                     <div class="vh-col l2">
                     </div>
@@ -53,7 +53,7 @@
                         Mật khẩu:
                     </div>
                     <div class="vh-col l6">
-                        <input class="vh-input vh-hover-border-blue" type="Password" name="password" placeholder="Nhập Mật khẩu">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="Password" name="password" placeholder="Nhập Mật khẩu">
                     </div>
                     <div class="vh-col l2">
                     </div>
@@ -63,7 +63,7 @@
                         Nhập lại mật khẩu:
                     </div>
                     <div class="vh-col l6">
-                        <input class="vh-input vh-hover-border-blue" type="Password" name="repasswork" placeholder="Nhập Lại Mật khẩu">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="Password" name="repasswork" placeholder="Nhập Lại Mật khẩu">
                     </div>
                     <div class="vh-col l2">
                     </div>
@@ -73,13 +73,13 @@
                         Email:
                     </div>
                     <div class="vh-col l6">
-                        <input class="vh-input vh-hover-border-blue" type="text" name="Email" placeholder="Nhập Email">
+                        <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="Email" placeholder="Nhập Email">
                     </div>
                     <div class="vh-col l2">
                     </div>
                 </div>
-                <div class="vh-row vh-bar vh-margin-top">
-                    <button class="vh-button vh-center">Đăng Kí</button>
+                <div class="vh-row vh-display-container vh-margin-top">
+                    <button class="vh-button vh-border vh-round-medium vh-yellow vh-display-middle vh-margin-top vh-hover-blue">Đăng Kí</button>
                 </div>
             </div>
         </div>
