@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Http\Request;
 use Validator;
+use Session;
 class LoginController extends Controller
 {
     /*
@@ -42,6 +43,8 @@ class LoginController extends Controller
         return 'username';
     }
     public function showLoginForm(){
+        if(Session::has('account'))
+            return redirect()->action('TopicController@index');
         return view('pages/login');
     }
     public function login(Request $request)
@@ -58,12 +61,18 @@ class LoginController extends Controller
             $username = $request->input('username');
             $password = $request->input('password');
             if(Auth::attempt(['username' => $username, 'password' => $password])){
-                echo "Successs";
+                Session::put('account', Auth::user());
+                return redirect()->action('TopicController@index');
             }
             else{
                 return view('/pages/login');
             }
         }
+    }
+    public function logout()
+    {
+        Session::forget('account');
+        return view('pages/login');
     }
     public function __construct()
     {

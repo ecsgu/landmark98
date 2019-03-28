@@ -21,6 +21,9 @@ Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
 Route::resource('Topic','TopicController');
 Route::resource('Comment','CommentController');
-Auth::routes();
+Route::get('login','Auth\LoginController@showLoginForm');
+Route::post('login','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

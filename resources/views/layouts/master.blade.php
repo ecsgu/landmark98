@@ -47,7 +47,7 @@
     <div id="dropdown" class="vh-bar-block vh-card vh-safety-blue vh-hide" style="position:fixed;z-index:1;right:0px">
       <a href="#" class="vh-bar-item vh-button">Link 1</a>
       <a href="#" class="vh-bar-item vh-button">Link 2</a>
-      <a href="#" class="vh-bar-item vh-button">Đăng xuất</a>
+      <a href="{{url('logout')}}" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     <!-- Container -->
     <div class="vh-container vh-margin-bottom" style="margin-top:70px;">

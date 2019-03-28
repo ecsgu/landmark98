@@ -37,11 +37,11 @@ return [
 
     'guards' => [
         'account'=>[
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'account',
         ],
         'account-api' =>[
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'account',
         ],
     ],

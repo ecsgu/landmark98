@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use Session;
 class TopicController extends Controller
 {
     /**
@@ -14,6 +15,8 @@ class TopicController extends Controller
     public function index()
     {
         //
+        if(!Session::has('account'))
+            return view('/pages/login');
         $Topic = Topic::all();
         return view('/pages/landmark', compact('Topic'));
     }
