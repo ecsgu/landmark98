@@ -53,7 +53,7 @@ class CustomerController extends Controller
         $customer->save();
         $account = new Account;
         $account->username = $request->input("username");
-        $account ->password = hash('sha256', $request->input("password"));
+        $account ->password = brcypt($request->input("password"));
         $account ->email = $request->input("email");
         $account ->role = 1;
         $account->created_at = now();

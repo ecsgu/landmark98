@@ -53,7 +53,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     Đăng nhập
                                 </button>
-
+                                
+                                <a class="btn btn-link" href="{{ url('/register') }}">
+                                    Đăng ký tài khoản
+                                </a>
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     Quên mật khẩu?
                                 </a>
