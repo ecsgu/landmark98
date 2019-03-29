@@ -12,4 +12,7 @@ class Customer extends Model
     public function advertise(){
     	return $this->hasMany('App\Advertise','username','id');
     }
+    public function account(){
+        return $this->hasOne('App\Account','username','id');
+    }
 }

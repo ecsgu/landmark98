@@ -14,7 +14,9 @@ class Account extends Authenticatable
     protected $fillable = [
     	'username','password',
     ];
-
+    public function customer(){
+        return $this->hasOne('App\Customer','id','username');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

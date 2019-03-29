@@ -23,7 +23,7 @@
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"> </div>
+                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"> </div>
                     <div class="vh-col l9 m9 s8 vh-text-black">
                         <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0 vh-faster" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3></textarea>
                     </div>
@@ -66,7 +66,7 @@
                 <!-- Comments -->
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">
-                        <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{ asset('upload\a40aeff2d729cd25808ac2d41721e32e.jpg') }}" width="40px"></div>
+                        <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"></div>
                         <div class="vh-col l11 m11 s10">
                             <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0 vh-faster" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                         </div>

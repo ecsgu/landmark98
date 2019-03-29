@@ -33,7 +33,7 @@ class TestLoginSeeder extends Seeder
 	           	'username' => $username,
 	           	'password' => bcrypt($password),
 	           	'email' => $email,
-	           	'role' => '106',
+	           	'role' => '127',
 	           	'created_at' => now(),
 	            'updated_at' => now()
 	        ]);
