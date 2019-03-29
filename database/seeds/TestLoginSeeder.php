@@ -27,7 +27,7 @@ class TestLoginSeeder extends Seeder
 	            'room' => str_random(5),
 	            'created_at' => now(),
 	            'updated_at' => now(),
-	            'image' => 'upload/'."admin.jpg",
+	            'image' => 'upload/'."defaultCus.jpg",
 	        ]);
 	        DB::table('account')->insert([
 	           	'username' => $username,
