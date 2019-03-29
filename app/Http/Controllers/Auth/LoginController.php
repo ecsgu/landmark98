@@ -47,7 +47,7 @@ class LoginController extends Controller
             return redirect()->action('TopicController@index');
         return view('pages/login');
     }
-    public function login(Request $request)
+    public static function login(Request $request)
     {
         $rules = [
             'username' => 'required',

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Auth\LoginController;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -41,6 +44,8 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
     public function showRegistrationForm(){
+        if(Session::has('account'))
+            return redirect()->action('TopicController@index');
         return view('/Auth/register');
     }
 
@@ -75,6 +80,9 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
-
+        $CC = new CustomerController;
+        $CC->store($request);
+        LoginController::login($request);
+        return redirect()->action('TopicController@index');
     }
 }

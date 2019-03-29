@@ -32,7 +32,7 @@ class CustomerSeeder extends Seeder
 	        ]);
 	        DB::table('account')->insert([
 	           	'username' => $username,
-	           	'password' => hash('sha256', str_random(9)),
+	           	'password' => hash('bcrypt', str_random(9)),
 	           	'email' => $email,
 	           	'role' => '1',
 	           	'created_at' => now(),

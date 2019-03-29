@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
-
+use Hash;
 
 class CustomerController extends Controller
 {
@@ -47,13 +47,14 @@ class CustomerController extends Controller
         $customer->gender = $request->input("gender");
         $customer->email = $request->input("email");
         $customer->phone_number = $request->input("phone_number");
-        $customer->room = $request->input("room");
+        $customer->room = "Chưa";
+        $customer->image = 'upload/defaultCus.jpg';
         $customer->created_at = now();
         $customer->updated_at = now();
         $customer->save();
         $account = new Account;
         $account->username = $request->input("username");
-        $account ->password = brcypt($request->input("password"));
+        $account ->password = Hash::make($request->input("password"));
         $account ->email = $request->input("email");
         $account ->role = 1;
         $account->created_at = now();
