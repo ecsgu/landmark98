@@ -14,8 +14,9 @@
 Route::get('/', 'TopicController@index');
 Route::get('file','FileController@index');
 Route::post('file','Filecontroller@doUpload');
-
-
+Route::get('paypal', function(){
+Return view('pages/paypal');
+});
 Route::resource('Customer','CustomerController');
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
