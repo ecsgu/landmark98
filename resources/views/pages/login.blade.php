@@ -54,7 +54,7 @@
                                     Đăng nhập
                                 </button>
                                 
-                                <a class="btn btn-link" href="{{ url('/register') }}">
+                                <a class="btn btn-link" href="{{ url('register') }}">
                                     Đăng ký tài khoản
                                 </a>
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">

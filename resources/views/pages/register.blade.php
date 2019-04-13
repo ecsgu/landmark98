@@ -16,27 +16,14 @@
     <body id="main"> 
     <!-- Header -->
     <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster">
-        <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="55px"></a></div>
+        <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="40px"></a></div>
         <!-- Đăng nhập -->
-        <form method="post">
-            <div class="vh-right">
-                <div class="vh-bar-item">
-                    <div class="vh-small">Tên đăng nhập</div>
-                    <input type="text"/>
-                </div>
-                <div class="vh-bar-item">
-                    <div class="vh-small">Mật khẩu</div>
-                    <input type="password"/><br/>
-                    <a class="vh-small" href="#">Quên mật khẩu?</a>
-                </div>
-                <div class="vh-bar-item vh-margin-top">
-                    <input type="submit" class="vh-button vh-hover-white" value="Đăng nhập"/>
-                </div>
-            </div>
+        <form>
+            <input type="submit" class="vh-button vh-right" value="Đăng nhập">
         </form>
     </div>
     <!-- Container -->
-    <div class="vh-container vh-margin-bottom" style="margin-top:100px;">
+    <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
         <div class="vh-row-padding">
             <!-- Image -->
             <div class="vh-col l6 vh-center"><img class="vh-image" src="{{ asset('logo.ico') }}"></div>

@@ -10,7 +10,7 @@
         <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
         <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
         <style>
-          .night-mode{
+          .night-mode, .night-mode textarea{
             background-color:black;
             color:white;
           }

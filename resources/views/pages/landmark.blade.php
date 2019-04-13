@@ -25,7 +25,7 @@
                 <div class="vh-row">
                     <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"> </div>
                     <div class="vh-col l9 m9 s8 vh-text-black">
-                        <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0 vh-faster" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3></textarea>
+                        <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3></textarea>
                     </div>
                     <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"></div>
                         <div class="vh-col l11 m11 s10">
-                            <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0 vh-faster" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
+                            <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                         </div>
                     </div>
                     @foreach($topic->comment as $comment)
