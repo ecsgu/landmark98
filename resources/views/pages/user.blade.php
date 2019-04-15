@@ -46,6 +46,10 @@
                             <td>tvhuy</td>
                         </tr>
                         <tr>
+                            <th>Mật khẩu khẩu:</th>
+                            <td><input type="password" name="oldpassword" /></td>
+                        </tr>
+                        <tr>
                             <th>Mật khẩu mới:</th>
                             <td><input type="password" name="password" /></td>
                         </tr>
