@@ -7,32 +7,9 @@
         <link href="{{ asset('css/VH.css') }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/landmark.css') }}" type="text/css"/>
         <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
         <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
-        <style>
-          .night-mode, .night-mode textarea{
-            background-color:black;
-            color:white;
-          }
-          .danger{
-            background-color: #ffdddd;
-            border-left: 6px solid #f44336;
-            color:black;
-          }
-          .warring{
-            background-color: #ffffcc;
-            border-left: 6px solid #ffeb3b;
-            color:black;
-          }
-          .info{
-            background-color: #e7f3fe;
-            border-left: 6px solid #2196F3;
-            color:black;
-          }
-          .danger, .warring, .info {
-            padding: 4px 12px;
-          }
-        </style>
     </head>
     <body id="main"> 
     <!-- Header -->
