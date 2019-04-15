@@ -89,7 +89,7 @@ function openTab(id_tab) { // Thêm class "tab" vào tất cả các tab và "vh
 /* This function to show the tab be selected with parameter are tab's id and class color in vh.css
    Note: to use function, you add class name "vh-tab-content" in all tabs, "vh-tablink" in all link tab, class color in the current link tab
    and "vh-hide" in tabs be hided, "vh-show" in 1 tab be showed */
-function openTabAndChangeColor(evt, id_tab,class_color) { // Thêm class "tab" vào tất cả các tab , "tablink" vào tất cả các link tab và "vh-show" vào những tab ẩn "vh-hide" vào tab hiện hành 
+function openTabAndChangeColor(evt, id_tab,class_color) { // Thêm class "tab" vào tất cả các tab , "tablink" vào tất cả các link tab và "vh-hide" vào những tab ẩn "vh-show" vào tab hiện hành 
     var i, x, tablinks;
     x = document.getElementsByClassName("vh-tab-content");
     for (i = 0; i < x.length; i++) {

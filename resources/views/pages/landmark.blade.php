@@ -30,7 +30,7 @@
                     <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
                 </div>
                 <div class="vh-row">
-                    <div class="vh-button vh-col l12 m12 s12 vh-hover-safety-blue">Chia sẻ</div>
+                    <div class="vh-button vh-col l12 m12 s12 vh-safety-blue">Chia sẻ</div>
                 </div>
             </div>
             <!-- Phần thông báo khi ở màn hình điện thoại -->
@@ -63,7 +63,7 @@
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
-                <img class="vh-image" src="{{ $topic->image }}" />
+                <img src="{{ $topic->image }}" width="100%" />
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">

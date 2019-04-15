@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="vh-row vh-display-container vh-margin-top">
-                        <input type="button" value="Tiếp theo >>"  class="vh-button vh-border vh-round-medium vh-safety-blue vh-display-middle vh-margin-top vh-hover-blue"onclick="openTab('tab2')">
+                        <input type="button" value="Tiếp theo >>"  class="vh-button vh-border vh-round-medium vh-red vh-hover-safety-blue vh-display-middle vh-margin-top vh-hover-blue" onclick="openTab('tab2')">
                     </div>
                 </div>
                 <!-- Tab 2 -->
@@ -102,7 +102,7 @@
                     </div>
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l6">
-                            <input type="button" value="<< Quay Lại" class="vh-button vh-border vh-round-medium vh-red vh-margin-top vh-hover-blue vh-right" onclick="openTab('tab1')">
+                            <input type="button" value="<< Quay Lại" class="vh-button vh-border vh-round-medium vh-red vh-margin-top vh-hover-safety-blue vh-right" onclick="openTab('tab1')">
                         </div>
                         <div class="vh-col l6">
                             <input type="submit" class="vh-button vh-border vh-round-medium vh-safety-blue vh-margin-top vh-hover-blue" value="Đăng Kí"/>
