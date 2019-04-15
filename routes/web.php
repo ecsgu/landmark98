@@ -20,6 +20,9 @@ Route::get('paypal', function(){
 Route::get('user',function() {
     return view('pages/user');
 });
+Route::get('post',function() {
+    return view('pages/topic');
+});
 Route::resource('Customer','CustomerController');
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
