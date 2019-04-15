@@ -44,7 +44,7 @@
             <div class="vh-col l6">
                 <!-- Tab 1 -->
                 <form action="{{ url('register') }}" method="post">
-                <div class="tablink" id="tab1">
+                <div class="vh-tab-content" id="tab1">
                     <div class="vh-row vh-margin-top vh-xxlarge">Đăng Kí</div>
                     <div class="vh-row vh-large"><i>Miễn phí cho mọi người</i></div>
                     <!-- Tên đăng nhập -->
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <!-- Tab 2 -->
-                <div class="tablink" id="tab2" style="display:none">
+                <div class="vh-tab-content" id="tab2">
                     <div class="vh-row vh-margin-top vh-xxlarge">Thông tin cá nhân</div>
                     <div class="vh-row vh-large"><i>Thông tin của bạn sẽ được bảo mật</i></div>
                     <div class="vh-row vh-margin-top">
@@ -113,15 +113,5 @@
             </div>
         </div>
     </div>
-    <script>
-        function openTab(cityName) {
-            var i;
-            var x = document.getElementsByClassName("tablink");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-            }
-            document.getElementById(cityName).style.display = "block";  
-        }
-    </script>
     </body>
 </html>
