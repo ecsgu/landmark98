@@ -2,6 +2,3 @@
 function addInfoModal(){
     
 }
-function InitRegister(){
-    
-}
