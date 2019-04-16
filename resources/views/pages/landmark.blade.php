@@ -20,10 +20,10 @@
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
-            <div class="vh-card-4 vh-round vh-padding vh-margin-top">
+            <form method="POST" enctype="multipart/form-data" action="{{url('file')}}">
+                <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
-                <form method="post" acion="{{ url('/Topic') }}">
-                    {{@csrf_field()}}
+                {{csrf_field()}}
                     <div class="vh-row">
                         <div class="vh-col l1 m3 s3">
                             <a href="{{ url('Customer',[session('account')->username]) }}">
@@ -34,22 +34,20 @@
                             <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
-                            <label for="image">
+                            <label>
                                   <span class="fas fa-image" aria-hidden="true"></span>
-                                  <input type="file" accept="video/*,  video/x-m4v, video/webm, video/x-ms-wmv, video/x-msvideo, video/3gpp, video/flv, video/x-flv, video/mp4, video/quicktime, video/mpeg, video/ogv, .ts, .mkv, image/*, image/heic, image/heif" id="image" name="image" style="display:none">
+                                  <input type="file" name="image" style="display:none">
                             </label>
                         </div>
                     </div>
                     <div class="vh-row">
-                        <input style="display:none" type="text" name="username" value="{{session('account')->username}}">
-                        <input style="display:none" type="text" name="status" value="1">
-                        <label for="next" class="vh-button vh-col l12 m12 s12 vh-safety-blue">
+                        <label class="vh-button vh-col l12 m12 s12 vh-safety-blue">
                               <span class="" aria-hidden="true">Chia sẻ</span>
-                              <input type="submit" id="next" value="" style="display:none">
+                              <input type="submit" value="upload" style="display:none">
                         </label>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
             <!-- Phần thông báo khi ở màn hình điện thoại -->
             <div class="vh-card-4 vh-round vh-padding vh-margin-top vh-hide-large vh-hide-medium">
                 <h4 class="vh-center"> Thông báo </h4>

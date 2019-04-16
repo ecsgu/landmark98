@@ -2,13 +2,39 @@
 
 @section('Container')
     <div class="user-main">
-        <div class="vh-row-padding">
-            <div class="vh-col l3 m2 s4"><img class="vh-circle user-avatar" src="{{asset($Customer->image)}}"></div>
-            <div class="vh-col l9 m10 s8">
-                <a class="vh-xlarge" >{{ $Customer->name }}</a>
-                <div>
-                    <div class="vh-tablink vh-button vh-hover-blue" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Thông tin</div>
-                    <div class="vh-tablink vh-button vh-hover-blue vh-safety-blue" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div>
+        <div class="vh-row">
+            <div class="vh-col l3 m4"><!-- anh -->
+                <img class="vh-circle vh-border-4 vh-border-white user-avatar" src="{{asset($Customer->image)}}">
+            </div>
+            <div class="vh-col l9 m8"> <!--con lai -->
+                <div class="vh-row vh-margin"><!--Ten edit icon-->
+                    <div class="vh-col l4"> <!--ten-->
+                        <a class="vh-xlarge" >{{ $Customer->name }}</a>
+                    </div>
+            <strong><div class="vh-col l5 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Chỉnh sửa trang cá nhân
+                    </div></strong>
+                    <div class="vh-col l1 vh-padding">
+                    </div> 
+            <strong><div class="vh-col l2 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
+                    <div class="vh-col l1">
+                    </div> 
+                </div>
+                <div class="vh-row vh-margin vh-large"><!--bai viet, follow-->
+                    <div class="vh-col l4"><!--bai viet-->
+                        <span>
+                            <strong><span>15</span></strong>
+                            Bài viết
+                        </span>
+                    </div>
+                    <div class="vh-col l4"><!--follow-->
+                            
+                    </div>
+                    <div class="vh-col l4"><!--follow-->
+                            
+                    </div>
+                </div>
+                <div class="vh-row"><!--status-->
+
                 </div>
             </div>
         </div>
@@ -63,7 +89,7 @@
             </div>
         </div>
         <!-- Tab 2 -->
-        <div id="post" class="vh-tab-content vh-show">
+        <div id="post" class="vh-tab-content vh-show vh-round-medium">
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
@@ -73,8 +99,10 @@
                     </div>
                     <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
                 </div>
-                <div class="vh-row">
-                    <div class="vh-button vh-col l12 m12 s12 vh-safety-blue">Chia sẻ</div>
+                <div class="vh-row vh-bar">
+                    <div class="vh-col l10">
+                    </div>
+                    <div class="vh-button vh-round-medium vh-col l2 m12 s12 vh-safety-blue vh-right">Chia sẻ</div>
                 </div>
             </div>
             @foreach($Customer->topic as $topic)

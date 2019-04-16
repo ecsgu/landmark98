@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Topic;
 use Session;
+use DB;
 class TopicController extends Controller
 {
     /**
@@ -12,12 +13,12 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index()
     {
         //
         if(!Session::has('account'))
             return view('/pages/login');
-        $Topic = Topic::all();
+        $Topic = Topic::orderBy('id','desc')->get();
         return view('/pages/landmark', compact('Topic'));
     }
 
@@ -37,10 +38,17 @@ class TopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
         //
-        echo "Helllooo";
+        DB::table('topic')->insert([
+                'caption' => $request->caption,
+                'image' => $request->filename,
+                'username' => Session::get('account')->username, 
+                'status' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
     }
 
     /**
