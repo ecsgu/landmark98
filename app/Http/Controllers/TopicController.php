@@ -40,6 +40,7 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         //
+        echo "Helllooo";
     }
 
     /**
