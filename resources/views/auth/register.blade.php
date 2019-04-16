@@ -103,10 +103,10 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Giới tính:</div>
                         <div class="vh-col l6 vh-center">
-                            <div class="vh-col l3">
+                            <div class="vh-col l3 m3 s3">
                                 <input class="vh-radio vh-border vh-round-medium vh-hover-border-blue" id="reg-gender" type="radio" name="gender" value="Nam" /> Nam
                             </div>
-                            <div class="vh-col l3">
+                            <div class="vh-col l3 m3 s3">
                                 <input class="vh-radio vh-border vh-round-medium vh-hover-border-blue" id="reg-gender" type="radio" name="gender" value="Nữ" /> Nữ
                             </div>
                         </div>
@@ -123,10 +123,10 @@
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
-                        <div class="vh-col l6">
+                        <div class="vh-col l6 m6 s6">
                             <div class="vh-button vh-border vh-round-medium vh-red vh-margin-top vh-hover-safety-blue vh-right" id="previous" onclick="openTab('tab1')"> << Quay lại </div>
                         </div>
-                        <div class="vh-col l6">
+                        <div class="vh-col l6 m6 s6">
                             <input type="submit" class="vh-button vh-border vh-round-medium vh-safety-blue vh-margin-top vh-hover-blue" value="Đăng Kí" />
                         </div>
                     </div>
