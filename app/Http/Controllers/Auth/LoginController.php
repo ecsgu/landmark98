@@ -45,7 +45,7 @@ class LoginController extends Controller
     public function showLoginForm(){
         if(Session::has('account'))
             return redirect()->action('TopicController@index');
-        return view('pages/login');
+        return view('auth/register');
     }
     public static function login(Request $request)
     {
@@ -65,14 +65,14 @@ class LoginController extends Controller
                 return redirect()->action('TopicController@index');
             }
             else{
-                return view('/pages/login');
+                return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
             }
         }
     }
     public function logout()
     {
         Session::forget('account');
-        return view('pages/login');
+        return view('auth/register');
     }
     public function __construct()
     {

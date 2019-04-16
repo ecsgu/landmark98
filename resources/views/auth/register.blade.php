@@ -18,15 +18,26 @@
     <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster">
         <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="55px"></a></div>
         <!-- Đăng nhập -->
-        <form method="post">
+        <form method="post" action="{{ url('/login') }}">
+            {{ csrf_field() }}
             <div class="vh-right">
                 <div class="vh-bar-item">
                     <div class="vh-small">Tên đăng nhập</div>
-                    <input type="text"/>
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                    @if ($errors->has('username'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 <div class="vh-bar-item">
                     <div class="vh-small">Mật khẩu</div>
-                    <input type="password"/><br/>
+                    <input id="password" type="password" class="form-control" name="password" required>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                     <a class="vh-small" href="#">Quên mật khẩu?</a>
                 </div>
                 <div class="vh-bar-item vh-margin-top">
