@@ -23,7 +23,7 @@
             <div class="vh-right">
                 <div class="vh-bar-item">
                     <div class="vh-small ">Tên đăng nhập</div>
-                    <input id="username" type="text" class="form-control vh-round-medium" name="username" value="{{ old('username') }}" required autofocus>
+                    <input id="username" style="height: 35px" type="text" class="form-control vh-round-medium" name="username" value="{{ old('username') }}" required autofocus>
                     @if ($errors->has('username'))
                         <span class="help-block">
                             <strong>{{ $errors->first('username') }}</strong>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="vh-bar-item">
                     <div class="vh-small">Mật khẩu</div>
-                    <input id="password" type="password" class="form-control vh-round-medium" name="password" required>
+                    <input id="password" style="height: 35px" type="password" class="form-control vh-round-medium" name="password" required>
                     @if ($errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
