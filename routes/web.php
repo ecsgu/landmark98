@@ -12,8 +12,7 @@
 */
 
 Route::get('/', 'TopicController@index');
-Route::get('file','FileController@index');
-Route::post('file','Filecontroller@doUpload');
+Route::post('file','FileController@doUpload');
 Route::get('paypal', function(){
     return view('pages/paypal');
 });

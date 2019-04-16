@@ -3,25 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\TopicController;
 
 class FileController extends Controller
 {
 
     public function index()
     {
-        return view('DemoUpload');
+        return view('pages/landmark');
     }
 
     public function doUpload(Request $request)
     {
 
-        $file = $request->filesTest;
-        $Name = md5_file($file->getRealPath());
-        // Lấy đuôi file
+        $file = $request->image;
         $array = explode('.',$file->getClientOriginalName());
         $Extend = end($array);
 
+        $Name = md5($file->getClientOriginalName() . "." . str_random());
+        // Lấy đuôi file
+
         // Upload lên server
-        $file->move('upload', $Name.'.'.$Extend );
+        $filename=$file->move('upload', $Name.'.'.$Extend );
+
+        //echo "hello mother fucker";
+        //Update database topic
+        $request->request->add(['filename' => $filename]);
+        TopicController::store($request);
+        header("Refresh:0; url=./");
     }
 }
