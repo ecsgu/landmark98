@@ -21,7 +21,7 @@
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
             <form method="POST" enctype="multipart/form-data" action="{{url('file')}}">
-                <div class="vh-card-4 vh-round vh-padding vh-margin-top">
+                <div class="vh-card-4 vh-round vh-padding vh-margin-top" onmousemove="document.getElementById('caption').attributes['rows'].value = 10" onmouseout="document.getElementById('caption').attributes['rows'].value = 3">
                 <!-- User post -->
                 {{csrf_field()}}
                     <div class="vh-row">
@@ -31,12 +31,12 @@
                             </a>
                          </div>
                         <div class="vh-col l9 m7 s7 vh-text-black">
-                            <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
+                            <textarea id="caption" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
-                                  <span class="fas fa-image" aria-hidden="true"></span>
-                                  <input type="file" name="image" style="display:none">
+                                <span class="fas fa-image" aria-hidden="true"></span>
+                                <input type="file" name="image" style="display:none">
                             </label>
                         </div>
                     </div>
