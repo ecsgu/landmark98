@@ -3,9 +3,9 @@
 @section('Container')
     <div class="user-main">
         <div class="vh-row-padding">
-            <div class="vh-col l3 m2 s4"><img class="vh-circle user-avatar" src="{{asset('upload\defaultCus.jpg')}}"></div>
+            <div class="vh-col l3 m2 s4"><img class="vh-circle user-avatar" src="{{asset($Customer->image)}}"></div>
             <div class="vh-col l9 m10 s8">
-                <a class="vh-xlarge" >Trương Vĩ Huy</a>
+                <a class="vh-xlarge" >{{ $Customer->name }}</a>
                 <div>
                     <div class="vh-tablink vh-button vh-hover-blue" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Thông tin</div>
                     <div class="vh-tablink vh-button vh-hover-blue vh-safety-blue" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div>
@@ -20,19 +20,19 @@
                 <table class="vh-table-all">
                     <tr>
                         <th>Giới tính: </th>
-                        <td>Nam</td>
+                        <td>{{ $Customer->gender }}</td>
                     </tr>
                     <tr>
                         <th>Số điện thoại: </th>
-                        <td>0909090909</td>
+                        <td>{{ $Customer->phone_number }}</td>
                     </tr>
                     <tr>
                         <th>Email: </th>
-                        <td>truongvihuy@gmail.com</td>
+                        <td>{{ $Customer->email }}</td>
                     </tr>
                     <tr>
                         <th>Phòng: </th>
-                        <td>A102</td>
+                        <td>{{ $Customer->room }}</td>
                     </tr>
                 </table>
             </div>
@@ -67,7 +67,7 @@
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"> </div>
+                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{asset($Customer->image)}}" width="40px"> </div>
                     <div class="vh-col l9 m9 s8 vh-text-black">
                         <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3></textarea>
                     </div>
@@ -77,19 +77,24 @@
                     <div class="vh-button vh-col l12 m12 s12 vh-safety-blue">Chia sẻ</div>
                 </div>
             </div>
+            @foreach($Customer->topic as $topic)
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
+                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ $topic->customer->image }}" width="40px"> </div>
                     <div class="vh-col l11 m10 s10">
-                        <a href="#">Trương Vĩ Huy</a>
-                        <div class="vh-small vh-text-gray">1/4/2019</div>
+                        <a href="#">{{ $topic->customer->name }}</a>
+                        <div class="vh-small vh-text-gray">{{ $topic->created_at }}</div>
                     </div>
                 </div>
                 <!-- Caption -->
-                <div class="vh-margin-top">Caption</div>
+                <div class="vh-margin-top">
+                    {{ $topic->caption }}
+                </div>
                 <!-- Image -->
-                <img src="{{ asset('upload\defaultCus.jpg') }}" width="100%" />
+                @if(isset($topic->image))
+                <img src="{{ $topic->image }}" width="100%" />
+                @endif
                 <!-- Comments -->
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">
@@ -98,17 +103,20 @@
                             <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                         </div>
                     </div>
+                    @foreach($topic->comment as $comment)
                     <div class="vh-row vh-margin-top">
-                        <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"></div>
+                        <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ $comment->customer->image }}" width="40px"></div>
                         <div class="vh-col l11 m10 s10">
-                            <a href="#">Trí Nhân</a> 
-                            Ahihi
-                            <div class="vh-small vh-text-gray">1/4/2019</div>
+                            <a href="#">{{ $comment->customer->name }}</a> 
+                            {{ $comment->caption }}
+                            <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <a href="#">Xem thêm</a>
             </div>
+            @endforeach
         </div>
     </div>
 @endsection

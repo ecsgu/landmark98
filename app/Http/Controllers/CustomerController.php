@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
 use Hash;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -73,8 +74,8 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find($id);
-        return $Customer;
-        $account->save();
+        return view('/pages/customer', compact('Customer'));
+        //$account->save();
     }
 
     /**
