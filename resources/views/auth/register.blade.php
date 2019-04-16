@@ -57,33 +57,33 @@
             <div class="vh-col l6 =">
                 <!-- Tab 1 -->
                 <form action="{{ url('register') }}" method="post">
-                <div class="tablink" id="tab1">
+                <div class="vh-tab-content vh-show" id="tab1">
                     <div class="vh-row vh-margin-top vh-xxlarge">Đăng Kí</div>
                     <div class="vh-row vh-large"><i>Miễn phí cho mọi người</i></div>
                     <!-- Tên đăng nhập -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Tên đăng nhập:</div>
                         <div class="vh-col l6">
-                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
+                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-username" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
                         </div>
                     </div>
                     <!-- Nhập mật khẩu -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Mật khẩu:</div>
                         <div class="vh-col l6">
-                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="Password" name="password" placeholder="Nhập Mật khẩu">
+                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-password" type="Password" name="password" placeholder="Nhập Mật khẩu">
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Nhập lại mật khẩu:</div>
                         <div class="vh-col l6">
-                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="Password" name="repassword" placeholder="Nhập Lại Mật khẩu">
+                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-repassword" type="Password" name="repassword" placeholder="Nhập Lại Mật khẩu">
                         </div>
                     </div>
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Email:</div>
                         <div class="vh-col l6">
-                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" type="text" name="email" placeholder="Nhập Email">
+                            <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-email" type="text" name="email" placeholder="Nhập Email">
                         </div>
                     </div>
                     <div class="vh-row vh-display-container vh-margin-top">
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <!-- Tab 2 -->
-                <div class="tablink" id="tab2" style="display:none">
+                <div class="vh-tab-content vh-hide" id="tab2">
                     <div class="vh-row vh-margin-top vh-xxlarge">Thông tin cá nhân</div>
                     <div class="vh-row vh-large"><i>Thông tin của bạn sẽ được bảo mật</i></div>
                     <div class="vh-row vh-margin-top">
@@ -136,14 +136,8 @@
         </div>
     </div>
     <script>
-        function openTab(cityName) {
-            var i;
-            var x = document.getElementsByClassName("tablink");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-            }
-            document.getElementById(cityName).style.display = "block";  
-        }
+        // Init Register
+        
     </script>
     </body>
 </html>
