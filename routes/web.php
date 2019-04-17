@@ -13,6 +13,7 @@
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::post('file','FileController@doUpload');
+Route::post('tmpfile','FileController@doUploadtmp');
 Route::get('paypal', function(){
     return view('pages/paypal');
 });

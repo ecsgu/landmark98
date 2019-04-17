@@ -20,7 +20,7 @@
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
-            <form method="POST" enctype="multipart/form-data" action="{{url('file')}}" onsubmit="return TestPost('caption')">
+            <form method="POST" enctype="multipart/form-data" id="topic" action="{{url('file')}}" onsubmit="return TestPost('caption')">
                 <div class="vh-card-4 vh-round vh-padding vh-margin-top" onmousemove="document.getElementById('caption').attributes['rows'].value = 10" onmouseout="document.getElementById('caption').attributes['rows'].value = 3">
                 <!-- User post -->
                 {{csrf_field()}}
@@ -46,7 +46,7 @@
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
                                 <span class="fas fa-image" aria-hidden="true"></span>
-                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail('{{ asset('upload/defaultCus.jpg') }}');">
+                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail()">
                             </label>
                         </div>
                     </div>

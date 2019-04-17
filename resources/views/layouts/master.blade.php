@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('css/landmark.css') }}" type="text/css"/>
         <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
+        <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
         <script src="{{ asset('js/landmark.js') }}" type="text/javascript"></script>
         <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
     </head>
