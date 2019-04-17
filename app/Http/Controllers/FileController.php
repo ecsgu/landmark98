@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\TopicController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Filesystem\Filesystem;
 
 class FileController extends Controller
 {
@@ -36,6 +38,8 @@ class FileController extends Controller
     }
     public function doUploadtmp(Request $request)
     {
+        $file = new Filesystem;
+        $file->cleanDirectory(public_path().'/tmp');
         if($request->image)
         {
             $file = $request->image;
