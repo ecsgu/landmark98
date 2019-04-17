@@ -17,7 +17,6 @@ class FileController extends Controller
     {
         if(isset($request->image))
         {
-            echo $request;
             $file = $request->image;
             $array = explode('.',$file->getClientOriginalName());
             $Extend = end($array);
