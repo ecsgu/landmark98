@@ -24,20 +24,10 @@
                 <div class="vh-bar-item">
                     <div class="vh-small ">Tên đăng nhập</div>
                     <input id="username" style="height: 35px" type="text" class="form-control vh-round-medium" name="username" value="{{ old('username') }}" required autofocus>
-                    @if ($errors->has('username'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('username') }}</strong>
-                        </span>
-                    @endif
                 </div>
                 <div class="vh-bar-item">
                     <div class="vh-small">Mật khẩu</div>
                     <input id="password" style="height: 35px" type="password" class="form-control vh-round-medium" name="password" required>
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
                     <div class="vh-small">
                         <a class="vh-small" href="#">Quên mật khẩu?</a>
                     </div>
@@ -67,6 +57,11 @@
                             <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-username" type="text" name="username" placeholder="Nhập Tên Đăng Nhập">
                         </div>
                     </div>
+                    @if ($errors->has('username'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                    @endif
                     <!-- Nhập mật khẩu -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l4 vh-padding vh-large">Mật khẩu:</div>
@@ -86,6 +81,11 @@
                             <input class="vh-input vh-border vh-round-medium vh-hover-border-blue" id="reg-email" type="text" name="email" placeholder="Nhập Email">
                         </div>
                     </div>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                     <div class="vh-row vh-display-container vh-margin-top">
                         <div id="next" class="vh-button vh-border vh-round-medium vh-red vh-hover-safety-blue vh-display-middle vh-margin-top vh-hover-blue" onclick="openTab('tab2')">Tiếp theo >> </div>
                     </div>
