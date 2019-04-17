@@ -15,20 +15,22 @@ class FileController extends Controller
 
     public function doUpload(Request $request)
     {
+        if(isset($request->file))
+        {
+            $file = $request->image;
+            $array = explode('.',$file->getClientOriginalName());
+            $Extend = end($array);
 
-        $file = $request->image;
-        $array = explode('.',$file->getClientOriginalName());
-        $Extend = end($array);
+            $Name = md5($file->getClientOriginalName() . "." . str_random());
+            // Lấy đuôi file
 
-        $Name = md5($file->getClientOriginalName() . "." . str_random());
-        // Lấy đuôi file
+            // Upload lên server
+            $filename=$file->move('upload', $Name.'.'.$Extend );
 
-        // Upload lên server
-        $filename=$file->move('upload', $Name.'.'.$Extend );
-
-        //echo "hello mother fucker";
-        //Update database topic
-        $request->request->add(['filename' => $filename]);
+            //echo "hello mother fucker";
+            //Update database topic
+            $request->request->add(['filename' => $filename]);
+        }
         TopicController::store($request);
         header("Refresh:0; url=./");
     }

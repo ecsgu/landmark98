@@ -22,7 +22,7 @@
                 <div class="vh-row vh-margin vh-large"><!--bai viet, follow-->
                     <div class="vh-col l4"><!--bai viet-->
                         <span>
-                            <strong><span>15</span></strong>
+                            <strong><span>{{ $Customer->topic->count() }}</span></strong>
                             Bài viết
                         </span>
                     </div>
@@ -92,18 +92,27 @@
         <div id="post" class="vh-tab-content vh-show vh-round-medium">
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
-                <div class="vh-row">
-                    <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{asset($Customer->image)}}" width="40px"> </div>
-                    <div class="vh-col l9 m9 s8 vh-text-black">
-                        <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3></textarea>
+                <form method="POST" enctype="multipart/form-data" action="{{url('file')}}">
+                    {{csrf_field()}}
+                    <div class="vh-row">
+                        <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{asset($Customer->image)}}" width="40px"> </div>
+                        <div class="vh-col l9 m9 s8 vh-text-black">
+                            <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name= "caption"></textarea>
+                        </div>
+                        <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
+                            <label>
+                                <span class="fas fa-image" aria-hidden="true"></span>
+                                <input type="file" name="image" style="display:none">
+                            </label>
+                        </div>
                     </div>
-                    <div class="vh-col l2 m2 s2 vh-center vh-xxlarge"><span class="fas fa-image"></span></div>
-                </div>
-                <div class="vh-row vh-bar">
-                    <div class="vh-col l10">
+                    <div class="vh-row vh-bar">
+                        <label class="vh-button vh-round-medium vh-col l2 m12 s12 vh-safety-blue vh-right">
+                              <span class="" aria-hidden="true">Chia sẻ</span>
+                              <input type="submit" value="upload" style="display:none">
+                        </label>
                     </div>
-                    <div class="vh-button vh-round-medium vh-col l2 m12 s12 vh-safety-blue vh-right">Chia sẻ</div>
-                </div>
+                </form>
             </div>
             @foreach($Customer->topic as $topic)
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">

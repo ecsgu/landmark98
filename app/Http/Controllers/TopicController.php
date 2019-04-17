@@ -18,7 +18,7 @@ class TopicController extends Controller
         //
         if(!Session::has('account'))
             return view('/pages/login');
-        $Topic = Topic::orderBy('id','desc')->get();
+        $Topic = Topic::Where('status','2')->orderBy('id','desc')->get();
         return view('/pages/landmark', compact('Topic'));
     }
 
