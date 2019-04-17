@@ -37,9 +37,7 @@ class FileController extends Controller
     }
     public function doUploadtmp(Request $request)
     {
-        if($request->get('_token'))
-            return "DKMM";
-        if(isset($request->file))
+        if($request->image)
         {
             $file = $request->image;
             $array = explode('.',$file->getClientOriginalName());
