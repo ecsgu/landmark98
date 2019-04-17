@@ -8,8 +8,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/Hau.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('css/landmark.css') }}" type="text/css"/>
         <script src="{{ asset('js/VH.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/landmark.js') }}" type="text/javascript"></script>
         <link href="{{ asset('logo.ico') }}" rel="shortcut icon">
     </head>
     <body id="main"> 

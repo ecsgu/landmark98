@@ -20,7 +20,7 @@
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
-            <form method="POST" enctype="multipart/form-data" action="{{url('file')}}">
+            <form method="POST" enctype="multipart/form-data" action="{{url('file')}}" onsubmit="return TestPost('caption')">
                 <div class="vh-card-4 vh-round vh-padding vh-margin-top" onmousemove="document.getElementById('caption').attributes['rows'].value = 10" onmouseout="document.getElementById('caption').attributes['rows'].value = 3">
                 <!-- User post -->
                 {{csrf_field()}}
@@ -32,18 +32,29 @@
                          </div>
                         <div class="vh-col l9 m7 s7 vh-text-black">
                             <textarea id="caption" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
+                            <script>
+                                function TestPost(id_post){
+                                    var post = document.getElementById(id_post);
+                                    if(post.value == "") {
+                                        post.attributes["placeholder"].value = "Bạn phải nhập gì đó!!!";
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                            </script>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
                                 <span class="fas fa-image" aria-hidden="true"></span>
-                                <input type="file" name="image" style="display:none">
+                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail('{{ asset('upload/defaultCus.jpg') }}');">
                             </label>
                         </div>
                     </div>
+                    <div id="thumnail" class="vh-margin-bottom vh-margin-top vh-quarter vh-display-container vh-hover-opacity"></div>
                     <div class="vh-row">
                         <label class="vh-button vh-col l12 m12 s12 vh-safety-blue">
                               <span class="" aria-hidden="true">Chia sẻ</span>
-                              <input type="submit" value="upload" style="display:none">
+                              <input class="vh-hide" type="submit" value="upload">
                         </label>
                     </div>
                 </div>
