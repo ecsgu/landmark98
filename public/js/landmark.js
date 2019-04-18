@@ -53,3 +53,22 @@ function TestPost(id_post){
     }
     return true;
 }
+
+/* Comment */
+function ShowMore(id_post,id_btn){
+    var btn = document.getElementById(id_btn);
+    var post = document.getElementById(id_post);
+    if(btn.innerText === "Xem thêm") {
+        post.classList.remove("vh-hide");
+        btn.innerText = "Ẩn bớt";
+    }
+    else {
+        post.classList.add("vh-hide");
+        btn.innerText = "Xem thêm";
+    }
+}
+function SubmitComment(){
+    if(event.keyCode == 13){
+
+    }
+}

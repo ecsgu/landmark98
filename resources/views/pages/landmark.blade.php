@@ -93,11 +93,15 @@
                             <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                         </div>
                     </div>
-                    @foreach($topic->comment as $comment)
+                    @if(count($topic->comment) > 1)
+                    <div class="vh-hide" id="{{$topic->id}}"> 
+                    @endif
+                    @foreach($topic->comment as $key=>$comment)
+                    <!-- 1 Comment -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
                             <a href="{{ url('Customer',[$comment->customer->id]) }}">
-                            <img class="vh-circle" src="{{$comment->customer->image}}" width="40px">
+                                <img class="vh-circle" src="{{$comment->customer->image}}" width="40px">
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
@@ -106,9 +110,14 @@
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>
+                    @if(count($topic->comment) - 2 == $key) 
+                    </div> 
+                    @endif
                     @endforeach
+                    @if(count($topic->comment) > 1)
+                    <a id="btn_{{$topic->id}}" href="javascript:void()" onclick="ShowMore('{{$topic->id}}','btn_{{ $topic->id}}')">Xem thêm</a>
+                    @endif
                 </div>
-                <a href="#">Xem thêm</a>
             </div>
             @endforeach
         </div>
