@@ -1,4 +1,4 @@
-.night-mode, .night-mode textarea{
+.night-mode, .night-mode textarea, .night-mode .vh-table-all tr, .night-mode input{
     background-color:black;
     color:white;
 }
