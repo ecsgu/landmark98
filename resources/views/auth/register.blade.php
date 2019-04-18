@@ -29,7 +29,7 @@
                     <div class="vh-small">Mật khẩu</div>
                     <input id="password" style="height: 35px" type="password" class="form-control vh-round-medium" name="password" required>
                     <div class="vh-small">
-                        <a class="vh-small" href="#">Quên mật khẩu?</a>
+                        <a class="vh-small" href="{{asset('password/reset')}}">Quên mật khẩu?</a>
                     </div>
                 </div>
                 <div class="vh-bar-item vh-margin-top">

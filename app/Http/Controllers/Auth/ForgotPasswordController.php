@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-
+use Illuminate\Http\Request;
+use App\Account;
+use App\Forgotpw;
+use Mail;
 class ForgotPasswordController extends Controller
 {
     /*
@@ -32,5 +35,31 @@ class ForgotPasswordController extends Controller
     public function showLinkRequestForm()
     {
         return view('/auth/passwords/reset');
+    }
+    public function sendResetLinkEmail(Request $request)
+    {
+        $account = Account::where('email',$request->email)->first();
+        if(!$account)
+            return redirect()->back()->with(['error' => 'Email không tồn tại']);
+        $forgotpw = Forgotpw::where('username',$account->username)->first();
+        if(!$forgotpw){
+            $forgotpw = new Forgotpw;
+            $forgotpw->username= $account->username;
+            $forgotpw->code = mt_rand(100000, 999999);
+            $forgotpw->save();
+        }
+        $this->sendEmail($account,$forgotpw->code);
+        return redirect()->back()->with(['success' => 'Đã gửi mã số khôi phục đến email bạn']);
+    }
+    public function sendEmail($account, $code)
+    {
+        Mail::send(
+            'email.forgot',
+            ['user' => $account, 'code' => $code],
+            function($message) use ($account){
+                $message->to($account->email);
+                $message->subject("Hello $account->customer->name , Thay đổi mật khẩu của bạn.");
+            }
+        );
     }
 }
