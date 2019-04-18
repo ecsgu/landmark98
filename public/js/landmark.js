@@ -8,7 +8,6 @@ function createThumbnail(){
     var formData = new FormData();
     formData.append('image', document.querySelector('#file').files[0]);
     formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
-
     $.ajax({
         type: 'post',
         url: 'tmpfile',

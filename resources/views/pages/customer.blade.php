@@ -84,7 +84,7 @@
                     <div class="vh-row">
                         <div class="vh-col l1 m3 s3">
                             <a href="{{ url('Customer',[session('account')->username]) }}">
-                                <img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px">
+                                <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
                             </a>
                          </div>
                         <div class="vh-col l9 m7 s7 vh-text-black">
@@ -127,7 +127,7 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
                             <a href="{{ url('Customer',[session('account')->username]) }}">
-                            <img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px">
+                            <img class="vh-circle" src="{{ asset(Session::get('account')->customer->image)}}" width="40px">
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
@@ -142,7 +142,7 @@
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
                             <a href="{{ url('Customer',[$comment->customer->id]) }}">
-                                <img class="vh-circle" src="{{$comment->customer->image}}" width="40px">
+                                <img class="vh-circle" src="{{asset($comment->customer->image)}}" width="40px">
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">

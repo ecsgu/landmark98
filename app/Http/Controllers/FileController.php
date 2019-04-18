@@ -55,7 +55,7 @@ class FileController extends Controller
             //echo "hello mother fucker";
             //Update database topic
             $request->request->add(['filename' => $filename]);
-            return $filename;
+            return url('/')."/".$filename;
         }
         return "upload/defaultCus.jpg";
     }
