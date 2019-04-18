@@ -11,30 +11,17 @@
                     <div class="vh-col l4"> <!--ten-->
                         <a class="vh-xlarge" >{{ $Customer->name }}</a>
                     </div>
-            <strong><div class="vh-col l5 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Chỉnh sửa trang cá nhân
-                    </div></strong>
-                    <div class="vh-col l1 vh-padding">
-                    </div> 
-            <strong><div class="vh-col l2 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
-                    <div class="vh-col l1">
-                    </div> 
+                    <strong><div class="vh-col l5 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Chỉnh sửa trang cá nhân</div></strong>
+                    <div class="vh-col l1 vh-padding"></div> 
+                    <strong><div class="vh-col l2 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
                 </div>
-                <div class="vh-row vh-margin vh-large"><!--bai viet, follow-->
+                <div class="vh-row vh-margin vh-large">
                     <div class="vh-col l4"><!--bai viet-->
                         <span>
                             <strong><span>{{ $Customer->topic->count() }}</span></strong>
                             Bài viết
                         </span>
                     </div>
-                    <div class="vh-col l4"><!--follow-->
-                            
-                    </div>
-                    <div class="vh-col l4"><!--follow-->
-                            
-                    </div>
-                </div>
-                <div class="vh-row"><!--status-->
-
                 </div>
             </div>
         </div>
@@ -90,30 +77,35 @@
         </div>
         <!-- Tab 2 -->
         <div id="post" class="vh-tab-content vh-show vh-round-medium">
-            <div class="vh-card-4 vh-round vh-padding vh-margin-top">
+            <form method="POST" enctype="multipart/form-data" id="topic" action="{{url('file')}}" onsubmit="return TestPost('caption')">
+                <div class="vh-card-4 vh-round vh-padding vh-margin-top" onmousemove="document.getElementById('caption').attributes['rows'].value = 10" onmouseout="document.getElementById('caption').attributes['rows'].value = 3">
                 <!-- User post -->
-                <form method="POST" enctype="multipart/form-data" action="{{url('file')}}">
-                    {{csrf_field()}}
+                {{csrf_field()}}
                     <div class="vh-row">
-                        <div class="vh-col l1 m1 s2"><img class="vh-circle" src="{{asset($Customer->image)}}" width="40px"> </div>
-                        <div class="vh-col l9 m9 s8 vh-text-black">
-                            <textarea onfocus="this.attributes['rows'].value = 10" onblur="this.attributes['rows'].value = 3" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name= "caption"></textarea>
+                        <div class="vh-col l1 m3 s3">
+                            <a href="{{ url('Customer',[session('account')->username]) }}">
+                                <img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px">
+                            </a>
+                         </div>
+                        <div class="vh-col l9 m7 s7 vh-text-black">
+                            <textarea id="caption" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
                                 <span class="fas fa-image" aria-hidden="true"></span>
-                                <input type="file" name="image" style="display:none">
+                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail()">
                             </label>
                         </div>
                     </div>
-                    <div class="vh-row vh-bar">
-                        <label class="vh-button vh-round-medium vh-col l2 m12 s12 vh-safety-blue vh-right">
+                    <div id="thumnail" class="vh-margin-bottom vh-margin-top vh-quarter vh-display-container vh-hover-opacity"></div>
+                    <div class="vh-row">
+                        <label class="vh-button vh-col l12 m12 s12 vh-safety-blue">
                               <span class="" aria-hidden="true">Chia sẻ</span>
-                              <input type="submit" value="upload" style="display:none">
+                              <input class="vh-hide" type="submit" value="upload">
                         </label>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
             @foreach($Customer->topic as $topic)
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
@@ -125,9 +117,7 @@
                     </div>
                 </div>
                 <!-- Caption -->
-                <div class="vh-margin-top">
-                    {{ $topic->caption }}
-                </div>
+                <div class="vh-margin-top">{{ $topic->caption }}</div>
                 <!-- Image -->
                 @if(isset($topic->image))
                 <img src="{{ asset($topic->image) }}" width="100%" />

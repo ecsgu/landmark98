@@ -32,16 +32,6 @@
                          </div>
                         <div class="vh-col l9 m7 s7 vh-text-black">
                             <textarea id="caption" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
-                            <script>
-                                function TestPost(id_post){
-                                    var post = document.getElementById(id_post);
-                                    if(post.value == "") {
-                                        post.attributes["placeholder"].value = "Bạn phải nhập gì đó!!!";
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                            </script>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>

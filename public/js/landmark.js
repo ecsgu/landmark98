@@ -1,9 +1,9 @@
 "use strict"
-/* Create Modal */
+/* Modal */
 function addInfoModal(){
     
 }
-/* Create Thumnail */
+/* Thumnail */
 function createThumbnail(){
     var formData = new FormData();
     formData.append('image', document.querySelector('#file').files[0]);
@@ -16,20 +16,19 @@ function createThumbnail(){
         processData: false,
         contentType: false,
         success : function(image) {
-                  var thumnail = document.getElementById("thumnail");
-                  removeThumbnail();
-                  var imgThumnail = document.createElement("IMG");
-                  imgThumnail.setAttribute("src",image);
-                  imgThumnail.setAttribute("width","100%");
-                  var overlayThumnail = document.createElement("DIV");
-                  overlayThumnail.classList.add("vh-display-topright","vh-display-hover","vh-text-white","vh-padding-small");
-                  var btnRemove = document.createElement("SPAN");
-                  btnRemove.classList.add("fa","fa-remove");
-                  btnRemove.addEventListener("click",removeImg);
-                  overlayThumnail.insertAdjacentElement("afterbegin",btnRemove);
-                  thumnail.insertAdjacentElement("afterbegin",imgThumnail);
-                  thumnail.insertAdjacentElement("afterbegin",overlayThumnail);
-                  //upload tmp file
+            var thumnail = document.getElementById("thumnail");
+            removeThumbnail();
+            var imgThumnail = document.createElement("IMG");
+            imgThumnail.setAttribute("src",image);
+            imgThumnail.setAttribute("width","100%");
+            var overlayThumnail = document.createElement("DIV");
+            overlayThumnail.classList.add("vh-display-topright","vh-display-hover","vh-text-white","vh-padding-small");
+            var btnRemove = document.createElement("SPAN");
+            btnRemove.classList.add("fa","fa-remove");
+            btnRemove.addEventListener("click",removeImg);
+            overlayThumnail.insertAdjacentElement("afterbegin",btnRemove);
+            thumnail.insertAdjacentElement("afterbegin",imgThumnail);
+            thumnail.insertAdjacentElement("afterbegin",overlayThumnail);
         }
     });
 
@@ -44,4 +43,13 @@ function removeImg(){
     var inputImg = document.getElementById("file");
     inputImg.defaultValue = "";
     inputImg.value = "";
+}
+/* Post */
+function TestPost(id_post){
+    var post = document.getElementById(id_post);
+    if(post.value == "") {
+        post.attributes["placeholder"].value = "Bạn phải nhập gì đó!!!";
+        return false;
+    }
+    return true;
 }
