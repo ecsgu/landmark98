@@ -49,17 +49,22 @@ class ForgotPasswordController extends Controller
             $forgotpw->save();
         }
         $this->sendEmail($account,$forgotpw->code);
-        return redirect()->back()->with(['success' => 'Đã gửi mã số khôi phục đến email bạn']);
+        return redirect()->back()->with(['success' => 'Đã gửi mã số khôi phục đến email '.$account->email, 'account' => $account]);
     }
     public function sendEmail($account, $code)
     {
+        $customer= $account->customer;
         Mail::send(
             'email.forgot',
             ['user' => $account, 'code' => $code],
-            function($message) use ($account){
+            function($message) use ($account , $customer){
                 $message->to($account->email);
-                $message->subject("Hello $account->customer->name , Thay đổi mật khẩu của bạn.");
+                $message->subject("Hello $customer->name , Thay đổi mật khẩu của bạn.");
             }
         );
+    }
+    public function resetPassword(Request $request)
+    {
+        
     }
 }
