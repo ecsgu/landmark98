@@ -45,7 +45,7 @@ class LoginController extends Controller
     public function showLoginForm(){
         if(Session::has('account'))
             return redirect()->action('TopicController@index');
-        return view('auth/register');
+        return view('Auth/register');
     }
     public static function login(Request $request)
     {

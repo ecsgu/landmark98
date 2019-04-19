@@ -58,8 +58,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255','unique:account'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:account'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -73,18 +73,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['name'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
     public function register(Request $request)
     {
-        return $request->validate([
-            'username' => ['required', 'string', 'max:255','unique:account'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:account'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
         $CC = new CustomerController;
         $CC->store($request);
         LoginController::login($request);
