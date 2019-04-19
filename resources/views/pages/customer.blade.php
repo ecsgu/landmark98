@@ -107,6 +107,7 @@
                 </div>
             </form>
             @foreach($Customer->topic as $topic)
+            @if($topic->status == 2 )
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
@@ -160,6 +161,7 @@
                     @endif
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
     </div>
