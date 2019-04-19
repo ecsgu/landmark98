@@ -17,7 +17,7 @@ class NhanTaoBangTopic extends Migration
         Schema::create('topic',function(Blueprint $table){
             $table->increments('id');
             $table->string('caption');
-            $table->string('image')->nullable;
+            $table->string('image')->nullable();
             $table->string('username',50);
             $table->boolean('status');
             $table->timestamps();
