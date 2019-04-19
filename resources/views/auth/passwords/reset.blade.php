@@ -8,6 +8,7 @@
     </div>
     <form method="post" action="{{url('resetpassword')}}">
     @csrf
+    <input type="hidden" value="{{session('account')->username}}" id="username" name="username" >
     @if(session('error'))
         <div>
         {{session('error')}}

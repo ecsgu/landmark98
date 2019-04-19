@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Account;
 use App\Forgotpw;
 use Mail;
+use DB;
+use Hash;
 class ForgotPasswordController extends Controller
 {
     /*
@@ -41,13 +43,13 @@ class ForgotPasswordController extends Controller
         $account = Account::where('email',$request->email)->first();
         if(!$account)
             return redirect()->back()->with(['error' => 'Email không tồn tại']);
-        $forgotpw = Forgotpw::where('username',$account->username)->first();
-        if(!$forgotpw){
-            $forgotpw = new Forgotpw;
-            $forgotpw->username= $account->username;
-            $forgotpw->code = mt_rand(100000, 999999);
-            $forgotpw->save();
-        }
+        //xóa code cũ
+        DB::table('forgotpw')->where('username', $account->username)->delete();
+        //Thêm code vào db
+        $forgotpw = new Forgotpw;
+        $forgotpw->username= $account->username;
+        $forgotpw->code = mt_rand(100000, 999999);
+        $forgotpw->save();
         $this->sendEmail($account,$forgotpw->code);
         return redirect()->back()->with(['success' => 'Đã gửi mã số khôi phục đến email '.$account->email, 'account' => $account]);
     }
@@ -65,6 +67,13 @@ class ForgotPasswordController extends Controller
     }
     public function resetPassword(Request $request)
     {
-        
+        $forgotpw = Forgotpw::where('username',$request->username)->first();
+        if($forgotpw->code == $request->code)
+        {
+            DB::table('account')
+            ->where('username', $request->username)
+            ->update(['password' => Hash::make($request->password)]);
+        }
+        return redirect()->action('Auth\LoginController@showLoginForm');
     }
 }

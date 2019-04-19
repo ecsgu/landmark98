@@ -15,7 +15,7 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::post('file','FileController@doUpload');
 Route::post('tmpfile','FileController@doUploadtmp');
 Route::post('Customer/tmpfile','FileController@doUploadtmp');
-Route::post('resetpassword','FileController@resetPassword');
+Route::post('resetpassword','Auth\ForgotPasswordController@resetPassword');
 Route::get('paypal', function(){
     return view('pages/paypal');
 });
