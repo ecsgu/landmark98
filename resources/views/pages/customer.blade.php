@@ -52,14 +52,16 @@
             <!-- Thay đổi mật khẩu -->
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
             <div class="vh-xlarge">Tài khoản</div>
-                <form method="post">
+                <form method="post" action="{{url('password/reset')}}">
+                    @csrf
                     <table class="vh-table-all">
                         <tr>
                             <th>Tên đăng nhập:</th>
                             <td>{{ $Customer->id }}</td>
                         </tr>
+                        <input type="hidden" id ="username" name="username" value="{{$Customer->id}}">
                         <tr>
-                            <th>Mật khẩu khẩu:</th>
+                            <th>Mật khẩu cũ:</th>
                             <td><input type="password" name="oldpassword" /></td>
                         </tr>
                         <tr>
@@ -68,8 +70,18 @@
                         </tr>
                         <tr>
                             <th>Nhập lại mật khẩu:</th>
-                            <td><input type="password" /></td>
+                            <td><input type="password" name="repassword"/></td>
                         </tr>
+                        @if(session('error_repassword'))
+                            <div>
+                                {{ session('error_repassword')}}
+                            </div>
+                        @endif
+                        @if(session('error_oldpassword'))
+                            <div>
+                                {{ session('error_oldpassword')}}
+                            </div>
+                        @endif
                     </table>
                     <div class="vh-bar"><input class="vh-button vh-right" type="submit" value="Thay đổi" /></div>
                 </form>
