@@ -77,7 +77,7 @@ class ForgotPasswordController extends Controller
             ->update(['password' => Hash::make($request->password)]);
         }
         else 
-            return redirect()->back()->with(['error_code' => 'Mã bảo mật không đúng!'])
+            return redirect()->back()->with(['error_code' => 'Mã bảo mật không đúng!']);
         return redirect()->action('Auth\LoginController@showLoginForm');
     }
 }
