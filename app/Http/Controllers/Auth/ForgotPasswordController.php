@@ -71,13 +71,13 @@ class ForgotPasswordController extends Controller
         if($forgotpw->code == $request->code)
         {
             if($request->password != $request->repassword)
-                return redirect()->back()->with(['error_repassword' => "Mật khẩu nhập lại không khớp"]);
+                return redirect()->back()->with(['error_repassword' => "Mật khẩu nhập lại không khớp", 'success' => 'Success']);
             DB::table('account')
             ->where('username', $request->username)
             ->update(['password' => Hash::make($request->password)]);
         }
         else 
-            return redirect()->back()->with(['error_code' => 'Mã bảo mật không đúng!']);
+            return redirect()->back()->with(['error_code' => 'Mã bảo mật không đúng!','success' => 'Success']);
         return redirect()->action('Auth\LoginController@showLoginForm');
     }
 }
