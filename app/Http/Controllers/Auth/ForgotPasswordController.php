@@ -58,7 +58,7 @@ class ForgotPasswordController extends Controller
         $customer= $account->customer;
         Mail::send(
             'email.forgot',
-            ['user' => $account, 'code' => $code],
+            ['user' => $account, 'code' => $code , 'customer' => $customer],
             function($message) use ($account , $customer){
                 $message->to($account->email);
                 $message->subject("Hello $customer->name , Thay đổi mật khẩu của bạn.");
