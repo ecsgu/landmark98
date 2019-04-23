@@ -28,6 +28,7 @@ Route::get('user',function() {
 Route::get('post',function() {
     return view('pages/topic');
 });
+Route::resource('Admin','WebmasterController');
 Route::resource('Customer','CustomerController');
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');

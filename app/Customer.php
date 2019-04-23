@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     //
-    protected $table = 'Customer';
+    protected $table = 'customer';
     public $incrementing =false;
     public function advertise(){
     	return $this->hasMany('App\Advertise','username','id');
