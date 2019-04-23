@@ -15,8 +15,31 @@ class WebmasterController extends Controller
     public function index()
     {
         //
-        return view('pages/webmaster');
+        if(session('admin'))
+            return view('pages/webmaster/webmaster');
+        else
+            return view ('pages/webmaster/login');
 
+    }
+    public function topic()
+    {
+        return view('pages/webmaster/topic');
+    }
+    public function comment()
+    {
+        return view('pages/webmaster/comment');
+    }
+    public function advertise()
+    {
+        return view('pages/webmaster/advertise');
+    }
+    public function notification()
+    {
+        return view('pages/webmaster/notification');
+    }
+    public function forgot()
+    {
+        return view('pages/webmaster/forgot');
     }
 
     /**

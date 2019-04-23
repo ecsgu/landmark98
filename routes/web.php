@@ -28,7 +28,14 @@ Route::get('user',function() {
 Route::get('post',function() {
     return view('pages/topic');
 });
-Route::resource('Admin','WebmasterController');
+//route webmaster
+Route::get('admin/topic','WebmasterController@topic');
+Route::get('admin/comment','WebmasterController@comment');
+Route::get('admin/advertise','WebmasterController@advertise');
+Route::get('admin/notification','WebmasterController@notification');
+Route::get('admin/forgot','WebmasterController@forgot');
+Route::resource('admin','WebmasterController');
+//------------------
 Route::resource('Customer','CustomerController');
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
