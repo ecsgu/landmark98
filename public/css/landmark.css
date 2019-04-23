@@ -20,12 +20,20 @@
 .danger, .warring, .info {
     padding: 4px 12px;
 }
+.user-avatar img{
+    width:100%;
+}
 @media (min-width:993px){
     .user-main{
         margin: 0px 250px;
     }
     .user-avatar{
         width:150px;
+    }
+    .user-avatar .vh-overlay-title{
+        height: 50%;
+        border-bottom-left-radius:150px;
+        border-bottom-right-radius:150px;
     }
 }
 @media (max-width:992px){
@@ -34,5 +42,10 @@
     }
     .user-avatar{
         width:77px;
+    }
+    .user-avatar .vh-overlay-title{
+        height: 50%;
+        border-bottom-left-radius:77px;
+        border-bottom-right-radius:77px;
     }
 }

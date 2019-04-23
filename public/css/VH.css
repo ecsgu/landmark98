@@ -48,7 +48,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .vh-code,.vh-codespan{font-family:Consolas,"courier new";font-size:16px}
 .vh-code{width:auto;background-color:#fff;padding:8px 12px;border-left:4px solid #4CAF50;word-wrap:break-word}
 .vh-codespan{color:crimson;background-color:#f1f1f1;padding-left:4px;padding-right:4px;font-size:110%}
-.vh-modal{z-index:3;display:none;padding-top:100px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
+.vh-modal{z-index:3;display:none;padding:100px 0px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
 .vh-modal-content{margin:auto;background-color:#fff;position:relative;padding:0;outline:0;width:600px}
 /* Media */
 @media (min-width:601px){.vh-col.m1{width:8.33333%}.vh-col.m2{width:16.66666%}.vh-col.m3,.vh-quarter{width:24.99999%}.vh-col.m4,.vh-third{width:33.33333%}
@@ -58,7 +58,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .vh-col.l5{width:41.66666%}.vh-col.l6{width:49.99999%}.vh-col.l7{width:58.33333%}.vh-col.l8{width:66.66666%}
 .vh-col.l9{width:74.99999%}.vh-col.l10{width:83.33333%}.vh-col.l11{width:91.66666%}.vh-col.l12{width:99.99999%}}
 @media (max-width:1205px){.vh-auto{max-width:95%}}
-@media (max-width:600px){.vh-modal-content{margin:0 10px;width:auto!important}.vh-modal{padding-top:30px}
+@media (max-width:600px){.vh-modal-content{margin:0 10px;width:auto!important}.vh-modal{padding:30px 0px}
 .vh-dropdown-hover.vh-mobile .vh-dropdown-content,.vh-dropdown-click.vh-mobile .vh-dropdown-content{position:relative}	
 .vh-hide-small{display:none!important}.vh-mobile{display:block;width:100%!important}.vh-bar-item.vh-mobile,.vh-dropdown-hover.vh-mobile,.vh-dropdown-click.vh-mobile{text-align:center}
 .vh-dropdown-hover.vh-mobile,.vh-dropdown-hover.vh-mobile .vh-btn,.vh-dropdown-hover.vh-mobile .vh-button,.vh-dropdown-click.vh-mobile,.vh-dropdown-click.vh-mobile .vh-btn,.vh-dropdown-click.vh-mobile .vh-button{width:100%}}
@@ -73,6 +73,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .vh-section,.vh-code{margin-top:16px!important;margin-bottom:16px!important}
 .vh-margin{margin:16px!important}.vh-margin-top{margin-top:16px!important}.vh-margin-bottom{margin-bottom:16px!important}
 .vh-margin-left{margin-left:16px!important}.vh-margin-right{margin-right:16px!important}
+.vh-margin-small{margin:8px!important}
 /* Display */
 .vh-left{float:left!important}.vh-right{float:right!important}
 .vh-top,.vh-bottom{position:fixed;width:100%;z-index:1}.vh-top{top:0}.vh-bottom{bottom:0}

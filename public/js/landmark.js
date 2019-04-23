@@ -71,3 +71,7 @@ function SubmitComment(){
 
     }
 }
+/* Change avatar */
+function ChangeAvatar(){
+    openModal('change-avatar');
+}

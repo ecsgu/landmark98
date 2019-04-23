@@ -31,7 +31,7 @@
       <a href="{{url('logout')}}" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     <!-- Container -->
-    <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
+    <div class="vh-container vh-margin-bottom" style="margin: 70px 0px">
     @yield('Container')
     </div>
     <script>

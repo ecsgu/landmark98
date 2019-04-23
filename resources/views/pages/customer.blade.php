@@ -1,14 +1,35 @@
 @extends('layouts.master')
 
 @section('Container')
+    <!-- Modal -->
+    <div id="change-avatar" class="vh-modal">
+        <div class="vh-modal-content vh-animate-zoom">
+            <h3 class="vh-padding vh-2018-harbor-mist">Thay đổi ảnh đại diện</h3>
+            <img src="{{asset('City10.png')}}" width="100%" />
+            <div class="vh-bar vh-padding vh-2018-harbor-mist">
+                <div class="vh-button vh-right vh-round vh-border vh-border-blue vh-margin-small" onclick="closeModal('change-avatar')">Hủy</div>
+                <div class="vh-button vh-right vh-round vh-safety-blue vh-margin-small">Lưu</div>
+            </div>
+        </div>
+    </div>
     <div class="user-main">
         <div class="vh-row">
-            <div class="vh-col l3 m4"><!-- anh -->
-                <img class="vh-circle vh-border-4 vh-border-white user-avatar" src="{{asset($Customer->image)}}">
+            <div class="vh-col l3 m4">
+                <!-- Avatar -->
+                <div class="vh-image-container user-avatar"> 
+                    <img class="vh-circle vh-border-4 vh-border-white" src="{{asset($Customer->image)}}">
+                    <div class="vh-overlay-title">
+                        <label>
+                            <span class="fas fa-camera vh-text-white"></span>
+                            <input type="file" class="vh-hide" oninput="ChangeAvatar()"/>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="vh-col l9 m8"> <!--con lai -->
-                <div class="vh-row vh-margin"><!--Ten edit icon-->
-                    <div class="vh-col l4"> <!--ten-->
+            <div class="vh-col l9 m8">
+                <div class="vh-row vh-margin">
+                    <!-- Tên Người dùng -->
+                    <div class="vh-col l4">
                         <a class="vh-xlarge" >{{ $Customer->name }}</a>
                     </div>
                     <strong><div class="vh-col l5 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Chỉnh sửa trang cá nhân</div></strong>
@@ -16,7 +37,7 @@
                     <strong><div class="vh-col l2 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
                 </div>
                 <div class="vh-row vh-margin vh-large">
-                    <div class="vh-col l4"><!--bai viet-->
+                    <div class="vh-col l4">
                         <span>
                             <strong><span>{{ $Customer->topic->count() }}</span></strong>
                             Bài viết
