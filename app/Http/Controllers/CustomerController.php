@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
+use File;
 use Hash;
 use Session;
 
@@ -89,6 +90,7 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find(session('account')->customer->id);
+        File::delete(public_path()."/".$Customer->image);
         $Customer->image=$request->filename;
         $Customer->save();
     }
