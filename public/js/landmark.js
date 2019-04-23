@@ -1,7 +1,6 @@
 "use strict"
 /* Modal */
 function addInfoModal(){
-    
 }
 /* Thumnail */
 function createThumbnail(){
@@ -73,5 +72,20 @@ function SubmitComment(){
 }
 /* Change avatar */
 function ChangeAvatar(){
+    var formData = new FormData();
+    formData.append('image', document.querySelector('#file2').files[0]);
+    formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
+
+    $.ajax({
+        type: 'post',
+        url: 'tmpfile',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(image) {
+            var a=$('#change-avatar');
+            a[0].childNodes[1].childNodes[3].src=image;
+        }
+    });
     openModal('change-avatar');
 }

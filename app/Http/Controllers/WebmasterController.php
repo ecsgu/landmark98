@@ -15,10 +15,10 @@ class WebmasterController extends Controller
     public function index()
     {
         //
-        if(session('admin'))
+        //if(session('admin'))
             return view('pages/webmaster/webmaster');
-        else
-            return view ('pages/webmaster/login');
+        //else
+            //return view ('pages/webmaster/login');
 
     }
     public function topic()

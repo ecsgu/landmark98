@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
@@ -84,10 +85,12 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public static function edit(Request $request)
     {
         //
-        echo "edit";
+        $Customer = Customer::find(session('account')->customer->id);
+        $Customer->image=$request->filename;
+        $Customer->save();
     }
 
     /**

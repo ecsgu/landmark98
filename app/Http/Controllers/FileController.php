@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Filesystem\Filesystem;
 
@@ -33,7 +34,10 @@ class FileController extends Controller
             //Update database topic
             $request->request->add(['filename' => $filename]);
         }
-        TopicController::store($request);
+        if(isset($request->caption))
+            TopicController::store($request);
+        else
+            CustomerController::edit($request);
         header("Refresh:0; url=./");
     }
     public function doUploadtmp(Request $request)

@@ -15,6 +15,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::post('file','FileController@doUpload');
 Route::post('tmpfile','FileController@doUploadtmp');
 Route::post('Customer/tmpfile','FileController@doUploadtmp');
+Route::post('Customer/file','FileController@doUpload');
+
 Route::post('resetpassword','Auth\ForgotPasswordController@resetPassword');
 Route::get('email', function(){
     return view('email/forgot');
@@ -36,7 +38,7 @@ Route::get('admin/notification','WebmasterController@notification');
 Route::get('admin/forgot','WebmasterController@forgot');
 Route::resource('admin','WebmasterController');
 //------------------
-Route::resource('Customer','CustomerController');
+Route::resource('Customer','CustomerController',['only' => ['index','store','show','update','edit']]);
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
 Route::resource('Topic','TopicController');

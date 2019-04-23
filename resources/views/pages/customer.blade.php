@@ -2,13 +2,15 @@
 
 @section('Container')
     <!-- Modal -->
+    <form id="updateimage" action="{{url('file')}}" method="post" enctype="multipart/form-data"></form>
+    @csrf
     <div id="change-avatar" class="vh-modal">
         <div class="vh-modal-content vh-animate-zoom">
             <h3 class="vh-padding vh-2018-harbor-mist">Thay đổi ảnh đại diện</h3>
             <img src="{{asset('City10.png')}}" width="100%" />
             <div class="vh-bar vh-padding vh-2018-harbor-mist">
                 <div class="vh-button vh-right vh-round vh-border vh-border-blue vh-margin-small" onclick="closeModal('change-avatar')">Hủy</div>
-                <div class="vh-button vh-right vh-round vh-safety-blue vh-margin-small">Lưu</div>
+                <input type="submit" form="updateimage" class="vh-button vh-right vh-round vh-safety-blue vh-margin-small" value="Lưu">
             </div>
         </div>
     </div>
@@ -21,7 +23,7 @@
                     <div class="vh-overlay-title">
                         <label>
                             <span class="fas fa-camera vh-text-white"></span>
-                            <input type="file" class="vh-hide" oninput="ChangeAvatar()"/>
+                            <input type="file" form="updateimage" id="file2" name="image" class="vh-hide" oninput="ChangeAvatar()"/>
                         </label>
                     </div>
                 </div>
