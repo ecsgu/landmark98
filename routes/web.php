@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('index', function(){
+    return view('index');
+});
 Route::post('file','FileController@doUpload');
 Route::post('tmpfile','FileController@doUploadtmp');
 Route::post('Customer/tmpfile','FileController@doUploadtmp');

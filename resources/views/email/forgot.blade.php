@@ -8,7 +8,7 @@
 	<body>
 		<div class="vh-row vh-border-bottom vh-padding">
 			<div class="vh-col l1">
-				<a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="80%"></a>
+				<a href="{{ asset('') }}"><img src="{{ asset('logo.png') }}" width="80%"></a>
 			</div>
 			<div class="vh-col l11 vh-right-bar">
 				<h3 class="vh-text-blue vh-xlarge"><b>LandMark 98 Xin chào</b></h3>
