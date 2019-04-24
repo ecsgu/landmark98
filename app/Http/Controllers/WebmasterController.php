@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Illuminate\Http\Request;
+use Validator;
+use Session;
+use App\Topic;
 
 class WebmasterController extends Controller
 {
@@ -15,23 +20,38 @@ class WebmasterController extends Controller
     public function index()
     {
         //
-        //if(session('admin'))
+        if(session('admin'))
             return view('pages/webmaster/webmaster');
-        //else
-            //return view ('pages/webmaster/login');
+        else
+            return view ('pages/webmaster/login');
 
     }
     public function topic()
     {
-        return view('pages/webmaster/topic');
+        if((session('admin')->role & 8)!=0 )
+        {
+            $Topic = Topic::all();
+            return view('pages/webmaster/topic', compact('Topic'));
+        }
+        return redirect()->action('WebmasterController@index');
     }
     public function comment()
     {
-        return view('pages/webmaster/comment');
+        if((session('admin')->role & 8)!=0 )
+        {
+            $Comment = Comment::all();
+            return view('pages/webmaster/comment', compact('Comment'));
+        }
+        return redirect()->action('WebmasterController@index');
     }
     public function advertise()
     {
-        return view('pages/webmaster/advertise');
+        if((session('admin')->role & 16)!=0 )
+        {
+            $Advertise = Advertise::all();
+            return view('pages/webmaster/advertise', compact('Advertise'));
+        }
+        return redirect()->action('WebmasterController@index');
     }
     public function notification()
     {
@@ -41,7 +61,48 @@ class WebmasterController extends Controller
     {
         return view('pages/webmaster/forgot');
     }
-
+    public function login(Request $request)
+    {
+        $rules = [
+            'username' => 'required',
+            'password' => 'required'
+        ];
+        $validator =  Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+        else{
+            $username = $request->input('username');
+            $password = $request->input('password');
+            if(Auth::attempt(['username' => $username, 'password' => $password])){
+                if(Auth::user()->role & 60 != 0)
+                {
+                    Session::put('admin', Auth::user());
+                    return redirect()->action('WebmasterController@index');
+                }
+            }
+            else{
+                return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
+            }
+        }
+    }
+    public function duyetbai(Request $request)
+    {
+        $topic = Topic::find($request->id);
+        $topic->status=2;
+        $topic->save();
+    }
+    public function duyetcmt(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $comment->status=2;
+        $comment->save();
+    }
+    public function logout()
+    {
+        Session::forget('admin');
+        return redirect()->action('WebmasterController@index');
+    }
     /**
      * Show the form for creating a new resource.
      *

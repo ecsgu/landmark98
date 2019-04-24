@@ -34,6 +34,10 @@ Route::get('post',function() {
     return view('pages/topic');
 });
 //route webmaster
+Route::post('admin/duyetcmt','WebmasterController@duyetcmt');
+Route::post('admin/duyetbai','WebmasterController@duyetbai');
+Route::get('admin/logout','WebmasterController@logout');
+Route::post('admin/login','WebmasterController@login');
 Route::get('admin/topic','WebmasterController@topic');
 Route::get('admin/comment','WebmasterController@comment');
 Route::get('admin/advertise','WebmasterController@advertise');

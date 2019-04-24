@@ -54,23 +54,26 @@
                         <a href="{{url('admin')}}"> <i class="menu-icon fa fa-dashboard"></i>Bảng điều khiển</a>
                     </li>
                     <h3 class="menu-title">Bảng</h3><!-- /.menu-title -->
+                    @if((session('admin')->role & 8) != 0)
                     <li>
                         <a href="{{ url('admin/topic') }}"> <i class="menu-icon fa fa-table"></i>Bài viết</a>
                     </li>
+                    @endif
+                    @if((session('admin')->role & 8) != 0)
                     <li>
                         <a href="{{ url('admin/comment') }}"> <i class="menu-icon fa fa-table"></i>Bình luận</a>
                     </li>
+                    @endif
+                    @if((session('admin')->role & 16) != 0)
                     <li>
                         <a href="{{ url('admin/advertise') }}" > <i class="menu-icon fa fa-table"></i>Quảng Cáo</a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{ url('admin/notification') }}"> <i class="menu-icon fa fa-table"></i>Thông Báo</a>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <a href="{{ url('admin/phanquyen') }}"> <i class="menu-icon fa fa-table"></i>Phân Quyền</a>
                     </li>
                     <h3 class="menu-title">Trang phụ</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -184,7 +187,7 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa-user"></i> Trang cá nhân</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                            <a class="nav-link" href="{{url('admin/logout')}}"><i class="fa fa-power-off"></i> Đăng xuất</a>
                         </div>
                     </div>
 
@@ -246,6 +249,8 @@
     <script src="{{ asset('vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
     <script src="{{ asset('assets/js/dashboard.js')}}"></script>
     <script src="{{ asset('assets/js/widgets.js')}}"></script>
+    <script src="{{ asset('js/landmark.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.js')}}" type="text/javascript"></script>
     <script src="{{ asset('vendors/jqvmap/dist/jquery.vmap.min.js')}}"></script>
     <script src="{{ asset('vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{ asset('vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>

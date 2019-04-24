@@ -47,14 +47,14 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form action="admin/login" method="post">
                         <div class="form-group">
                             <label>Tài khoản</label>
-                            <input type="email" class="form-control" placeholder="Nhập Tài khoản">
+                            <input type="text" name="username" class="form-control" placeholder="Nhập Tài khoản">
                         </div>
                             <div class="form-group">
                                 <label>Mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Nhập Mật khẩu">
+                                <input type="password" name="password"class="form-control" placeholder="Nhập Mật khẩu">
                         </div>
                                 <div class="checkbox">
                                     <label>
