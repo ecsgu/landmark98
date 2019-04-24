@@ -152,7 +152,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0">
+                                <a href="#portfolio-section" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0">
                                     <span class="rotate-box-icon"><i class="fa fa-users"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Dân cư thế nào?</h4>
@@ -162,7 +162,7 @@
                             </div>
 
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.2s">
+                                <a href="#portfolio-section" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.2s">
                                     <span class="rotate-box-icon"><i class="fa fa-home"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Nhà ở ra sao?</h4>
@@ -172,7 +172,7 @@
                             </div>
 
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.4s">
+                                <a href="#portfolio-section" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.4s">
                                     <span class="rotate-box-icon"><i class="fa fa-lock"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Vấn đề an ninh?</h4>
@@ -182,7 +182,7 @@
                             </div>
                             
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.6s">
+                                <a href="#portfolio-section" class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="0.6s">
                                     <span class="rotate-box-icon"><i class="fa fa-clock-o"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Thành lập khi nào?</h4>
@@ -287,7 +287,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0">
+                                <a href="#prices-section" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0">
                                     <span class="rotate-box-icon"><i class="fa fa-camera"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Quảng cáo</h4>
@@ -297,7 +297,7 @@
                             </div>
                                         
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.2s">
+                                <a href="{{url('/')}}" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.2s">
                                     <span class="rotate-box-icon"><i class="fa fa-globe"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Mạng xã hội</h4>
@@ -307,7 +307,7 @@
                             </div>
             
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.4s">
+                                <a href="#portfolio-section" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.4s">
                                     <span class="rotate-box-icon"><i class="fa fa-cab"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Bãi đỗ xe miễn phí</h4>
@@ -318,7 +318,7 @@
 
                             
                             <div class="col-md-3 col-sm-6">
-                                <a href="#" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.6s">
+                                <a href="#portfolio-section" class="rotate-box-2 square-icon text-center wow zoomIn" data-wow-delay="0.6s">
                                     <span class="rotate-box-icon"><i class="fa fa-shopping-cart"></i></span>
                                     <div class="rotate-box-info">
                                         <h4>Trung tâm thương mại lớn</h4>
