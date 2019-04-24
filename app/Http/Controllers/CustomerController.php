@@ -93,6 +93,10 @@ class CustomerController extends Controller
         File::delete(public_path()."/".$Customer->image);
         $Customer->image=$request->filename;
         $Customer->save();
+        $username = session('account')->username;
+        $password = session('account')->password;
+        Auth::loginUsingId(['username' => $username]);
+        Session::put('account', Auth::user());
     }
 
     /**
