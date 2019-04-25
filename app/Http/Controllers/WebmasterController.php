@@ -48,7 +48,7 @@ class WebmasterController extends Controller
     {
         if((session('admin')->role & 16)!=0 )
         {
-            $Advertise = Advertise::all();
+            $Advertise = advertise::all();
             return view('pages/webmaster/advertise', compact('Advertise'));
         }
         return redirect()->action('WebmasterController@index');
@@ -90,6 +90,12 @@ class WebmasterController extends Controller
     {
         $topic = Topic::find($request->id);
         $topic->status=2;
+        $topic->save();
+    }
+    public function xoabai(Request $request)
+    {
+        $topic = Topic::find($request->id);
+        $topic->status=3;
         $topic->save();
     }
     public function duyetcmt(Request $request)

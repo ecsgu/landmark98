@@ -35,6 +35,12 @@
                                                 @if($topic->status==1)
                                                 <input type="button" value="Duyệt" id="{{$topic->id}}" onclick="duyetbai(this.id)">
                                                 @endif
+                                                @if($topic->status==2)
+                                                <input type="button" value="Ẩn" id="{{$topic->id}}" onclick="xoabai(this.id)">
+                                                @endif
+                                                @if($topic->status==3)
+                                                <input type="button" value="Hiện" id="{{$topic->id}}" onclick="duyetbai(this.id)">
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

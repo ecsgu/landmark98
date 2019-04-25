@@ -36,6 +36,7 @@ Route::get('post',function() {
 //route webmaster
 Route::post('admin/duyetcmt','WebmasterController@duyetcmt');
 Route::post('admin/duyetbai','WebmasterController@duyetbai');
+Route::post('admin/xoabai','WebmasterController@xoabai');
 Route::get('admin/logout','WebmasterController@logout');
 Route::post('admin/login','WebmasterController@login');
 Route::get('admin/topic','WebmasterController@topic');

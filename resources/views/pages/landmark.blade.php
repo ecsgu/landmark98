@@ -103,10 +103,10 @@
                             <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                         </div>
                     </div>
-                    @if(count($topic->comment) > 1)
+                    @if($topic->comment->where('status', 2)->count() > 1)
                     <div class="vh-hide" id="{{$topic->id}}"> 
                     @endif
-                    @foreach($topic->comment as $key=>$comment)
+                    @foreach($topic->comment->where('status', 2) as $key=>$comment)
                     <!-- 1 Comment -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
@@ -120,11 +120,11 @@
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>
-                    @if(count($topic->comment) - 2 == $key) 
+                    @if($topic->comment->where('status', 2)->count() - 2 == $key) 
                     </div> 
                     @endif
                     @endforeach
-                    @if(count($topic->comment) > 1)
+                    @if($topic->comment->where('status', 2)->count() > 1)
                     <a id="btn_{{$topic->id}}" href="javascript:void()" onclick="ShowMore('{{$topic->id}}','btn_{{ $topic->id}}')">Xem thêm</a>
                     @endif
                 </div>

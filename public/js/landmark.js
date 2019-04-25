@@ -104,3 +104,18 @@ function duyetbai(id)
         }
     });
 }
+function xoabai(id)
+{
+    var formData = new FormData();
+    formData.append('id', id);
+    $.ajax({
+        type: 'post',
+        url: 'xoabai',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(image) {
+            location.href="";
+        }
+    });
+}
