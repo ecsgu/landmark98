@@ -2,12 +2,12 @@
 
 @section('Container')
     <!-- Container -->
-    <div class="vh-container vh-margin-bottom" style="margin-top:100px;">
+    <div class="vh-container vh-margin-bottom" style="margin-top:10px;">
         <div class="vh-row-padding">
             <!-- Image -->
-            <div class="vh-col l6 vh-center"><img style="width: 750px; height: 500px;" class="vh-image" src="{{ asset('City10.png') }}"></div>
+            <div class="vh-col l6 m6 vh-center vh-hide-small"><img style="width: 750px; height: 500px;" class="vh-image" src="{{ asset('City10.png') }}"></div>
             <!-- Phần nhập thông tin -->
-            <div class="vh-col l6 =">
+            <div class="vh-col l6 m6">
                 <!-- Tab 1 -->
                 <form action="{{ url('register') }}" method="post" onsubmit="return onclick_TestReg();">
                 <div class="vh-tab-content vh-show" id="tab1">

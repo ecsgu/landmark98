@@ -16,7 +16,7 @@
     </head>
     <body style="background-color: #e9ebee" id="main"> 
     <!-- Header -->
-        <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster">
+        <div class="vh-container vh-bar vh-safety-blue vh-faster">
             <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="65px"></a></div>
             <!-- Đăng nhập -->
             <form method="post" action="{{ url('/login') }}">
