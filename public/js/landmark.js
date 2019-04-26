@@ -53,8 +53,8 @@ function TestPost(id_post){
 }
 
 /* Comment */
-function ShowMore(id_post,id_btn){
-    var btn = document.getElementById(id_btn);
+function ShowMore(id_post){
+    var btn = document.getElementById("btn_"+id_post);
     var post = document.getElementById(id_post);
     if(btn.innerText === "Xem thêm") {
         post.classList.remove("vh-hide");
@@ -65,9 +65,25 @@ function ShowMore(id_post,id_btn){
         btn.innerText = "Xem thêm";
     }
 }
-function SubmitComment(){
+function keydown_Comment(id_post,event){
+    var txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
-
+        if(event.shiftKey){
+            txt.value = "duoc roi";
+        } else {
+            if(txt.value != ""){
+                // Truyen ajax
+                txt.value = "";
+                event.preventDefault();
+                var notification = document.createElement("DIV");
+                notification.classList.add("vh-tiny","vh-text-gray");
+                notification.innerText = "Bình luận đã được thêm";
+                txt.insertAdjacentElement("afterend",notification);
+            }
+        }
+    } else {
+        var parent = txt.parentElement;
+        parent.removeChild(txt.nextSibling);
     }
 }
 /* Change avatar */

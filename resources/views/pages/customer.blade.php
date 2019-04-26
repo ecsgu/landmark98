@@ -167,7 +167,7 @@
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
+                        <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{$topic->id}}',event)"></textarea>
                         </div>
                     </div>
                     @if(count($topic->comment) > 1)
