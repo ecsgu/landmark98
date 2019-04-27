@@ -68,18 +68,16 @@ function ShowMore(id_post){
 function keydown_Comment(id_post,event){
     var txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
-        if(event.shiftKey){
-            txt.value = "duoc roi";
-        } else {
+        if(!event.shiftKey){
             if(txt.value != ""){
                 // Truyen ajax
                 txt.value = "";
-                event.preventDefault();
                 var notification = document.createElement("DIV");
                 notification.classList.add("vh-tiny","vh-text-gray");
                 notification.innerText = "Bình luận đã được thêm";
                 txt.insertAdjacentElement("afterend",notification);
             }
+            event.preventDefault();
         }
     } else {
         var parent = txt.parentElement;
