@@ -34,7 +34,13 @@
     <div class="vh-container vh-margin-bottom" style="margin: 70px 0px">
     @yield('Container')
     </div>
+    <div id="image-info" class="vh-modal">
+      <div class="vh-modal-content vh-animate-zoom">
+        <img src="https://www.w3schools.com/jsref/compman.gif" />
+      </div>
+    </div>
     <script>
+      addInfoModal('10');
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;

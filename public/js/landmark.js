@@ -1,6 +1,10 @@
 "use strict"
 /* Modal */
-function addInfoModal(){
+function addInfoModal(id_topic){
+    var modal = document.getElementById("image-info");
+    var img = modal.getElementsByTagName("IMG");
+    img.src = "https://www.w3schools.com/jsref/compman.gif";
+    openModal("image-info");
 }
 /* Thumnail */
 function createThumbnail(){
@@ -51,7 +55,6 @@ function TestPost(id_post){
     }
     return true;
 }
-
 /* Comment */
 function ShowMore(id_post){
     var btn = document.getElementById("btn_"+id_post);
