@@ -34,9 +34,143 @@
     <div class="vh-container vh-margin-bottom" style="margin: 70px 0px">
     @yield('Container')
     </div>
-    <div id="image-info" class="vh-modal">
-      <div class="vh-modal-content vh-animate-zoom">
-        <img src="https://www.w3schools.com/jsref/compman.gif" />
+    <!-- Modal -->
+    <div id="image-info" class="vh-overlay vh-hide">
+      <div class="landmark-content vh-animate-zoom">
+        <div class="vh-bar">
+          <div class="vh-bar-item landmark-image">
+            <!-- Image -->
+            <img id="modal-image" src="{{ asset('upload/6056caa3740c4db122dc766a6d32dfe3.jpg')}}" />
+          </div>
+          <div class="vh-bar-item vh-white vh-right landmark-info">
+            <div class="landmark-scroll" id="modal-topic" >
+              <!-- User post -->
+              <div class="vh-row">
+                <div class="vh-col l2 m2 s2"><img class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
+                <div class="vh-col l10 m10 s10">
+                  <a href="{{ url('Customer',[$topic->customer->id]) }}">Trương Vĩ Huy</a>
+                  <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- Caption -->
+              <div class="vh-margin-top">
+                Cứ cho đi rồi nhận ra tim em vỡ đôi thật đau
+              </div>
+              <hr/>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Trí Nhân</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Thảo Đoàn</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Thảo Đoàn</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Trí Nhân</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Trí Nhân</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Thảo Đoàn</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Trí Nhân</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+              <!-- 1 Comment -->
+              <div class="vh-row vh-margin-top">
+                <div class="vh-col l2 m1 s2">
+                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  </a>
+                </div>
+                <div class="vh-col l10 m11 s10">
+                    <a href="#">Thảo Đoàn</a> 
+                    Hay quá bạn ơi
+                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                </div>
+              </div>
+            </div>
+            <div class="vh-margin-small">
+              <div class="vh-col l2 m1 s2">
+                <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                  <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                </a>
+              </div>              
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script>

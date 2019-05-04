@@ -1,9 +1,6 @@
 "use strict"
 /* Modal */
 function addInfoModal(id_topic){
-    var modal = document.getElementById("image-info");
-    var img = modal.getElementsByTagName("IMG");
-    img.src = "https://www.w3schools.com/jsref/compman.gif";
     openModal("image-info");
 }
 /* Thumnail */
@@ -73,12 +70,20 @@ function keydown_Comment(id_post,event){
     if(event.keyCode == 13){
         if(!event.shiftKey){
             if(txt.value != ""){
-                // Truyen ajax
-                txt.value = "";
-                var notification = document.createElement("DIV");
-                notification.classList.add("vh-tiny","vh-text-gray");
-                notification.innerText = "Bình luận đã được thêm";
-                txt.insertAdjacentElement("afterend",notification);
+                $.ajax({
+                    type: 'post',
+                    url: '', // Làm control để comment
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success : function(image) {
+                        txt.value = "";
+                        var notification = document.createElement("DIV");
+                        notification.classList.add("vh-tiny","vh-text-gray");
+                        notification.innerText = "Bình luận đã được thêm";
+                        txt.insertAdjacentElement("afterend",notification);
+                    }
+                });
             }
             event.preventDefault();
         }
