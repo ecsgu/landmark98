@@ -140,7 +140,7 @@
               <!-- 1 Comment -->
               <div class="vh-row vh-margin-top">
                 <div class="vh-col l2 m1 s2">
-                  <a href="{{ url('Customer',[$comment->customer->id]) }}">
+                  <a href="#">
                     <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
                   </a>
                 </div>

@@ -73,13 +73,18 @@ function keydown_Comment(id_post,modal,event){
     if(event.keyCode == 13){
         if(!event.shiftKey){
             if(txt.value != ""){
+
+                var formData = new FormData();
+                formData.append('id', id_post);
+                formData.append('caption', document.querySelector("#txt_"+id_post).value);
+                formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
                 $.ajax({
                     type: 'post',
-                    url: '', // Làm control để comment
+                    url: 'Comment', // Làm control để comment
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success : function(image) {
+                    success : function(success) {
                         txt.value = "";
                         var notification = document.createElement("DIV");
                         notification.classList.add("vh-tiny","vh-text-gray");
@@ -115,34 +120,4 @@ function ChangeAvatar(){
         }
     });
     openModal('change-avatar');
-}
-function duyetbai(id)
-{
-    var formData = new FormData();
-    formData.append('id', id);
-    $.ajax({
-        type: 'post',
-        url: 'duyetbai',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success : function(image) {
-            location.href="";
-        }
-    });
-}
-function xoabai(id)
-{
-    var formData = new FormData();
-    formData.append('id', id);
-    $.ajax({
-        type: 'post',
-        url: 'xoabai',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success : function(image) {
-            location.href="";
-        }
-    });
 }

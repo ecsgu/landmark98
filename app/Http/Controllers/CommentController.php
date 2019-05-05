@@ -37,6 +37,13 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $Comment = new Comment;
+        $Comment->idtopic = $request->id;
+        $Comment->caption = $request->caption;
+        $Comment->username = session('account')->username;
+        $Comment->status = 1;
+        $Comment->save();
+        return "hello";
     }
 
     /**

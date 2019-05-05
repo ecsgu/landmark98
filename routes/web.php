@@ -37,6 +37,9 @@ Route::get('advertise',function() {
     return view('pages/advertise');
 });
 //route webmaster
+
+Route::get('admin/phanquyen','WebmasterController@indexphanquyen');
+Route::post('admin/xoacmt','WebmasterController@xoacmt');
 Route::post('admin/duyetcmt','WebmasterController@duyetcmt');
 Route::post('admin/duyetbai','WebmasterController@duyetbai');
 Route::post('admin/xoabai','WebmasterController@xoabai');
