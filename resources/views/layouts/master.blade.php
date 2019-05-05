@@ -180,6 +180,10 @@
       </div>
     </div>
     <script>
+<<<<<<< HEAD
+=======
+      //addInfoModal('10');
+>>>>>>> dc2d745cee4be032269aca92c688f9abf37cfcb8
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
