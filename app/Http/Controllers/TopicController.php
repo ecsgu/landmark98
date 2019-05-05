@@ -60,6 +60,8 @@ class TopicController extends Controller
     public function show($id)
     {
         //
+        $Topic = Topic::find($id);
+        return response($Topic,201);
     }
 
     /**
