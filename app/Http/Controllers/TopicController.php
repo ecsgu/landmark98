@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use App\Customer;
 use Session;
 use DB;
 class TopicController extends Controller
@@ -69,8 +70,16 @@ class TopicController extends Controller
     public function topicjson($id)
     {
         //
-        $topic = Topic::find($id);
-        return Response($topic,201);
+        $data = Topic::find($id);
+        $cmtcustomer =[];
+        foreach($data->comment as $comment)
+            array_push($cmtcustomer,$comment->customer);
+        return response()->json([
+            'topic' => $data,
+            'customer' => $data->customer,
+            'comment' => $data->comment,
+            'cmtcustomer' => $cmtcustomer
+        ]);
     }
 
     /**

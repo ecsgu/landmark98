@@ -7,28 +7,72 @@ function addInfoModal(id_topic){
         processData: false,
         contentType: false,
         success : function(success) {
+            var topic = success.topic;
+            var customer = success.customer;
+            var comments = success.comment;
+            var cmtcustomers = success.cmtcustomer;
             // Truyền hình
-            document.getElementById("modal-image").src = "";
+            document.getElementById("modal-image").src = topic.image;
             // Truyền avatar
-            document.getElementById("modal-avatar").src = "";
+            document.getElementById("modal-avatar").src = customer.image;
             // Truyền user
-            document.getElementById("modal-user").innerText = "";
+            var user = document.getElementById("modal-user");
+            user.setAttribute("href","./Customer/" + customer.id);
+            user.innerText = customer.name;
             // Truyền ngày tạo
-            document.getElementById("modal-created").innerText = "";
+            document.getElementById("modal-created").innerText = topic.updated_at;
             // Truyền caption
-            document.getElementById("modal-caption").innerText = "";
+            document.getElementById("modal-caption").innerText = topic.caption;
             // Truyền Comment
             var cmts = document.getElementById("modal-comments");
-            while(){
-                
+            while(cmts.hasChildNodes()){
+                cmts.removeChild(cmts.firstChild);
             }
+            for (let index = 0; index < comments.length; index++) {
+                cmts.insertAdjacentElement("beforeend",createComment(comments[index],cmtcustomers[index]));
+            }
+            // Truyền id bài viết
+            document.getElementById("txt_modal").setAttribute("onkeydown","keydown_Comment('"+topic.id+"',true,event)")
             openSidebar("modal-info");
         }
     });
 }
-function createComment(comment){
+function createComment(comment,cmtcustomer){
+    var image = document.createElement("IMG");
+    image.classList.add("vh-circle");
+    image.setAttribute("src",cmtcustomer.image);
+    image.setAttribute("width","40px");
+
+    var link = document.createElement("A");
+    link.setAttribute("href",'./Customer/' + comment.username);
+    link.insertAdjacentElement("afterbegin",image);
+
+    var col1 = document.createElement("DIV");
+    col1.classList.add("vh-col","l2","m1","s2");
+    col1.insertAdjacentElement("afterbegin",link);
+
+
+
+    var name = document.createElement("A");
+    name.setAttribute("href",'./Customer/' + cmtcustomer.id);
+    name.innerText = cmtcustomer.name;
+
+    var created = document.createElement("DIV");
+    created.classList.add("vh-small","vh-text-gray");
+    created.innerText = comment.created_at;
+
+    var col2 = document.createElement("DIV");
+    col2.classList.add("vh-col","l10","m11","s10");
+    col2.insertAdjacentElement("beforeend",name);
+    col2.insertAdjacentText("beforeend"," "+comment.caption);
+    col2.insertAdjacentElement("beforeend",created);
+
     var cmt = document.createElement("DIV");
-    cmt.setAttribute("")
+    cmt.classList.add("vh-row","vh-margin-top");
+    cmt.insertAdjacentElement("beforeend",col1);
+    cmt.insertAdjacentElement("beforeend",col2);
+    
+    return cmt;
 }
 /* Thumnail */
 function createThumbnail(){
@@ -101,7 +145,7 @@ function keydown_Comment(id_post,Ismodal,event){
             if(txt.value != ""){
                 var formData = new FormData();
                 formData.append('id', id_post);
-                formData.append('caption', document.querySelector("#txt_"+id_post).value);
+                formData.append('caption', txt.value);
                 formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
                 $.ajax({
                     type: 'post',

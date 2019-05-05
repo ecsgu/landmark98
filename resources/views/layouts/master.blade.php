@@ -36,7 +36,7 @@
     </div>
     <!-- Modal -->
     <div id="modal-info" class="vh-overlay" style="z-index:6">
-      <div class="vh-display-topright"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
+      <div class="vh-display-topright" onclick="closeSidebar('modal-info');"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
       <div class="landmark-content vh-animate-zoom">
         <div class="vh-row">
           <div class="vh-col l8 landmark-image vh-display-container">
@@ -57,112 +57,7 @@
               <div class="vh-margin-top" id="modal-caption"></div>
               <hr/>
               <!-- Comments -->
-              <div id="modal-comments">
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Trí Nhân</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Thảo Đoàn</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Thảo Đoàn</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Trí Nhân</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Trí Nhân</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Thảo Đoàn</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Trí Nhân</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-                <!-- 1 Comment -->
-                <div class="vh-row vh-margin-top">
-                  <div class="vh-col l2 m1 s2">
-                    <a href="#">
-                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                    </a>
-                  </div>
-                  <div class="vh-col l10 m11 s10">
-                      <a href="#">Thảo Đoàn</a> 
-                      Hay quá bạn ơi
-                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                  </div>
-                </div>
-              </div>
+              <div id="modal-comments"></div>
             </div>
             <!-- User Comment -->
             <div class="vh-margin-small">
@@ -172,7 +67,7 @@
                 </a>
               </div>
               <div class="vh-col l10 m11 s10">
-                <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2 onkeydown="keydown_Comment('{{$topic->id}}',true,event)"></textarea>
+                <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2></textarea>
               </div>          
             </div>
           </div>

@@ -89,7 +89,7 @@
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
-                <img src="{{ asset($topic->image) }}" width="100%" onclick="addInfoModal('{{$topic->id}}')" onclick="addInfoModal('{{ $topic->id }}')" />
+                <img src="{{ asset($topic->image) }}" width="100%" onclick="addInfoModal('{{$topic->id}}')"/>
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">
