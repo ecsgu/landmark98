@@ -87,11 +87,13 @@ class WebmasterController extends Controller
             $username = $request->input('username');
             $password = $request->input('password');
             if(Auth::attempt(['username' => $username, 'password' => $password])){
-                if(Auth::user()->role & 60 != 0)
+                if((Auth::user()->role & 60) != 0)
                 {
                     Session::put('admin', Auth::user());
                     return redirect()->action('WebmasterController@index');
                 }
+                else
+                    return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
             }
             else{
                 return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');

@@ -30,7 +30,7 @@
                                             <td>{{$topic->caption}}</td>
                                             <td>{{$topic->image}}</td>
                                             <td>{{$topic->username}}</td>
-                                            <td>{{$topic->status}}</td>
+                                            <td>{{$topic->status==1?"Chưa duyệt":$topic->status==3?"Đã ẩn":"Đã duyệt"}}</td>
                                             <td>
                                                 @if($topic->status==1)
                                                 <input type="button" value="Duyệt" id="{{$topic->id}}" onclick="duyetbai(this.id)">
