@@ -69,12 +69,17 @@
                         <a href="{{ url('admin/advertise') }}" > <i class="menu-icon fa fa-table"></i>Quảng Cáo</a>
                     </li>
                     @endif
+
+                    @if((session('admin')->role & 32) != 0)
                     <li>
                         <a href="{{ url('admin/notification') }}"> <i class="menu-icon fa fa-table"></i>Thông Báo</a>
                     </li>
+                    @endif
+                    @if((session('admin')->role & 64) != 0)
                     <li>
                         <a href="{{ url('admin/phanquyen') }}"> <i class="menu-icon fa fa-table"></i>Phân Quyền</a>
                     </li>
+                    @endif
                     <h3 class="menu-title">Trang phụ</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Trang</a>

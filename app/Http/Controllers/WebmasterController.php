@@ -10,6 +10,7 @@ use Validator;
 use Session;
 use App\Topic;
 use App\Comment;
+use App\Account;
 
 class WebmasterController extends Controller
 {
@@ -22,9 +23,9 @@ class WebmasterController extends Controller
     {
         //
         if(session('admin'))
-            return view('pages/webmaster/webmaster');
+            return view('webmaster/webmaster');
         else
-            return view ('pages/webmaster/login');
+            return view ('webmaster/login');
 
     }
     public function topic()
@@ -32,7 +33,7 @@ class WebmasterController extends Controller
         if((session('admin')->role & 8)!=0 )
         {
             $Topic = Topic::orderBy('id', 'desc')->get();
-            return view('pages/webmaster/topic', compact('Topic'));
+            return view('webmaster/topic', compact('Topic'));
         }
         return redirect()->action('WebmasterController@index');
     }
@@ -41,7 +42,7 @@ class WebmasterController extends Controller
         if((session('admin')->role & 8)!=0 )
         {
             $Comment = Comment::orderBy('id', 'desc')->get();
-            return view('pages/webmaster/comment', compact('Comment'));
+            return view('webmaster/comment', compact('Comment'));
         }
         return redirect()->action('WebmasterController@index');
     }
@@ -50,26 +51,27 @@ class WebmasterController extends Controller
         if((session('admin')->role & 16)!=0 )
         {
             $Advertise = Advertise::all();
-            return view('pages/webmaster/advertise', compact('Advertise'));
+            return view('webmaster/advertise', compact('Advertise'));
         }
         return redirect()->action('WebmasterController@index');
     }
     public function notification()
     {
-        return view('pages/webmaster/notification');
+        return view('webmaster/notification');
     }
     public function indexphanquyen()
     {
         if((session('admin')->role & 64)!=0 )
         {
-            $Account = Account::where('username', '<>', session('admin')->username);
-            return view('pages/webmaster/phanquyen', compact('Account'));
+            $Account = Account::all();
+            //$Account = Account::where('username', '!=', session('admin')->username);
+            return view('webmaster/phanquyen', compact('Account'));
         }
         return redirect()->action('WebmasterController@index');
     }
     public function forgot()
     {
-        return view('pages/webmaster/forgot');
+        return view('webmaster/forgot');
     }
     public function login(Request $request)
     {
