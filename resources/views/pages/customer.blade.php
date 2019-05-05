@@ -148,7 +148,7 @@
                 <div class="vh-row">
                     <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px"> </div>
                     <div class="vh-col l11 m10 s10">
-                        <a href="#">{{ $topic->customer->name }}</a>
+                        <a>{{ $topic->customer->name }}</a>
                         <div class="vh-small vh-text-gray">{{ $topic->created_at }}</div>
                     </div>
                 </div>
@@ -162,9 +162,7 @@
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
-                            <a href="{{ url('Customer',[session('account')->username]) }}">
                             <img class="vh-circle" src="{{ asset(Session::get('account')->customer->image)}}" width="40px">
-                            </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
                         <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{$topic->id}}',event)"></textarea>
@@ -182,7 +180,7 @@
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <a href="#">{{ $comment->customer->name }}</a> 
+                            <a href="{{ url('Customer',[$comment->customer->id]) }}">{{ $comment->customer->name }}</a> 
                             {{ $comment->caption }}
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>

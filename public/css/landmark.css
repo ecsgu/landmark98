@@ -23,10 +23,10 @@
 .user-avatar img{
     width:100%;
 }
+.user-main{
+    margin: 0px 25%;
+}
 @media (min-width:993px){
-    .user-main{
-        margin: 0px 250px;
-    }
     .user-avatar{
         width:150px;
     }
@@ -37,9 +37,6 @@
     }
 }
 @media (max-width:992px){
-    .user-main{
-        margin: 0px 0px;
-    }
     .user-avatar{
         width:77px;
     }
@@ -47,6 +44,11 @@
         height: 50%;
         border-bottom-left-radius:77px;
         border-bottom-right-radius:77px;
+    }
+}
+@media (max-width:600px){
+    .user-main{
+        margin: 0px 0px;
     }
 }
 .landmark-content{
