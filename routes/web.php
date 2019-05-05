@@ -36,6 +36,15 @@ Route::get('post',function() {
 Route::get('advertise',function() {
     return view('pages/advertise');
 });
+Route::get('useradvertise',function() {
+    return view('pages/useradvertise');
+});
+Route::get('advertisemanager',function() {
+    return view('pages/advertisemanager');
+});
+Route::get('advertiseregister',function() {
+    return view('pages/advertiseregister');
+});
 //route webmaster
 
 Route::get('admin/phanquyen','WebmasterController@indexphanquyen');

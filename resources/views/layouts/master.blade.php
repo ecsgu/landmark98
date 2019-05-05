@@ -178,7 +178,7 @@
       </div>
     </div>
     <script>
-      addInfoModal('10');
+      //addInfoModal('10');
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
