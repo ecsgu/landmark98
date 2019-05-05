@@ -1,7 +1,8 @@
 "use strict"
 /* Modal */
 function addInfoModal(id_topic){
-    openModal("image-info");
+    
+    document.getElementById(id).className = document.getElementById(id).className.replace(" vh-hide"," vh-show");
 }
 /* Thumnail */
 function createThumbnail(){

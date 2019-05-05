@@ -35,7 +35,8 @@
     @yield('Container')
     </div>
     <!-- Modal -->
-    <div id="image-info" class="vh-overlay">
+    <div id="image-info" class="vh-overlay" style="z-index:6">
+      <div class="vh-display-topright"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
       <div class="landmark-content vh-animate-zoom">
         <div class="vh-row">
           <div class="vh-col l8 landmark-image vh-display-container">
@@ -178,7 +179,6 @@
       </div>
     </div>
     <script>
-      addInfoModal('10');
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
