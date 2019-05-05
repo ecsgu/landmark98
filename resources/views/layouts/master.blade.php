@@ -37,12 +37,13 @@
     <!-- Modal -->
     <div id="image-info" class="vh-overlay">
       <div class="landmark-content vh-animate-zoom">
-        <div class="vh-bar">
-          <div class="vh-bar-item landmark-image">
+        <div class="vh-row">
+          <div class="vh-col l8 landmark-image vh-display-container">
             <!-- Image -->
-            <img id="modal-image" src="{{ asset('upload/6056caa3740c4db122dc766a6d32dfe3.jpg')}}" />
+            <!--<div class="vh-red">abc</div>-->
+            <img class="vh-display-middle" id="modal-image" src="{{ asset('Images\Logo.png')}}" />
           </div>
-          <div class="vh-bar-item vh-white vh-right landmark-info">
+          <div class="vh-col l4 vh-white vh-right landmark-info vh-padding">
             <div class="landmark-scroll" id="modal-topic" >
               <!-- User post -->
               <div class="vh-row">
