@@ -12,7 +12,7 @@
                                 <strong class="card-title">Topic</strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <table id="table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -54,4 +54,11 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
+        <script>
+            $(document).ready( function () {
+              var table = $('#table').DataTable({
+                "aaSorting": [[ 0, "desc" ]]
+              });
+            } );
+        </script>
 @endsection

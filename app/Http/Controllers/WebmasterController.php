@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use App\Topic;
+use App\Comment;
 
 class WebmasterController extends Controller
 {
@@ -30,7 +31,7 @@ class WebmasterController extends Controller
     {
         if((session('admin')->role & 8)!=0 )
         {
-            $Topic = Topic::all();
+            $Topic = Topic::orderBy('id', 'desc')->get();
             return view('pages/webmaster/topic', compact('Topic'));
         }
         return redirect()->action('WebmasterController@index');
@@ -39,7 +40,7 @@ class WebmasterController extends Controller
     {
         if((session('admin')->role & 8)!=0 )
         {
-            $Comment = Comment::all();
+            $Comment = Comment::orderBy('id', 'desc')->get();
             return view('pages/webmaster/comment', compact('Comment'));
         }
         return redirect()->action('WebmasterController@index');
@@ -48,7 +49,7 @@ class WebmasterController extends Controller
     {
         if((session('admin')->role & 16)!=0 )
         {
-            $Advertise = advertise::all();
+            $Advertise = Advertise::all();
             return view('pages/webmaster/advertise', compact('Advertise'));
         }
         return redirect()->action('WebmasterController@index');
@@ -56,6 +57,15 @@ class WebmasterController extends Controller
     public function notification()
     {
         return view('pages/webmaster/notification');
+    }
+    public function indexphanquyen()
+    {
+        if((session('admin')->role & 64)!=0 )
+        {
+            $Account = Account::where('username', '<>', session('admin')->username);
+            return view('pages/webmaster/phanquyen', compact('Account'));
+        }
+        return redirect()->action('WebmasterController@index');
     }
     public function forgot()
     {
@@ -102,6 +112,12 @@ class WebmasterController extends Controller
     {
         $comment = Comment::find($request->id);
         $comment->status=2;
+        $comment->save();
+    }
+    public function xoacmt(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $comment->status=3;
         $comment->save();
     }
     public function logout()
