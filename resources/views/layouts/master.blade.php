@@ -35,7 +35,7 @@
     @yield('Container')
     </div>
     <!-- Modal -->
-    <div id="image-info" class="vh-overlay vh-hide">
+    <div id="image-info" class="vh-overlay">
       <div class="landmark-content vh-animate-zoom">
         <div class="vh-bar">
           <div class="vh-bar-item landmark-image">
@@ -167,7 +167,10 @@
                 <a href="{{ url('Customer',[$comment->customer->id]) }}">
                   <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
                 </a>
-              </div>              
+              </div>
+              <div class="vh-col l10 m11 s10">
+                <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2 onkeydown="keydown_Comment('{{$topic->id}}',true,event)"></textarea>
+              </div>          
             </div>
           </div>
         </div>
