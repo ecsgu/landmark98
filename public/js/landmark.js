@@ -65,8 +65,10 @@ function ShowMore(id_post){
         btn.innerText = "Xem thêm";
     }
 }
-function keydown_Comment(id_post,event){
-    var txt = document.getElementById("txt_"+id_post);
+function keydown_Comment(id_post,modal,event){
+    var txt;
+    if(modal===true) txt = document.getElementById("txt_modal");
+    else txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
         if(!event.shiftKey){
             if(txt.value != ""){
@@ -93,8 +95,10 @@ function keydown_Comment(id_post,event){
             event.preventDefault();
         }
     } else {
-        var parent = txt.parentElement;
-        parent.removeChild(txt.nextSibling);
+        if(txt.nextSibling != null){
+            var parent = txt.parentElement;
+            parent.removeChild(txt.nextSibling);
+        }
     }
 }
 /* Change avatar */

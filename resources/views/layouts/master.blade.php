@@ -35,14 +35,15 @@
     @yield('Container')
     </div>
     <!-- Modal -->
-    <div id="image-info" class="vh-overlay vh-hide">
+    <div id="image-info" class="vh-overlay">
       <div class="landmark-content vh-animate-zoom">
-        <div class="vh-bar">
-          <div class="vh-bar-item landmark-image">
+        <div class="vh-row">
+          <div class="vh-col l8 landmark-image vh-display-container">
             <!-- Image -->
-            <img id="modal-image" src="{{ asset('upload/6056caa3740c4db122dc766a6d32dfe3.jpg')}}" />
+            <!--<div class="vh-red">abc</div>-->
+            <img class="vh-display-middle" id="modal-image" src="{{ asset('Images\Logo.png')}}" />
           </div>
-          <div class="vh-bar-item vh-white vh-right landmark-info">
+          <div class="vh-col l4 vh-white vh-right landmark-info vh-padding">
             <div class="landmark-scroll" id="modal-topic" >
               <!-- User post -->
               <div class="vh-row">
@@ -167,7 +168,10 @@
                 <a href="#">
                   <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
                 </a>
-              </div>              
+              </div>
+              <div class="vh-col l10 m11 s10">
+                <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2 onkeydown="keydown_Comment('{{$topic->id}}',true,event)"></textarea>
+              </div>          
             </div>
           </div>
         </div>
