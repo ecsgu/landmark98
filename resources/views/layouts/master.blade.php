@@ -35,139 +35,140 @@
     @yield('Container')
     </div>
     <!-- Modal -->
-    <div id="image-info" class="vh-overlay" style="z-index:6">
+    <div id="modal-info" class="vh-overlay" style="z-index:6">
       <div class="vh-display-topright"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
       <div class="landmark-content vh-animate-zoom">
         <div class="vh-row">
           <div class="vh-col l8 landmark-image vh-display-container">
             <!-- Image -->
-            <!--<div class="vh-red">abc</div>-->
-            <img class="vh-display-middle" id="modal-image" src="{{ asset('Images\Logo.png')}}" />
+            <img class="vh-display-middle" id="modal-image" />
           </div>
           <div class="vh-col l4 vh-white vh-right landmark-info vh-padding">
-            <div class="landmark-scroll" id="modal-topic" >
+            <div class="landmark-scroll">
               <!-- User post -->
               <div class="vh-row">
-                <div class="vh-col l2 m2 s2"><img class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
+                <div class="vh-col l2 m2 s2"><img id="modal-avatar" class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
                 <div class="vh-col l10 m10 s10">
-                  <a href="#">Trương Vĩ Huy</a>
-                  <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  <a id="modal-user" href="#">Trương Vĩ Huy</a>
+                  <div id="modal-created" class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
                 </div>
               </div>
               <!-- Caption -->
-              <div class="vh-margin-top">
-                Cứ cho đi rồi nhận ra tim em vỡ đôi thật đau
-              </div>
+              <div class="vh-margin-top" id="modal-caption"></div>
               <hr/>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
+              <!-- Comments -->
+              <div id="modal-comments">
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Trí Nhân</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Trí Nhân</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Thảo Đoàn</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Thảo Đoàn</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Thảo Đoàn</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Trí Nhân</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Trí Nhân</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Thảo Đoàn</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Thảo Đoàn</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Trí Nhân</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Trí Nhân</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
-                </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Trí Nhân</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
-                </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Thảo Đoàn</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
-                </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Trí Nhân</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
-                </div>
-              </div>
-              <!-- 1 Comment -->
-              <div class="vh-row vh-margin-top">
-                <div class="vh-col l2 m1 s2">
-                  <a href="#">
-                    <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
-                  </a>
-                </div>
-                <div class="vh-col l10 m11 s10">
-                    <a href="#">Thảo Đoàn</a> 
-                    Hay quá bạn ơi
-                    <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                <!-- 1 Comment -->
+                <div class="vh-row vh-margin-top">
+                  <div class="vh-col l2 m1 s2">
+                    <a href="#">
+                      <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                    </a>
+                  </div>
+                  <div class="vh-col l10 m11 s10">
+                      <a href="#">Thảo Đoàn</a> 
+                      Hay quá bạn ơi
+                      <div class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  </div>
                 </div>
               </div>
             </div>
+            <!-- User Comment -->
             <div class="vh-margin-small">
               <div class="vh-col l2 m1 s2">
                 <a href="#">
-                  <img class="vh-circle" src="{{asset('upload\defaultCus.jpg')}}" width="40px">
+                  <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
                 </a>
               </div>
               <div class="vh-col l10 m11 s10">

@@ -1,8 +1,34 @@
 "use strict"
 /* Modal */
 function addInfoModal(id_topic){
-    
-    document.getElementById(id).className = document.getElementById(id).className.replace(" vh-hide"," vh-show");
+    $.ajax({
+        type: 'post',
+        url: 'Topic/'+id_topic,
+        processData: false,
+        contentType: false,
+        success : function(success) {
+            // Truyền hình
+            document.getElementById("modal-image").src = "";
+            // Truyền avatar
+            document.getElementById("modal-avatar").src = "";
+            // Truyền user
+            document.getElementById("modal-user").innerText = "";
+            // Truyền ngày tạo
+            document.getElementById("modal-created").innerText = "";
+            // Truyền caption
+            document.getElementById("modal-caption").innerText = "";
+            // Truyền Comment
+            var cmts = document.getElementById("modal-comments");
+            while(){
+                
+            }
+            openSidebar("modal-info");
+        }
+    });
+}
+function createComment(comment){
+    var cmt = document.createElement("DIV");
+    cmt.setAttribute("")
 }
 /* Thumnail */
 function createThumbnail(){
@@ -66,21 +92,20 @@ function ShowMore(id_post){
         btn.innerText = "Xem thêm";
     }
 }
-function keydown_Comment(id_post,modal,event){
+function keydown_Comment(id_post,Ismodal,event){
     var txt;
-    if(modal===true) txt = document.getElementById("txt_modal");
+    if(Ismodal === true) txt =document.getElementById("txt_modal");
     else txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
         if(!event.shiftKey){
             if(txt.value != ""){
-
                 var formData = new FormData();
                 formData.append('id', id_post);
                 formData.append('caption', document.querySelector("#txt_"+id_post).value);
                 formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
                 $.ajax({
                     type: 'post',
-                    url: 'Comment', // Làm control để comment
+                    url: 'Comment',
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -96,7 +121,7 @@ function keydown_Comment(id_post,modal,event){
             event.preventDefault();
         }
     } else {
-        if(txt.nextSibling != null){
+        if(txt.nextSibling != null) {
             var parent = txt.parentElement;
             parent.removeChild(txt.nextSibling);
         }
