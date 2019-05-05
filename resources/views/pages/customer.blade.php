@@ -156,7 +156,7 @@
                 <div class="vh-margin-top">{{ $topic->caption }}</div>
                 <!-- Image -->
                 @if(isset($topic->image))
-                <img src="{{ asset($topic->image) }}" width="100%" />
+                <a href="{{ url('Topic',[$topic->id])}}"><img src="{{ asset($topic->image) }}" width="100%"/></a>
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">

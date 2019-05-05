@@ -35,9 +35,9 @@
     @yield('Container')
     </div>
     <!-- Modal -->
-    <div id="modal-info" class="vh-overlay" style="z-index:6">
+    <div id="modal-info" class="vh-overlay" style="z-index:6" onclick="closeSidebar('modal-info');">
       <div class="vh-display-topright" onclick="closeSidebar('modal-info');"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
-      <div class="landmark-content vh-animate-zoom">
+      <div class="landmark-content vh-animate-zoom" onclick="event.stopImmediatePropagation();">
         <div class="vh-row">
           <div class="vh-col l8 landmark-image vh-display-container">
             <!-- Image -->
@@ -87,13 +87,6 @@
           }
         }
         prevScrollpos = currentScrollPos;
-      }
-      function checknightmode(){
-        var nig = document.getElementById('main');
-        nig.classList.toggle('night-mode');
-      }
-      function hideShowBarBlock(){
-        document.getElementById('dropdown').classList.toggle("vh-hide");
       }
     </script>
     </body>

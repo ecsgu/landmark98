@@ -1,4 +1,13 @@
 "use strict"
+/* Night mode */
+function checknightmode(){
+    var nig = document.getElementById('main');
+    nig.classList.toggle('night-mode');
+}
+/* Dropdown */
+function hideShowBarBlock(){
+    document.getElementById('dropdown').classList.toggle("vh-hide");
+}
 /* Modal */
 function addInfoModal(id_topic){
     $.ajax({
