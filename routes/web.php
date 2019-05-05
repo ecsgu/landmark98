@@ -64,6 +64,7 @@ Route::resource('admin','WebmasterController');
 Route::resource('Customer','CustomerController',['only' => ['index','store','show','update','edit']]);
 Route::resource('Account','AccountController');
 Route::resource('Advertise','AdvertiseController');
+Route::post('Topic/{id}','TopicController@topicjson');
 Route::resource('Topic','TopicController');
 Route::resource('Comment','CommentController');
 Route::get('login','Auth\LoginController@showLoginForm');

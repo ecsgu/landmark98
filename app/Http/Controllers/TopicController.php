@@ -60,8 +60,17 @@ class TopicController extends Controller
     public function show($id)
     {
         //
-        $Topic = Topic::find($id);
-        return response($Topic,201);
+        $topic = Topic::find($id);
+        if($topic->status==2)
+            return view('pages/topic', compact('topic'));
+        else
+            return redirect()->back();
+    }
+    public function topicjson($id)
+    {
+        //
+        $topic = Topic::find($id);
+        return Response($topic,201);
     }
 
     /**

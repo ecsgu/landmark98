@@ -69,7 +69,6 @@
                         <a href="{{ url('admin/advertise') }}" > <i class="menu-icon fa fa-table"></i>Quảng Cáo</a>
                     </li>
                     @endif
-
                     @if((session('admin')->role & 32) != 0)
                     <li>
                         <a href="{{ url('admin/notification') }}"> <i class="menu-icon fa fa-table"></i>Thông Báo</a>
