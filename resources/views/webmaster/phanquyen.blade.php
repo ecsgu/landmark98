@@ -31,11 +31,26 @@
                                             <td>{{$account->customer->name}}</td>
                                             <td>{{$account->email}}</td>
                                             <td>
-                                                @if(($account->role & 1) != 0)
-                                                Đăng bài<br>
+                                                @if( ($account->role & 1) != 0 )
+                                                <div>Đăng Bài</div>
                                                 @endif
-                                                @if(($account->role & 2) != 0)
-                                                Thông báo
+                                                @if( ($account->role & 2) != 0 )
+                                                <div>Đăng Quảng Cáo</div>
+                                                @endif
+                                                @if( ($account->role & 4) != 0 )
+                                                <div>Thống kê thu nhập</div>
+                                                @endif
+                                                @if( ($account->role & 8) != 0 )
+                                                <div>Duyệt bài - Duyệt bình luận</div>
+                                                @endif
+                                                @if( ($account->role & 16) != 0 )
+                                                <div>Duyệt quảng cáo</div>
+                                                @endif
+                                                @if( ($account->role & 32) != 0 )
+                                                <div>Xem - Sửa dữ liệu</div>   
+                                                @endif
+                                                @if( ($account->role & 64) != 0 )
+                                                <div>Phân quyền</div>
                                                 @endif
                                             </td>
                                             <td>
