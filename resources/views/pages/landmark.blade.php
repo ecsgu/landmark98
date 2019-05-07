@@ -79,7 +79,10 @@
                 </div>
                 <!-- Caption -->
                 <div class="vh-margin-top">
-                    {{ $topic->caption }}
+                    @php
+                        $caption=$topic->caption; 
+                        echo str_replace("\n","<br/>",$caption);
+                    @endphp
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))

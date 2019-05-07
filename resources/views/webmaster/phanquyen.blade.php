@@ -30,17 +30,16 @@
                                             <td>{{$account->username}}</td>
                                             <td>{{$account->customer->name}}</td>
                                             <td>{{$account->email}}</td>
-                                            <td>{{$account->role}}</td>
                                             <td>
-                                                @if($account->status==1)
-                                                <input type="button" value="Duyệt" id="{{$account->id}}" onclick="duyetbai(this.id)">
+                                                @if(($account->role & 1) != 0)
+                                                Đăng bài<br>
                                                 @endif
-                                                @if($account->status==2)
-                                                <input type="button" value="Ẩn" id="{{$account->id}}" onclick="xoabai(this.id)">
+                                                @if(($account->role & 2) != 0)
+                                                Thông báo
                                                 @endif
-                                                @if($account->status==3)
-                                                <input type="button" value="Hiện" id="{{$account->id}}" onclick="duyetbai(this.id)">
-                                                @endif
+                                            </td>
+                                            <td>
+                                                Chưa có
                                             </td>
                                         </tr>
                                     @endforeach
