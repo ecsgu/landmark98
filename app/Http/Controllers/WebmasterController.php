@@ -11,6 +11,7 @@ use Session;
 use App\Topic;
 use App\Comment;
 use App\Account;
+use App\Notification;
 
 class WebmasterController extends Controller
 {
@@ -57,7 +58,8 @@ class WebmasterController extends Controller
     }
     public function notification()
     {
-        return view('webmaster/notification');
+        $Notification = Notification::all();
+        return view('webmaster/notification', compact('Notification'));
     }
     public function indexphanquyen()
     {

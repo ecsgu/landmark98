@@ -30,17 +30,31 @@
                                             <td>{{$account->username}}</td>
                                             <td>{{$account->customer->name}}</td>
                                             <td>{{$account->email}}</td>
-                                            <td>{{$account->role}}</td>
                                             <td>
-                                                @if($account->status==1)
-                                                <input type="button" value="Duyệt" id="{{$account->id}}" onclick="duyetbai(this.id)">
+                                                @if( ($account->role & 1) != 0 )
+                                                <div>Đăng Bài</div>
                                                 @endif
-                                                @if($account->status==2)
-                                                <input type="button" value="Ẩn" id="{{$account->id}}" onclick="xoabai(this.id)">
+                                                @if( ($account->role & 2) != 0 )
+                                                <div>Đăng Quảng Cáo</div>
                                                 @endif
-                                                @if($account->status==3)
-                                                <input type="button" value="Hiện" id="{{$account->id}}" onclick="duyetbai(this.id)">
+                                                @if( ($account->role & 4) != 0 )
+                                                <div>Thống kê thu nhập</div>
                                                 @endif
+                                                @if( ($account->role & 8) != 0 )
+                                                <div>Duyệt bài - Duyệt bình luận</div>
+                                                @endif
+                                                @if( ($account->role & 16) != 0 )
+                                                <div>Duyệt quảng cáo</div>
+                                                @endif
+                                                @if( ($account->role & 32) != 0 )
+                                                <div>Xem - Sửa dữ liệu</div>   
+                                                @endif
+                                                @if( ($account->role & 64) != 0 )
+                                                <div>Phân quyền</div>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                Chưa có
                                             </td>
                                         </tr>
                                     @endforeach

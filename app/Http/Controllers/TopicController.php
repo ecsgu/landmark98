@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Topic;
 use App\Customer;
+use App\Notification;
 use Session;
 use DB;
 class TopicController extends Controller
@@ -19,8 +20,9 @@ class TopicController extends Controller
         //
         if(!Session::has('account'))
             return view('/pages/login');
+        $Notification = Notification::Where('end','>=',Now())->orderBy('created_at','desc')->get();
         $Topic = Topic::Where('status','2')->orderBy('id','desc')->get();
-        return view('/pages/landmark', compact('Topic'));
+        return view('/pages/landmark', compact(['Topic','Notification']));
     }
 
     /**

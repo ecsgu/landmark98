@@ -6,10 +6,19 @@
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l3 m3 vh-hide-small">
             <div>
-                <h4 class="vh-center"> Thông báo </h4>
-                <div class="danger">Tòa nhà cháy rồi ahihi :v</div>
-                <div class="warring">Lầu 3,4 cúp nước</div>
-                <div class="info">Đề nghị bà con giữ gìn vệ sinh chung</div>
+                @foreach($Notification as $noti)
+                    @switch($noti->level)
+                    @case(1)
+                        <div class="info">{{$noti->caption}}</div>
+                        @break
+                    @case(2)
+                        <div class="warring">{{$noti->caption}}</div>
+                        @break
+                    @case(3)
+                        <div class="danger">{{$noti->caption}}</div>
+                        @break
+                @endswitch
+                @endforeach
             </div>
             <div class="vh-margin-top">
                 <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
@@ -74,12 +83,15 @@
                     </div>
                     <div class="vh-col l11 m10 s10">
                         <a href="{{ url('Customer',[$topic->customer->id]) }}"><strong>{{ $topic->customer->name }}</strong></a>
-                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->customer->created_at }}</div></a>
+                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->created_at }}</div></a>
                     </div>
                 </div>
                 <!-- Caption -->
                 <div class="vh-margin-top">
-                    {{ $topic->caption }}
+                    @php
+                        $caption=$topic->caption; 
+                        echo str_replace("\n","<br/>",$caption);
+                    @endphp
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
@@ -108,7 +120,10 @@
                         </div>
                         <div class="vh-col l11 m10 s10">
                             <a href="{{ url('Customer',[$comment->customer->id]) }}"><strong>{{ $comment->customer->name }}</strong></a> 
-                            {{ $comment->caption }}
+                            @php
+                                $caption=$comment->caption; 
+                                echo str_replace("\n","<br/>",$caption);
+                            @endphp
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NhanThemCotImageCustomer extends Migration
+class NhanThemcotNotification extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,6 @@ class NhanThemCotImageCustomer extends Migration
     public function up()
     {
         //
-        Schema::table('Customer',function($table){
-            $table->string('image');
-        });
-
     }
 
     /**
@@ -28,8 +24,5 @@ class NhanThemCotImageCustomer extends Migration
     public function down()
     {
         //
-        Schema::table('Customer',function($table){
-            $table->dropColumn('image');
-        });
     }
 }
