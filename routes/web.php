@@ -34,16 +34,19 @@ Route::get('post',function() {
     return view('pages/topic');
 });
 Route::get('advertise',function() {
-    return view('pages/advertise');
+    return view('advertise/advertise');
 });
 Route::get('useradvertise',function() {
-    return view('pages/useradvertise');
+    return view('advertise/useradvertise');
 });
 Route::get('advertisemanager',function() {
-    return view('pages/advertisemanager');
+    return view('advertise/advertisemanager');
+});
+Route::get('advertiselogin',function() {
+    return view('advertise/advertiselogin');
 });
 Route::get('advertiseregister',function() {
-    return view('pages/advertiseregister');
+    return view('advertise/advertiseregister');
 });
 //route webmaster
 
