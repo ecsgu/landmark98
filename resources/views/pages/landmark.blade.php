@@ -77,7 +77,7 @@
                     </div>
                     <div class="vh-col l11 m10 s10">
                         <a href="{{ url('Customer',[$topic->customer->id]) }}"><strong>{{ $topic->customer->name }}</strong></a>
-                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->customer->created_at }}</div></a>
+                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->created_at }}</div></a>
                     </div>
                 </div>
                 <!-- Caption -->
@@ -114,7 +114,10 @@
                         </div>
                         <div class="vh-col l11 m10 s10">
                             <a href="{{ url('Customer',[$comment->customer->id]) }}"><strong>{{ $comment->customer->name }}</strong></a> 
-                            {{ $comment->caption }}
+                            @php
+                                $caption=$comment->caption; 
+                                echo str_replace("\n","<br/>",$caption);
+                            @endphp
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>

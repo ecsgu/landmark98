@@ -150,10 +150,12 @@
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px"> </div>
+                    <div class="vh-col l1 m2 s2">
+                        <img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px">
+                    </div>
                     <div class="vh-col l11 m10 s10">
-                        <a>{{ $topic->customer->name }}</a>
-                        <div class="vh-small vh-text-gray">{{ $topic->created_at }}</div>
+                        <a><strong>{{ $topic->customer->name }}</strong></a>
+                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->created_at }}</div></a>
                     </div>
                 </div>
                 <!-- Caption -->
@@ -174,10 +176,10 @@
                             <img class="vh-circle" src="{{ asset(Session::get('account')->customer->image)}}" width="40px">
                         </div>
                         <div class="vh-col l11 m10 s10">
-                        <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{$topic->id}}',event)"></textarea>
+                            <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{$topic->id}}',false,event)"></textarea>
                         </div>
                     </div>
-                    @if(count($topic->comment) > 1)
+                    @if($topic->comment->where('status', 2)->count() > 1)
                     <div class="vh-hide" id="{{$topic->id}}"> 
                     @endif
                     @foreach($topic->comment as $key=>$comment)
@@ -189,16 +191,19 @@
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <a href="{{ url('Customer',[$comment->customer->id]) }}">{{ $comment->customer->name }}</a> 
-                            {{ $comment->caption }}
+                            <a href="{{ url('Customer',[$comment->customer->id]) }}"><strong>{{ $comment->customer->name }}</strong></a> 
+                            @php
+                                $caption=$comment->caption; 
+                                echo str_replace("\n","<br/>",$caption);
+                            @endphp
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>
-                    @if(count($topic->comment) - 2 == $key) 
+                    @if($topic->comment->where('status', 2)->count() - 2 == $key) 
                     </div> 
                     @endif
                     @endforeach
-                    @if(count($topic->comment) > 1)
+                    @if($topic->comment->where('status', 2)->count() > 1)
                     <a id="btn_{{$topic->id}}" href="javascript:void()" onclick="ShowMore('{{$topic->id}}','btn_{{ $topic->id}}')">Xem thêm</a>
                     @endif
                 </div>
