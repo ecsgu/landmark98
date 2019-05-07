@@ -101,7 +101,7 @@ function createThumbnail(){
             imgThumnail.setAttribute("src",image);
             imgThumnail.setAttribute("width","100%");
             var overlayThumnail = document.createElement("DIV");
-            overlayThumnail.classList.add("vh-display-topright","vh-display-hover","vh-text-white","vh-padding-small");
+            overlayThumnail.classList.add("vh-display-topright","vh-display-hover","vh-text-gray","vh-padding-small");
             var btnRemove = document.createElement("SPAN");
             btnRemove.classList.add("fa","fa-remove");
             btnRemove.addEventListener("click",removeImg);
@@ -147,6 +147,11 @@ function ShowMore(id_post){
 }
 function keydown_Comment(id_post,Ismodal,event){
     var txt;
+    var server= location.href;
+    if(server.indexOf("Customer") > -1)
+        server = server.substring(0,server.indexOf("Customer"));
+    if(server.indexOf("Topic/") > -1)
+        server = server.substring(0,server.indexOf("Topic/"));
     if(Ismodal === true) txt =document.getElementById("txt_modal");
     else txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
@@ -158,7 +163,7 @@ function keydown_Comment(id_post,Ismodal,event){
                 formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
                 $.ajax({
                     type: 'post',
-                    url: 'Comment',
+                    url: server+ 'Comment',
                     data: formData,
                     processData: false,
                     contentType: false,
