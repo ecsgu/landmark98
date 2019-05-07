@@ -6,6 +6,9 @@
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l3 m3 vh-hide-small">
             <div>
+                @foreach($Notification as $noti)
+                    {{$noti->caption}}
+                @endforeach
                 <h4 class="vh-center"> Thông báo </h4>
                 <div class="danger">Tòa nhà cháy rồi ahihi :v</div>
                 <div class="warring">Lầu 3,4 cúp nước</div>
