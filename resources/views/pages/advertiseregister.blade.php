@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-	<div class="login-form">
+	<div>
         <form action="admin/login" method="post">
             <div class="form-group  col-sm-6">
                 <label>Link quảng cáo</label>
@@ -22,9 +22,11 @@
             </div>
             <div class="form-group col-sm-6">
                 <label>Ngày bắt đầu</label>
+                <input type="date" name="password" class="form-control">
             </div>
             <div class="form-group col-sm-6">
                 <label>Ngày kết thúc</label>
+                <input type="date" name="password" class="form-control">
             </div>
             <div class="form-group col-sm-6">
                 <label>Vị trí</label>
@@ -36,21 +38,24 @@
 				</select>
             </div>
             <div class="form-group col-sm-6">
+            	<label>Ảnh</label>
+	            <div class="form-group col-sm-12">
+	            	<input type="file"  name="image">
+	            </div>
+            </div>
+            <div class="form-group col-sm-6">
                 <label>Thành tiền</label>
-                <input type="text" name="password"class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
+                <input type="text" name="password" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
+                <small>(Đã bao gồm VAT)</small>
             </div>
-            <div class="form-group col-sm-12">
-                <label>Ảnh</label>
-                <input type="file" name="password">
-            </div>
-            <div class="checkbox form-group col-sm-12">
+            <div class="checkbox form-group col-sm-6">
+                <div  class="form-group col-sm-12">
                 <label>
                     <input type="checkbox" disabled=""> Đồng ý
-                    <a href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
+                    <a style="color: red" href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
                 </label>
-            </div>
-            <div class="form-group col-sm-12">
-                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Đăng kí</button>
+                <div>
+                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Tiến hành thanh toán</button>
             </div>
         </form>
     </div>

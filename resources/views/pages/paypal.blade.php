@@ -1,25 +1,19 @@
+@extends('layouts.advertise')
+
+@section('Container')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Thanh toán quảng cáo</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
             .full-height {
                 height: 100vh;
             }
@@ -64,17 +58,48 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    TEST PAYPAL
-                </div>
-
-                <div class="links">
-                    <div id="paypal-button"></div>
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Thanh toán quảng cáo</h1>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div style="border: #272c33 1px dashed; background: #fff;" class="rounded col-sm-11 form-login ml-4 mt-4">
+            <form class="pt-3" action="admin/login">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group col-sm-12">
+                            <label>Người dùng: </label>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label>Link quảng cáo: </label>
+                        </div>  
+                        <div class="form-group col-sm-12">
+                            <label>Ngày bắt đầu: </label>
+                        </div>     
+                        <div class="form-group col-sm-12">
+                            <label>Ngày kết thúc: </label>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label>Vị trí: </label>
+                        </div>   
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group col-sm-12">
+                            <label>Ảnh: </label>
+                        </div> 
+                    </div>
+                </div>
+                <div class="links pb-3 col-sm-12">
+                    <div class="col-sm-5">&nbsp
+                    </div>
+                    <div class="col-sm-5" id="paypal-button"></div>
+                    <button onclick="history.back()" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
+                </div>
+            </form>
         </div>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
@@ -109,7 +134,7 @@
           // 2. Make a request to your server
             return actions.payment.execute().then(function(){
                 //window.location="http://www.vietjack.com";
-				window.location="{{asset('/')}}"
+                window.location="{{asset('/')}}"
                 //window.alert('vuithoima');
             });
 
@@ -118,3 +143,4 @@
     </script>
     </body>
 </html>
+@endsection
