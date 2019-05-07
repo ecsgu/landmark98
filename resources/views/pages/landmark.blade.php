@@ -21,10 +21,10 @@
                 @endforeach
             </div>
             <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
+                <a href="{{url('useradvertise')}}"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
             </div>
             <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
+                <a href="{{url('useradvertise')}}"><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/></a>
             </div>
         </div>
         <!-- Bài post -->

@@ -19,7 +19,7 @@ class NotificationSeeder extends Seeder
         {
             DB::table('notification')->insert([
                 'caption' => $faker->sentence,
-                'image' => 'image/'.$faker->word,
+                'username' => $faker->username,
                 'end' => now(), 
                 'level' => rand(1,3),
                 'created_at' => now(),

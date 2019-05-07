@@ -1,7 +1,9 @@
 @extends('layouts.webmaster')
 @section('Container')
 
-        
+        <h1 align="center">
+            Đăng thông báo mới
+        </h1>
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
@@ -18,6 +20,7 @@
                                             <th>Id</th>
                                             <th>Nội dung thông báo</th>
                                             <th>Ngày kết thúc thông báo</th>
+                                            <th>Mức độ thông báo</th>
                                             <th>Control</th>
                                         </tr>
                                     </thead>
@@ -28,6 +31,7 @@
                                             <td>{{$noti->id}}</td>
                                             <td>{{$noti->caption}}</td>
                                             <td>{{$noti->end}}</td>
+                                            <td>{{$noti->level==1?"Bình thường":$noti->level==2?"Cảnh báo":"Khẩn cấp"}}</td>
                                             <td>
                                                 Chưa có
                                             </td>
