@@ -73,6 +73,7 @@
                 </table>
             </div>
             <!-- Thay đổi mật khẩu -->
+            @if(session('account')->username == $Customer->id)
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
             <div class="vh-xlarge">Tài khoản</div>
                 <form method="post" action="{{url('password/reset')}}">
@@ -109,9 +110,11 @@
                     <div class="vh-bar"><input class="vh-button vh-right" type="submit" value="Thay đổi" /></div>
                 </form>
             </div>
+            @endif
         </div>
         <!-- Tab 2 -->
         <div id="post" class="vh-tab-content vh-show vh-round-medium">
+            @if(session('account')->username == $Customer->id)
             <form method="POST" enctype="multipart/form-data" id="topic" action="{{url('file')}}" onsubmit="return TestPost('caption')">
                 <div class="vh-card-4 vh-round vh-padding vh-margin-top" onmousemove="document.getElementById('caption').attributes['rows'].value = 10" onmouseout="document.getElementById('caption').attributes['rows'].value = 3">
                 <!-- User post -->
@@ -141,6 +144,7 @@
                     </div>
                 </div>
             </form>
+            @endif
             @foreach($Customer->topic as $topic)
             @if($topic->status == 2 )
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
