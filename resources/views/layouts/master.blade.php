@@ -49,8 +49,8 @@
               <div class="vh-row">
                 <div class="vh-col l2 m2 s2"><img id="modal-avatar" class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
                 <div class="vh-col l10 m10 s10">
-                  <a id="modal-user" href="#">Trương Vĩ Huy</a>
-                  <div id="modal-created" class="vh-small vh-text-gray">2019-04-23 06:59:09</div>
+                  <a id="modal-user" href="#"></a>
+                  <div id="modal-created" class="vh-small vh-text-gray"></div>
                 </div>
               </div>
               <!-- Caption -->
@@ -62,9 +62,7 @@
             <!-- User Comment -->
             <div class="vh-margin-small">
               <div class="vh-col l2 m1 s2">
-                <a href="#">
-                  <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
-                </a>
+                <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
               </div>
               <div class="vh-col l10 m11 s10">
                 <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2></textarea>

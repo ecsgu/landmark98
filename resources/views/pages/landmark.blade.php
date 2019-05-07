@@ -67,7 +67,7 @@
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m3 s3">
+                    <div class="vh-col l1 m2 s2">
                         <a href="{{ url('Customer',[$topic->customer->id]) }}">
                             <img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px">
                         </a>
@@ -92,7 +92,7 @@
                             <img class="vh-circle" src="{{ asset(Session::get('account')->customer->image)}}" width="40px">
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
+                            <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{ $topic->id }}',false,event)"></textarea>
                         </div>
                     </div>
                     @if($topic->comment->where('status', 2)->count() > 1)

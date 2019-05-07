@@ -16,7 +16,7 @@
     </div>
     <div class="user-main">
         <div class="vh-row">
-            <div class="vh-col l3 m4">
+            <div class="vh-col l3 m12">
                 <!-- Avatar -->
                 <div class="vh-image-container user-avatar"> 
                     <img class="vh-circle vh-border-4 vh-border-white" src="{{asset($Customer->image)}}">
@@ -28,15 +28,15 @@
                     </div>
                 </div>
             </div>
-            <div class="vh-col l9 m8">
+            <div class="vh-col l9 m12">
                 <div class="vh-row vh-margin">
                     <!-- Tên Người dùng -->
-                    <div class="vh-col l4">
+                    <div class="vh-col l9 m12">
                         <a class="vh-xlarge" >{{ $Customer->name }}</a>
                     </div>
-                    <strong><div class="vh-col l5 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Chỉnh sửa trang cá nhân</div></strong>
+                    <strong><div class="vh-col l4 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'info','vh-safety-blue')">Thông tin</div></strong>
                     <div class="vh-col l1 vh-padding"></div> 
-                    <strong><div class="vh-col l2 vh-tablink vh-button vh-border-1 vh-round-medium" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
+                    <strong><div class="vh-col l4 vh-tablink vh-button vh-border-1 vh-round-medium vh-safety-blue" onclick="openTabAndChangeColor(event,'post','vh-safety-blue')">Bài viết</div></strong>
                 </div>
                 <div class="vh-row vh-margin vh-large">
                     <div class="vh-col l4">
