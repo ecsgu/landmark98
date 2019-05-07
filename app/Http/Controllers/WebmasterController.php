@@ -59,7 +59,7 @@ class WebmasterController extends Controller
     public function notification()
     {
         $Notification = Notification::all();
-        return view('webmaster/notification');
+        return view('webmaster/notification', compact('Notification'));
     }
     public function indexphanquyen()
     {

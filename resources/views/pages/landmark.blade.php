@@ -7,12 +7,18 @@
         <div class="vh-col l3 m3 vh-hide-small">
             <div>
                 @foreach($Notification as $noti)
-                    {{$noti->caption}}
+                    @switch($noti->level)
+                    @case(1)
+                        <div class="info">{{$noti->caption}}</div>
+                        @break
+                    @case(2)
+                        <div class="warring">{{$noti->caption}}</div>
+                        @break
+                    @case(3)
+                        <div class="danger">{{$noti->caption}}</div>
+                        @break
+                @endswitch
                 @endforeach
-                <h4 class="vh-center"> Thông báo </h4>
-                <div class="danger">Tòa nhà cháy rồi ahihi :v</div>
-                <div class="warring">Lầu 3,4 cúp nước</div>
-                <div class="info">Đề nghị bà con giữ gìn vệ sinh chung</div>
             </div>
             <div class="vh-margin-top">
                 <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
