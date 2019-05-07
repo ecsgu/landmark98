@@ -51,32 +51,32 @@
             <div id="main-menu" class="main-menu ">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="{{url('admin')}}"> <i class="menu-icon fa fa-dashboard"></i>Bảng điều khiển</a>
+                        <a href="{{url('admin')}}"> <i class="menu-icon fa fa-home"></i>admin</a>
                     </li>
                     <h3 class="menu-title">Bảng</h3><!-- /.menu-title -->
                     @if((session('admin')->role & 8) != 0)
                     <li>
-                        <a href="{{ url('admin/topic') }}"> <i class="menu-icon fa fa-table"></i>Bài viết</a>
+                        <a href="{{ url('admin/topic') }}"> <i class="menu-icon fa fa-pencil"></i>Bài viết</a>
                     </li>
                     @endif
                     @if((session('admin')->role & 8) != 0)
                     <li>
-                        <a href="{{ url('admin/comment') }}"> <i class="menu-icon fa fa-table"></i>Bình luận</a>
+                        <a href="{{ url('admin/comment') }}"> <i class="menu-icon fa fa-th-list"></i>Bình luận</a>
                     </li>
                     @endif
                     @if((session('admin')->role & 16) != 0)
                     <li>
-                        <a href="{{ url('admin/advertise') }}" > <i class="menu-icon fa fa-table"></i>Quảng Cáo</a>
+                        <a href="{{ url('admin/advertise') }}" > <i class="menu-icon fa fa-camera"></i>Quảng Cáo</a>
                     </li>
                     @endif
                     @if((session('admin')->role & 32) != 0)
                     <li>
-                        <a href="{{ url('admin/notification') }}"> <i class="menu-icon fa fa-table"></i>Thông Báo</a>
+                        <a href="{{ url('admin/notification') }}"> <i class="menu-icon fa fa-bell"></i>Thông Báo</a>
                     </li>
                     @endif
                     @if((session('admin')->role & 64) != 0)
                     <li>
-                        <a href="{{ url('admin/phanquyen') }}"> <i class="menu-icon fa fa-table"></i>Phân Quyền</a>
+                        <a href="{{ url('admin/phanquyen') }}"> <i class="menu-icon fa fa-user"></i>Phân Quyền</a>
                     </li>
                     @endif
                     <h3 class="menu-title">Trang phụ</h3><!-- /.menu-title -->
