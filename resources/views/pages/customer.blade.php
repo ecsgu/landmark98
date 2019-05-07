@@ -157,7 +157,12 @@
                     </div>
                 </div>
                 <!-- Caption -->
-                <div class="vh-margin-top">{{ $topic->caption }}</div>
+                <div class="vh-margin-top">
+                    @php
+                        $caption=$topic->caption; 
+                        echo str_replace("\n","<br/>",$caption);
+                    @endphp
+                </div>
                 <!-- Image -->
                 @if(isset($topic->image))
                 <a href="{{ url('Topic',[$topic->id])}}"><img src="{{ asset($topic->image) }}" width="100%"/></a>

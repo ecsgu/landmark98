@@ -16,7 +16,12 @@
                 </div>
             </div>
             <!-- Caption -->
-            <div class="vh-margin-top">{{ $topic->caption }}</div>
+            <div class="vh-margin-top">
+                @php
+                    $caption=$topic->caption; 
+                    echo str_replace("\n","<br/>",$caption);
+                @endphp
+            </div>
             <!-- Image -->
             @if(isset($topic->image))
             <img src="{{ asset($topic->image) }}" width="100%"/>
@@ -24,7 +29,7 @@
             <!-- Comments -->
             <div class="vh-padding">
                 <div class="vh-row vh-margin-top">
-                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px"></div>
+                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{url(Session::get('account')->customer->image)}}" width="40px"></div>
                     <div class="vh-col l11 m10 s10">
                         <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
                     </div>
