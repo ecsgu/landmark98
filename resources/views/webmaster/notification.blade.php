@@ -5,6 +5,32 @@
             Đăng thông báo mới
         </h1>
         <div class="content mt-3">
+            <form action="notification" class="form-group" method="post">
+                <div class="form-group col-sm-5">
+                    <input class="form-control col-sm-12" type="text" name="caption" placeholder="Nội dung thông báo">
+                </div>
+                <div class="form-group col-sm-3">
+                    <select class="form-control col-sm-12" name="level">
+                        <option selected="selected" value="1">Mức độ</option>
+                        <option value="1">Bình thường</option>
+                        <option value="2">Cảnh báo</option>
+                        <option value="3">Khẩn cấp</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-2">
+                    <select class="form-control col-sm-12" name="end">
+                        <option selected="selected" value="1">Thời gian</option>
+                        <option value="1">1 Ngày</option>
+                        <option value="2">3 ngày</option>
+                        <option value="3">7 ngày</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-2">
+                    <input  type="submit" class="btn btn-success col-sm-12 form-control rounded" value="Đăng thông báo">
+                </div>
+            </form>
+        </div>
+        <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
 

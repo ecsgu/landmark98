@@ -43,7 +43,6 @@ class CommentController extends Controller
         $Comment->username = session('account')->username;
         $Comment->status = 1;
         $Comment->save();
-        return "hello";
     }
 
     /**

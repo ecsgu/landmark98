@@ -62,6 +62,16 @@ class WebmasterController extends Controller
         $Notification = Notification::all();
         return view('webmaster/notification', compact('Notification'));
     }
+    public function postnotification(Request $request)
+    {
+        $Notification = new Notification;
+        $Notification->caption = $request->input('caption');
+        $Notification->level = $request->input('level');
+        $Notification->end = now()->addDay($request->input('end'));
+        $Notification->username=session('admin')->username;
+        $Notification->save();
+         return redirect()->back();
+    }
     public function indexphanquyen()
     {
         if((session('admin')->role & 64)!=0 )
