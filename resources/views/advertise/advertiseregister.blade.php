@@ -51,12 +51,21 @@
             <div class="checkbox form-group col-sm-6">
                 <div  class="form-group col-sm-12">
                 <label>
-                    <input type="checkbox" disabled=""> Đồng ý
+                    <input type="checkbox" oninput="agree(this.checked)"> Đồng ý
                     <a style="color: red" href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
                 </label>
                 <div>
-                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Tiến hành thanh toán</button>
+                <button type="submit" id="thanhtoan" onclick="" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Tiến hành thanh toán</button>
             </div>
         </form>
+        <script>
+            function agree(check)
+            {
+                if(check)
+                    document.getElementById('thanhtoan').disabled=false;
+                else
+                    document.getElementById('thanhtoan').disabled=true;
+            }
+        </script>
     </div>
 @endsection

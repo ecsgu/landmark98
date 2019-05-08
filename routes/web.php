@@ -24,28 +24,21 @@ Route::post('resetpassword','Auth\ForgotPasswordController@resetPassword');
 Route::get('email', function(){
     return view('email/forgot');
 });
-Route::get('paypal', function(){
-    return view('pages/paypal');
-});
 Route::get('user',function() {
     return view('pages/user');
 });
 Route::get('post',function() {
     return view('pages/topic');
 });
-Route::get('advertise','AdvertiseController@index');
-Route::get('useradvertise',function() {
-    return view('advertise/useradvertise');
-});
-Route::get('advertisemanager',function() {
-    return view('advertise/advertisemanager');
-});
-Route::get('advertiselogin',function() {
-    return view('advertise/advertiselogin');
-});
-Route::get('advertiseregister',function() {
-    return view('advertise/advertiseregister');
-});
+//Route advertise
+
+Route::resource('advertise','AdvertiseController');
+Route::get('useradvertise','AdvertiseController@register');
+Route::get('advertisemanager','AdvertiseController@control');
+Route::get('advertiselogin','AdvertiseController@login');
+Route::get('advertiseregister','AdvertiseController@newadvertise');
+Route::get('bank', 'AdvertiseController@bank');
+Route::get('paypal', 'AdvertiseController@paypal');
 //route webmaster
 
 Route::get('admin/phanquyen','WebmasterController@indexphanquyen');
@@ -66,7 +59,6 @@ Route::resource('admin','WebmasterController');
 //------------------
 Route::resource('Customer','CustomerController',['only' => ['index','store','show','update','edit']]);
 Route::resource('Account','AccountController');
-Route::resource('Advertise','AdvertiseController');
 Route::post('Topic/{id}','TopicController@topicjson');
 Route::resource('Topic','TopicController');
 Route::resource('Comment','CommentController');
