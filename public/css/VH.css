@@ -112,6 +112,7 @@ h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-
 .vh-shadow-2{text-shadow:2px 2px 0 #444}
 .vh-shadow-text{text-shadow:5px 5px 0 rgba(0,0,0,0.4)}
 .vh-tooltip,.vh-display-container{position:relative}.vh-tooltip .vh-text{display:none}.vh-tooltip:hover .vh-text{display:inline-block}
+.vh-tooltip{display:inline}
 .vh-more{display:none}
 .vh-tooltiptext-top,.vh-tooltiptext-bottom,.vh-tooltiptext-left,.vh-tooltiptext-right{visibility:hidden;width:120px;background-color:#555;color:#fff;text-align:center;padding:5px 0;border-radius:6px;position:absolute;z-index:1;opacity:0;transition:opacity 0.3s}
 .vh-tooltiptext-top{bottom:125%;left:50%;margin-left:-60px}.vh-tooltiptext-bottom{top:135%;left:50%;margin-left:-60px}.vh-tooltiptext-left{top:-5px;bottom:auto;right:128%}.vh-tooltiptext-right{top:-5px;left:125%}

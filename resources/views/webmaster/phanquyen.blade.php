@@ -1,7 +1,5 @@
 @extends('layouts.webmaster')
-@section('Container')
-
-        
+@section('Container')        
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
@@ -30,7 +28,36 @@
                                             <td>{{$account->username}}</td>
                                             <td>{{$account->customer->name}}</td>
                                             <td>{{$account->email}}</td>
-                                            <td>
+                                            <td id="{{$account->username}}">
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/dangbai.png')}}" alt="Đăng bài" onclick="phanquyen('{{ $account->username }}',0)" @if( ($account->role & 1) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Đăng bài</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/dangquangcao.png')}}" alt="Đăng quảng cáo" onclick="phanquyen('{{ $account->username }}',1)" @if( ($account->role & 2) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Đăng quảng cáo</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/thongke.png')}}" alt="Thống kê" onclick="phanquyen('{{ $account->username }}',2)" @if( ($account->role & 4) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Thống kê</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/duyetbai.png')}}" alt="Duyệt bài" onclick="phanquyen('{{ $account->username }}',3)" @if( ($account->role & 8) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Duyệt bài</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/duyetqc.png')}}" alt="Duyệt quảng cáo" onclick="phanquyen('{{ $account->username }}',4)" @if( ($account->role & 16) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Duyệt quảng cáo</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/suathongtin.png')}}" alt="Sửa thông tin" onclick="phanquyen('{{ $account->username }}',5)" @if( ($account->role & 32) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Sửa thông tin</div>
+                                                </div>
+                                                <div class="vh-tooltip">
+                                                    <img src="{{asset('Images/Decentralization/phanquyen.png')}}" alt="Phân quyền" onclick="phanquyen('{{ $account->username }}',6)" @if( ($account->role & 64) == 0 ) class="vh-grayscale-max" @endif />
+                                                    <div class="vh-tooltiptext-top">Phân quyền</div>
+                                                </div>
+                                                    <!--
                                                 @if( ($account->role & 1) != 0 )
                                                 <div>Đăng Bài</div>
                                                 @endif
@@ -51,7 +78,7 @@
                                                 @endif
                                                 @if( ($account->role & 64) != 0 )
                                                 <div>Phân quyền</div>
-                                                @endif
+                                                @endif-->
                                             </td>
                                             <td>
                                                 Chưa có

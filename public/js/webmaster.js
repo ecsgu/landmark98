@@ -43,7 +43,7 @@ function duyetcmt(id)
         }
     });
 }
-function xoacmt(id)
+function xoacmt(id,quyen)
 {
     var formData = new FormData();
     formData.append('id', id);
@@ -57,4 +57,10 @@ function xoacmt(id)
             location.href="";
         }
     });
+}
+function phanquyen(user,quyen)
+{
+    // quyen là vị trí bit cần thay đổi theo thứ tự từ 0 -> 6
+    // Thành công làm việc này
+    document.getElementById(user).getElementsByTagName("IMG")[quyen].classList.toggle("vh-grayscale-max");
 }
