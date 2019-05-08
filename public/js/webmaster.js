@@ -80,3 +80,21 @@ function phanquyen(user,quyen)
     });
     
 }
+function xoatb(id)
+{
+
+    a = document.createElement("id").value= id;
+    var formData = new FormData();
+    formData.append('id', a);
+    $.ajax({
+        type: 'post',
+        url: 'deletenotification',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(success) {
+            if(success=="true")
+                location.href="";
+        }
+    });
+}
