@@ -62,5 +62,21 @@ function phanquyen(user,quyen)
 {
     // quyen là vị trí bit cần thay đổi theo thứ tự từ 0 -> 6
     // Thành công làm việc này
-    document.getElementById(user).getElementsByTagName("IMG")[quyen].classList.toggle("vh-grayscale-max");
+    a = document.createElement("input").value= user;
+    b = document.createElement("input").value= Math.pow(2,quyen);
+    var formData = new FormData();
+    formData.append('user', a);
+    formData.append('role', b);
+    $.ajax({
+        type: 'post',
+        url: 'phanquyen',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(success) {
+            if(success=="true")
+                document.getElementById(user).getElementsByTagName("IMG")[quyen].classList.toggle("vh-grayscale-max");
+        }
+    });
+    
 }

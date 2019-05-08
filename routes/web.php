@@ -51,6 +51,7 @@ Route::get('advertiseregister',function() {
 //route webmaster
 
 Route::get('admin/phanquyen','WebmasterController@indexphanquyen');
+Route::post('admin/phanquyen','WebmasterController@phanquyen');
 Route::post('admin/xoacmt','WebmasterController@xoacmt');
 Route::post('admin/duyetcmt','WebmasterController@duyetcmt');
 Route::post('admin/duyetbai','WebmasterController@duyetbai');

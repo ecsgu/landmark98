@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Http\Request;
+use DB;
 use Validator;
 use Session;
 use App\Topic;
@@ -70,6 +71,24 @@ class WebmasterController extends Controller
             return view('webmaster/phanquyen', compact('Account'));
         }
         return redirect()->action('WebmasterController@index');
+    }
+    public function phanquyen(Request $request)
+    {
+        $status = "false";
+        if((session('admin')->role & 64)!=0 )
+        {
+            $Account=DB::table('account')->where('username', $request->user)->first();
+            if(($Account->role & $request->role) ==0)
+                DB::table('account')
+                ->where('username', $request->user)
+                ->update(['role' => $Account->role + $request->role]);
+            else
+                DB::table('account')
+                ->where('username', $request->user)
+                ->update(['role' => $Account->role - $request->role]);
+            $status="true";
+        }
+        return $status;
     }
     public function forgot()
     {
