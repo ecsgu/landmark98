@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Advertise;
+use Carbon\Carbon;
 
 
 class AdvertiseController extends Controller
@@ -16,8 +17,19 @@ class AdvertiseController extends Controller
     public function index()
     {
         //
-        $advertise = Advertise::all();
-        return $advertise; 
+        $Advertise = Advertise::where('end','>=',Now())->orderBy('start','asc')->get();
+        $days = array();
+        foreach($Advertise as $advertise)
+        {
+            $day = Now();
+            $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
+            while($end->gt($day))
+            {
+                array_push($days,$day->toDateString());
+                $day->addDay(1);
+            }
+        }
+        return response($days,201); 
     }
 
     /**

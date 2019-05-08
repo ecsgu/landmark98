@@ -33,9 +33,7 @@ Route::get('user',function() {
 Route::get('post',function() {
     return view('pages/topic');
 });
-Route::get('advertise',function() {
-    return view('advertise/advertise');
-});
+Route::get('advertise','AdvertiseController@index');
 Route::get('useradvertise',function() {
     return view('advertise/useradvertise');
 });

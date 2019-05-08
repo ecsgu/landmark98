@@ -167,6 +167,7 @@
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
+                <br>
                 <a href="{{ url('Topic',[$topic->id])}}"><img src="{{ asset($topic->image) }}" width="100%"/></a>
                 @endif
                 <!-- Comments -->

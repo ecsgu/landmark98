@@ -95,6 +95,7 @@
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
+                <br>
                 <img src="{{ asset($topic->image) }}" width="100%" onclick="addInfoModal('{{$topic->id}}')"/>
                 @endif
                 <!-- Comments -->
@@ -140,7 +141,7 @@
         </div>
         <!-- Quảng cáo bên phải -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div id="ad-right">
+            <div id="">
                 <div class="vh-margin-top">
                     <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
                 </div>

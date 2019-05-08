@@ -13,6 +13,6 @@ class Customer extends Model
     	return $this->hasMany('App\Advertise','username','id');
     }
     public function topic(){
-    	return $this->hasMany('App\Topic','username','id');
+    	return $this->hasMany('App\Topic','username','id')->orderBy('id','desc');;
     }
 }

@@ -76,6 +76,9 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find($id);
+        for($i=0;$i<$Customer->topic->count();$i++)
+            if($Customer->topic[$i]->status != 2)
+                unset($Customer->topic[$i]);
         return view('/pages/customer', compact('Customer'));
         //$account->save();
     }
