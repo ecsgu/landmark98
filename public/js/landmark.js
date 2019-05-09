@@ -211,7 +211,6 @@ function InitCalendar(today,nummonth,busy){
     nextDay.setMonth(nummonth);
     var monthday = InitMonthday(firstmonth(nextDay));
     var busyDates = converDates(busy);
-    console.info(busyDates);
     document.getElementById("landmark-year").innerText = nextDay.getFullYear();
     document.getElementById("landmark-month").innerText = "Tháng " + (nextDay.getMonth()+1);
     var calendar = document.getElementById("landmark-day");
@@ -226,13 +225,14 @@ function InitCalendar(today,nummonth,busy){
             day.classList.add("vh-border-green","vh-border");
         if(monthday[i].getMonth() != nextDay.getMonth())
             day.classList.add("vh-text-grey");
-
+        if(busyDates.find(function(date){return date.toDateString()==monthday[i].toDateString();}))
+            day.classList.add("vh-pale-red");
         calendar.insertAdjacentElement("beforeend",day);
     }
     function InitMonthday(firstmonth){
         firstmonth = new Date(firstmonth);
         var monthday = [];
-        for(var i = 0; i < 35; i++){
+        for(var i = 0; i < 42; i++){
             monthday[i] = firstmonth;
             firstmonth = addDay(firstmonth,1);
         }
@@ -256,10 +256,11 @@ function InitCalendar(today,nummonth,busy){
         tagdiv.innerText = day.getDate();
         return tagdiv;
     }
-}
-function converDates(array){
-    var dates = [];
-    for(var i=0;i<array.length;i++)
-        dates[i] = new Date(array[i]);
-    return dates;
+    function converDates(array){
+        var dates = [];
+        for(var i=0;i<array.length;i++){
+            dates[i] = new Date(array[i]);
+        }
+        return dates;
+    }
 }

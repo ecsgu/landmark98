@@ -17,9 +17,9 @@
                     <h1 id="landmark-year" class="vh-col l12 vh-flat-belize-hole vh-center"></h1>
                 </div>
                 <div class="vh-row">
-                    <h1 class="vh-col l3 vh-center" onclick="InitCalendar(today,--month);"> << </h1>
+                    <h1 class="vh-col l3 vh-center vh-button" onclick="InitCalendar(today,--month,busy);"> << </h1>
                     <h1 id="landmark-month" class="vh-col l6 vh-center"></h1>
-                    <h1 class="vh-col l3 vh-center" onclick="InitCalendar(today,++month);"> >> </h1>
+                    <h1 class="vh-col l3 vh-center vh-button" onclick="InitCalendar(today,++month,busy);"> >> </h1>
                 </div>
                 <div class="vh-row vh-flat-belize-hole vh-hover-flat-belize-hole">
                     <div class="landmark-day vh-button vh-hover-none">CN</div>
@@ -81,14 +81,16 @@
         var today = Date.parse('{{now()}}');
         today = new Date();
         month = today.getMonth();
+        var busy
         $.ajax({
-        type: 'get',
-        url: 'advertise',
-        processData: false,
-        contentType: false,
-        success : function(data) {
-            InitCalendar(today,month,data);
-        }
-    });
+            type: 'get',
+            url: 'advertise',
+            processData: false,
+            contentType: false,
+            success : function(data) {
+                InitCalendar(today,month,data);
+                busy = data;
+            }
+        });
     </script>
 @endsection
