@@ -205,7 +205,7 @@ function ChangeAvatar(){
     openModal('change-avatar');
 }
 /* Calendar */
-function InitCalendar(today,nummonth,busy){
+function InitCalendar(today,nummonth,busy,IsBegin){
     var nextDay = new Date(today);
     today = new Date(today);
     nextDay.setMonth(nummonth);
@@ -252,8 +252,13 @@ function InitCalendar(today,nummonth,busy){
     function createTagName(day){
         day = new Date(day);
         var tagdiv = document.createElement("DIV");
-        tagdiv.classList.add("vh-button","landmark-day");
+        tagdiv.classList.add("landmark-day","vh-button");
         tagdiv.innerText = day.getDate();
+        if(IsBegin)
+            tagdiv.addEventListener("click",click_beginday);
+        else
+            tagdiv.addEventListener("click",click_endday);
+        tagdiv.setAttribute("value",toYYYYMMDD(day));
         return tagdiv;
     }
     function converDates(array){
@@ -262,5 +267,35 @@ function InitCalendar(today,nummonth,busy){
             dates[i] = new Date(array[i]);
         }
         return dates;
+    }
+    function toYYYYMMDD(day){
+        var str = "";
+        str = day.getFullYear() + "-" + ((day.getMonth() + 1 < 10)? "0" : "") + (day.getMonth() + 1) + "-" + ((day.getDate() < 10)? "0" : "") + day.getDate();
+        return str;
+    }
+}
+function click_beginday(evt){
+    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
+        document.getElementsByName("ad-begin")[0].value = this.attributes["value"].value;
+        document.getElementById("ad-begin").innerText =this.attributes["value"].value;
+    }
+}
+function click_endday(evt){
+    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
+        document.getElementsByName("ad-end")[0].value = this.attributes["value"].value;
+        document.getElementById("ad-end").innerText =this.attributes["value"].value;
+    }
+}
+function changeEvent(IsBegin){
+    var calendar = document.getElementById("landmark-day");
+    for(var i=0;i<calendar.childNodes.length;i++){
+        if(IsBegin){
+            calendar.childNodes[i].removeEventListener("click",click_endday);
+            calendar.childNodes[i].addEventListener("click",click_beginday);
+        }
+        else{
+            calendar.childNodes[i].removeEventListener("click",click_beginday);
+            calendar.childNodes[i].addEventListener("click",click_endday);
+        }
     }
 }
