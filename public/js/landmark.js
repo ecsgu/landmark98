@@ -210,7 +210,7 @@ function InitCalendar(today,nummonth,busy){
     today = new Date(today);
     nextDay.setMonth(nummonth);
     var monthday = InitMonthday(firstmonth(nextDay));
-    var busyDates = converDates(getbusydate());
+    var busyDates = converDates(busy);
     console.info(busyDates);
     document.getElementById("landmark-year").innerText = nextDay.getFullYear();
     document.getElementById("landmark-month").innerText = "Tháng " + (nextDay.getMonth()+1);
