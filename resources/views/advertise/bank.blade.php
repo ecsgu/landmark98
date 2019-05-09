@@ -114,16 +114,16 @@
                 <div class="col-sm-12">
                     <div class="col-sm-12">1. Bạn vui lòng chọn ngân hàng chuyển khoản cho Landmark 98.</div>
                     <div class="form-group col-sm-11">
-                        <select class="form-control col-sm-12" id="mySelect">
+                        <select class="form-control col-sm-12" id="mySelect" onchange="getOption(this.value)">
                             <option value="0">Vui lòng chọn ngân hàng để thanh toán</option>
-                            <option value="1" onclick="getOption()">Techcombank</option>
-                            <option value="2" onclick="getOption()">Vietcombank</option>
-                            <option value="3" onclick="getOption()">VPBank</option>
+                            <option value="bank1" >Techcombank</option>
+                            <option value="bank2" >Vietcombank</option>
+                            <option value="bank3" >VPBank</option>
                             <span class="fa fa-university"></span>
                         </select>
                     </div>
-                    <div style="border: #272c33 1px dashed; background: #fff;" class="rounded col-sm-6 form-login" id="show">
-                        <form id="bank1" >
+                    <div style="border: #272c33 1px dashed; background: #fff;" class="rounded col-sm-6 form-login">
+                        <div id="bank1" style="display: none;" >
                             <div class="col-sm-12">
                                 <div class="page-header float-left">
                                     <div class="page-title">
@@ -144,8 +144,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <form id="bank2" style="display: none;">
+                        </div>
+                        <div id="bank2" style="display: none;">
                             <div class="col-sm-12">
                                 <div class="page-header float-left">
                                     <div class="page-title">
@@ -166,8 +166,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <form id="bank3"  style="display: none;">
+                        </div>
+                        <div id="bank3"  style="display: none;">
                             <div class="col-sm-12">
                                 <div class="page-header float-left">
                                     <div class="page-title">
@@ -188,7 +188,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="col-sm-12">2. Bạn vui lòng chuyển tiền vào tài khoản Landmark 98  trước ngày quảng cáo 1 ngày, sau thời gian này quảng cáo không thánh thì sẽ bị hủy.</div>
                     <div class="col-sm-12">3. Sau khi nhận được thông báo chuyển khoản thành công từ ngân hàng. Landmark 98 sẽ gửi thông báo điện tử về quảng cáo của bạn qua mail của bạn.</div>
@@ -203,10 +203,11 @@
             <button onclick="history.back()" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
         </div>
         <script>
-            function getOption() {
-              var obj = document.getElementById("mySelect");
-              document.getElementById("show").innerHTML = 
-              obj.options[obj.selectedIndex].text;
+            function getOption(bank) {
+                document.getElementById('bank1').style.display="none";
+                document.getElementById('bank2').style.display="none";
+                document.getElementById('bank3').style.display="none";
+                document.getElementById(bank).style.display="block";
             }
         </script>
     </body>
