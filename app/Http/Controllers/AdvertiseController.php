@@ -110,4 +110,22 @@ class AdvertiseController extends Controller
     {
         //
     }
+    public function register(){
+        return view('advertise/useradvertise');
+    }
+    public function control(){
+        return view('advertise/advertisemanager');
+    }
+    public function login(){
+        return view('advertise/advertiselogin');
+    }
+    public function newadvertise(){
+        return view('advertise/advertiseregister');
+    }
+    public function bank(){
+        return view('advertise/bank');
+    }
+    public function paypal(){
+        return view('advertise/paypal');
+    }
 }

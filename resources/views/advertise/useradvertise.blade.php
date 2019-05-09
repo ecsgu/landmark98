@@ -46,22 +46,31 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <f1orm>
+                    <form action="advertise_register" method="post">
                         <div class="form-group">
                             <label>Tên đăng nhập</label>
-                            <input type="email" class="form-control" placeholder="Nhập tên đăng nhập">
+                            <input type="text" name="username" class="form-control" placeholder="Nhập tên đăng nhập">
                         </div>
                         <div class="form-group">
                             <label>Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập mật khẩu">
+                            <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu">
                         </div>
                         <div class="form-group">
                             <label>Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                            <input type="password" name="repassword" class="form-control" placeholder="Nhập lại mật khẩu">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" placeholder="Nhập Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Họ và tên</label>
+                            <input type="text" class="form-control" placeholder="Nguyễn Văn A">
+                        </div>
+                        <div class="form-group">
+                            <label>Giới tính</label>
+                            <input type="radio" name="gender" value="Nam">Nam
+                            <input type="radio" name="gender" value="Nữ">Nữ
                         </div>
                         <div class="form-group">
                             <label>Số điện thoại</label>
