@@ -204,3 +204,62 @@ function ChangeAvatar(){
     });
     openModal('change-avatar');
 }
+/* Calendar */
+function InitCalendar(today,nummonth,busy){
+    var nextDay = new Date(today);
+    today = new Date(today);
+    nextDay.setMonth(nummonth);
+    var monthday = InitMonthday(firstmonth(nextDay));
+    var busyDates = converDates(getbusydate());
+    console.info(busyDates);
+    document.getElementById("landmark-year").innerText = nextDay.getFullYear();
+    document.getElementById("landmark-month").innerText = "Tháng " + (nextDay.getMonth()+1);
+    var calendar = document.getElementById("landmark-day");
+    while(calendar.childNodes.length > 0){
+        calendar.removeChild(calendar.childNodes[0]);
+    }
+    for(var i=0;i<monthday.length;i++){
+        var day = createTagName(monthday[i]);
+        if(monthday[i] <= today)
+            day.classList.add("vh-disabled");
+        if(monthday[i].toDateString() == today.toDateString())
+            day.classList.add("vh-border-green","vh-border");
+        if(monthday[i].getMonth() != nextDay.getMonth())
+            day.classList.add("vh-text-grey");
+
+        calendar.insertAdjacentElement("beforeend",day);
+    }
+    function InitMonthday(firstmonth){
+        firstmonth = new Date(firstmonth);
+        var monthday = [];
+        for(var i = 0; i < 35; i++){
+            monthday[i] = firstmonth;
+            firstmonth = addDay(firstmonth,1);
+        }
+        return monthday;
+    }
+    function firstmonth(today){
+        today = new Date(today);
+        today = today.setDate(1);
+        today = new Date(today);
+        return addDay(today,-(today.getDay()));
+    }
+    function addDay(today,numday){
+        today = new Date(today);
+        today.setDate(today.getDate() + numday);
+        return today;
+    }
+    function createTagName(day){
+        day = new Date(day);
+        var tagdiv = document.createElement("DIV");
+        tagdiv.classList.add("vh-button","landmark-day");
+        tagdiv.innerText = day.getDate();
+        return tagdiv;
+    }
+}
+function converDates(array){
+    var dates = [];
+    for(var i=0;i<array.length;i++)
+        dates[i] = new Date(array[i]);
+    return dates;
+}
