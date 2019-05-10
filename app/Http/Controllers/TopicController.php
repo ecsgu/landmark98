@@ -21,10 +21,11 @@ class TopicController extends Controller
         //
         if(!Session::has('account'))
             return view('/pages/login');
-        $Advertise = Advertise::where('status','3')->where('start','<=',Now())->where('end','>=',Now())->orderBy('start','asc')->get();
+        $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
+        $now=now();
         $Notification = Notification::Where('end','>=',Now())->orderBy('created_at','desc')->get();
         $Topic = Topic::Where('status','2')->orderBy('id','desc')->get();
-        return view('/pages/landmark', compact(['Topic','Notification','Advertise']));
+        return view('/pages/landmark', compact(['Topic','Notification','Advertise','now']));
     }
 
     /**

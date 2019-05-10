@@ -11,7 +11,9 @@
         </div>
     </div>
 	<div class="vh-white">
-        <form action="admin/login" method="post">
+        <form action="{{url('advertiseregister')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            <input type="hidden" name="position" value="{{$Position->id}}">
             <div class="vh-row">
                 <h1 id="landmark-year" class="vh-col l12 m12 s12 vh-flat-belize-hole vh-center"></h1>
                 <div class="vh-row">
@@ -44,11 +46,11 @@
             </div>
             <div class="form-group col-sm-6">
                 <label>Link quảng cáo</label>
-                <input type="text" name="username" class="form-control" placeholder="Link website quảng cáo">
+                <input type="text" name="linkad" class="form-control" placeholder="Link website quảng cáo">
             </div>
             <div class="form-group col-sm-6">
                 <label>Thành tiền</label>
-                <input type="text" name="password" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
+                <input type="text" name="money" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
                 <small>(Đã bao gồm VAT)</small>
             </div>
             <div class="checkbox form-group col-sm-6">
@@ -58,16 +60,22 @@
                     <a style="color: red" href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
                 </label>
                 <div>
-                <button type="submit" id="thanhtoan" onclick="" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Tiến hành thanh toán</button>
+                <button type="submit" name="thanhtoan" id="thanhtoan" value="paypal" onclick="" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Thanh toán paypal</button>
+                <button type="submit" name="thanhtoan" id="thanhtoan" value="bank" onclick="" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Thanh toán qua ngân hàng</button>
+
             </div>
         </form>
         <script>
             function agree(check)
             {
-                if(check)
-                    document.getElementById('thanhtoan').disabled=false;
-                else
-                    document.getElementById('thanhtoan').disabled=true;
+                if(check){
+                    document.getElementsByName('thanhtoan')[0].disabled=false;
+                    document.getElementsByName('thanhtoan')[1].disabled=false;
+                }
+                else{
+                    document.getElementsByName('thanhtoan')[0].disabled=true;
+                    document.getElementsByName('thanhtoan')[1].disabled=true;
+                }
             }
         </script>
     </div>
