@@ -144,7 +144,7 @@
                     contentType: false,
                     success : function(success) {
                         if(success=="true")
-                            window.location="{{url('advertise')}}"
+                            window.location="{{url('advertise')}}";
                         else
                             alert("Bạn không có quyền này");
                     }
