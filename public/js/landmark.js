@@ -299,7 +299,7 @@ function click_beginday(btnday,arrbusy){
         do{
             i.classList.add("vh-pale-green");
             i = i.nextElementSibling;
-        }while(i.attributes["value"].value <= end.value);
+        }while(i.attributes["value"].value <= end.value && end.value != "");
         document.getElementById("ad-end").parentElement.click();
     }
     function checkBeginDay(beginday,arrbusy){
@@ -331,7 +331,7 @@ function click_endday(btnday,arrbusy){
         do{
             i.classList.add("vh-pale-green");
             i = i.previousElementSibling;
-        }while(i.attributes["value"].value >= begin.value);
+        }while(i.attributes["value"].value >= begin.value && begin.value != "");
     }
     function checkEndDay(endday,arrbusy){
         var begin = document.getElementsByName("ad-begin")[0].value;
