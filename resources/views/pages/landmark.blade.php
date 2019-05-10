@@ -21,10 +21,10 @@
                 @endforeach
             </div>
             <div class="vh-margin-top">
-                <a href="{{url('useradvertise')}}"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                <a id="ad_1" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
             </div>
             <div class="vh-margin-top">
-                <a href="{{url('useradvertise')}}"><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/></a>
+                <a id="ad_3" href=""><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/></a>
             </div>
         </div>
         <!-- Bài post -->
@@ -141,14 +141,26 @@
         </div>
         <!-- Quảng cáo bên phải -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div id="">
-                <div class="vh-margin-top">
-                    <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
-                </div>
-                <div class="vh-margin-top">
-                    <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
-                </div>
+            <div >
+                <a id="ad_2" href="" class="vh-margin-top"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
+                </a>
+                <a id="ad_4" href="" class="vh-margin-top"><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
+                </a>
             <div>
         </div>
     </div>
+    <script>
+        var Advertise = {!! $Advertise !!};
+        function advertise(pos){
+           return Advertise.find(function(ad){return ad.position==pos});
+        }
+        for(var i=1;i<=4;i++)
+        {
+            if(advertise(i)==null)
+                continue;
+            ad_1=document.getElementById("ad_"+i);
+            ad_1.href=advertise(i).linkad;
+            ad_1.childNodes[0].src=advertise(i).image;
+        }
+    </script>
 @endsection

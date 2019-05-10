@@ -164,8 +164,8 @@ class AdvertiseController extends Controller
         $days = array();
         foreach($Advertise as $advertise)
         {
-            $day = Carbon::createFromFormat('Y-m-d', $advertise->start);
-            $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
+            $day = Carbon::createFromFormat('Y-m-d H:i:s', $advertise->start);
+            $end = Carbon::createFromFormat('Y-m-d H:i:s', $advertise->end);
             while($end->gte($day))
             {
                 array_push($days,$day->toDateString());

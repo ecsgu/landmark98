@@ -48,7 +48,7 @@ class EloquentUserProvider implements UserProvider
         $model = $this->createModel();
 
         return $this->newModelQuery($model)
-                    ->where('username', $identifier)
+                    ->where($model->getAuthIdentifierName(), $identifier)
                     ->first();
     }
 
@@ -68,7 +68,7 @@ class EloquentUserProvider implements UserProvider
         )->first();
 
         if (! $retrievedModel) {
-            return null;
+            return;
         }
 
         $rememberToken = $retrievedModel->getRememberToken();
