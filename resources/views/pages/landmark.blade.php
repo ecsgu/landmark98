@@ -21,11 +21,18 @@
                 @endforeach
             </div>
             <div class="vh-margin-top">
-                <a id="ad_1" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                {{now()}}
+                @if($Advertise->where('position',1)->first())
+                    <a id="ad_1" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_1" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
             </div>
-            <div class="vh-margin-top">
-                <a id="ad_3" href=""><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/></a>
-            </div>
+                @if($Advertise->where('position',3)->first())
+                    <a id="ad_3" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_3" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
@@ -72,7 +79,14 @@
                 <img class="vh-image vh-col s3" src="{{ asset('upload/1.PNG') }}"/>
                 <img class="vh-image vh-col s3" src="{{ asset('upload/2.PNG') }}"/>
             </div>
-        @foreach($Topic as $topic)
+        @foreach($Topic as $keytopic=>$topic)
+
+            @php
+            $ad = $Advertise->where('position', 5 )->random();
+            @endphp
+            @if(($keytopic+1) % 3 ==0)
+            <a href="{{$ad->linkad}}" class="vh-margin-top"><img class="vh-image" src="{{ url($ad->image) }}"/>
+            @endif
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
@@ -142,25 +156,20 @@
         <!-- Quảng cáo bên phải -->
         <div class="vh-col l3 m3 vh-hide-small">
             <div >
-                <a id="ad_2" href="" class="vh-margin-top"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
-                </a>
-                <a id="ad_4" href="" class="vh-margin-top"><img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
-                </a>
+                @if($Advertise->where('position',2)->first())
+                    <a id="ad_2" href="{{$Advertise->where('position',2)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',2)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_2" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
+                @if($Advertise->where('position',4)->first())
+                <a id="ad_4" href="{{$Advertise->where('position',4)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',4)->first()->image) }}"/></a>
+                @else
+                <a id="ad_4" href=""><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
             <div>
         </div>
     </div>
     <script>
-        var Advertise = {!! $Advertise !!};
-        function advertise(pos){
-           return Advertise.find(function(ad){return ad.position==pos});
-        }
-        for(var i=1;i<=4;i++)
-        {
-            if(advertise(i)==null)
-                continue;
-            ad_1=document.getElementById("ad_"+i);
-            ad_1.href=advertise(i).linkad;
-            ad_1.childNodes[0].src=advertise(i).image;
-        }
+        var Advertise = {!! $Advertise !!}
     </script>
 @endsection

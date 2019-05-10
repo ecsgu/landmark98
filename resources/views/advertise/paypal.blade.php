@@ -72,24 +72,24 @@
                 <div class="col-sm-12">
                     <div class="col-sm-6">
                         <div class="form-group col-sm-12">
-                            <label>Người dùng: </label>
+                            <label>Người dùng: {{session('advertiser')->customer->name}}</label>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label>Link quảng cáo: </label>
+                            <label>Link quảng cáo: {{$Advertise->linkad}}</label>
                         </div>  
                         <div class="form-group col-sm-12">
-                            <label>Ngày bắt đầu: </label>
+                            <label>Ngày bắt đầu: {{$Advertise->start}} </label>
                         </div>     
                         <div class="form-group col-sm-12">
-                            <label>Ngày kết thúc: </label>
+                            <label>Ngày kết thúc: {{$Advertise->end}}</label>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label>Vị trí: </label>
+                            <label>Vị trí: {{$Advertise->position}}</label>
                         </div>   
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group col-sm-12">
-                            <label>Ảnh: </label>
+                            <label>Ảnh:<img src="{{$Advertise->image}}"> </label>
                         </div> 
                     </div>
                 </div>
@@ -122,7 +122,7 @@
           return actions.payment.create({
             transactions: [{
                 amount: {
-                    total: '10',
+                    total: '{!! $Advertise->money !!}',
                     currency: 'USD'
                 }
             }]

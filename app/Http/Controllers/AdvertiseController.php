@@ -11,6 +11,7 @@ use Validator;
 use Session;
 use App\Account;
 use App\Customer;
+use App\Position;
 
 class AdvertiseController extends Controller
 {
@@ -159,8 +160,16 @@ class AdvertiseController extends Controller
         Session::forget('advertiser');
         return redirect()->action('AdvertiseController@index');
     }
+    public function showposition(){
+        if(session('advertiser'))
+            return view('advertise/chooseposition');
+        return redirect()->action('AdvertiseController@index');
+    }
     public function newadvertise($position){
+        if(!Session::has('advertiser'))
+            return redirect()->action('AdvertiseController@index');
         $Advertise = Advertise::where('position',$position)->where('end','>=',Now())->orderBy('start','asc')->get();
+        $Position = Position::find($position);
         $days = array();
         foreach($Advertise as $advertise)
         {
@@ -172,7 +181,47 @@ class AdvertiseController extends Controller
                 $day->addDay(1);
             }
         }
-        return view('advertise/advertiseregister', compact('days'));
+        return view('advertise/advertiseregister', compact('days','Position'));
+    }
+    public function postnewadvertise(Request $request)
+    {
+        $Advertise = new Advertise;
+        $Position = Position::find($request->input('position'));
+        $start = Carbon::createFromFormat('Y-m-d H:i:s', $request->input('ad-begin')." "."00:00:00");
+        $end = Carbon::createFromFormat('Y-m-d H:i:s', $request->input('ad-end')." "."23:59:59");
+        // upload file ảnh
+        if(isset($request->image))
+        {
+            $file = $request->image;
+            $array = explode('.',$file->getClientOriginalName());
+            $Extend = end($array);
+
+            $Name = md5($file->getClientOriginalName() . "." . str_random());
+            // Lấy đuôi file
+
+            // Upload lên server
+            $filename=$file->move('upload', $Name.'.'.$Extend );
+
+            //echo "hello mother fucker";
+            //Update database topic
+            $request->request->add(['filename' => $filename]);
+        }
+        //Dữ liệu Advertise
+        $Advertise->linkad=$request->input('linkad');
+        $Advertise->image=$request->filename;
+        $Advertise->username=session('advertiser')->username;
+        $Advertise->start = $start;
+        $Advertise->end = $end;
+        $Advertise->position = $request->input('position');
+        $Advertise->money=$start->diffInDays($end)*$Position->price;
+        $Advertise->click=0;
+        $Advertise->status=1;
+        $Advertise->save();
+        if($request->input('thanhtoan')=="paypal")
+            return view('advertise/paypal',compact('Advertise'));
+        else
+            return view('advertise/bank',compact('bank'));
+
     }
     public function bank(){
         return view('advertise/bank');

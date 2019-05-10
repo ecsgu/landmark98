@@ -38,9 +38,8 @@ Route::post('useradvertise','AdvertiseController@register');
 Route::get('advertiselogin','AdvertiseController@showlogin');
 Route::post('advertiselogin','AdvertiseController@login');
 Route::get('advertiselogout','AdvertiseController@logout');	
-Route::get('advertiseregister',function(){
-	return view('advertise/chooseposition');
-});
+Route::get('advertiseregister','AdvertiseController@showposition');
+Route::post('advertiseregister','AdvertiseController@postnewadvertise');
 Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
 Route::get('bank', 'AdvertiseController@bank');
 Route::get('paypal', 'AdvertiseController@paypal');

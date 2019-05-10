@@ -13,6 +13,7 @@ use App\Topic;
 use App\Comment;
 use App\Account;
 use App\Notification;
+use App\Advertise;
 
 class WebmasterController extends Controller
 {
@@ -52,7 +53,7 @@ class WebmasterController extends Controller
     {
         if((session('admin')->role & 16)!=0 )
         {
-            $Advertise = Advertise::all();
+            $Advertise = Advertise::orderBy('id', 'desc')->get();
             return view('webmaster/advertise', compact('Advertise'));
         }
         return redirect()->action('WebmasterController@index');
