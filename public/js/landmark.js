@@ -205,13 +205,12 @@ function ChangeAvatar(){
     openModal('change-avatar');
 }
 /* Calendar */
-function InitCalendar(today,nummonth,busy){
+function InitCalendar(today,nummonth,busy,IsBegin){
     var nextDay = new Date(today);
     today = new Date(today);
     nextDay.setMonth(nummonth);
     var monthday = InitMonthday(firstmonth(nextDay));
     var busyDates = converDates(busy);
-    console.info(busyDates);
     document.getElementById("landmark-year").innerText = nextDay.getFullYear();
     document.getElementById("landmark-month").innerText = "Tháng " + (nextDay.getMonth()+1);
     var calendar = document.getElementById("landmark-day");
@@ -226,13 +225,14 @@ function InitCalendar(today,nummonth,busy){
             day.classList.add("vh-border-green","vh-border");
         if(monthday[i].getMonth() != nextDay.getMonth())
             day.classList.add("vh-text-grey");
-
+        if(busyDates.find(function(date){return date.toDateString()==monthday[i].toDateString();}))
+            day.classList.add("vh-pale-red");
         calendar.insertAdjacentElement("beforeend",day);
     }
     function InitMonthday(firstmonth){
         firstmonth = new Date(firstmonth);
         var monthday = [];
-        for(var i = 0; i < 35; i++){
+        for(var i = 0; i < 42; i++){
             monthday[i] = firstmonth;
             firstmonth = addDay(firstmonth,1);
         }
@@ -252,14 +252,50 @@ function InitCalendar(today,nummonth,busy){
     function createTagName(day){
         day = new Date(day);
         var tagdiv = document.createElement("DIV");
-        tagdiv.classList.add("vh-button","landmark-day");
+        tagdiv.classList.add("landmark-day","vh-button");
         tagdiv.innerText = day.getDate();
+        if(IsBegin)
+            tagdiv.addEventListener("click",click_beginday);
+        else
+            tagdiv.addEventListener("click",click_endday);
+        tagdiv.setAttribute("value",toYYYYMMDD(day));
         return tagdiv;
     }
+    function converDates(array){
+        var dates = [];
+        for(var i=0;i<array.length;i++){
+            dates[i] = new Date(array[i]);
+        }
+        return dates;
+    }
+    function toYYYYMMDD(day){
+        var str = "";
+        str = day.getFullYear() + "-" + ((day.getMonth() + 1 < 10)? "0" : "") + (day.getMonth() + 1) + "-" + ((day.getDate() < 10)? "0" : "") + day.getDate();
+        return str;
+    }
 }
-function converDates(array){
-    var dates = [];
-    for(var i=0;i<array.length;i++)
-        dates[i] = new Date(array[i]);
-    return dates;
+function click_beginday(evt){
+    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
+        document.getElementsByName("ad-begin")[0].value = this.attributes["value"].value;
+        document.getElementById("ad-begin").innerText =this.attributes["value"].value;
+    }
+}
+function click_endday(evt){
+    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
+        document.getElementsByName("ad-end")[0].value = this.attributes["value"].value;
+        document.getElementById("ad-end").innerText =this.attributes["value"].value;
+    }
+}
+function changeEvent(IsBegin){
+    var calendar = document.getElementById("landmark-day");
+    for(var i=0;i<calendar.childNodes.length;i++){
+        if(IsBegin){
+            calendar.childNodes[i].removeEventListener("click",click_endday);
+            calendar.childNodes[i].addEventListener("click",click_beginday);
+        }
+        else{
+            calendar.childNodes[i].removeEventListener("click",click_beginday);
+            calendar.childNodes[i].addEventListener("click",click_endday);
+        }
+    }
 }
