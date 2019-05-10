@@ -25,7 +25,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($Topic as $topic)
-                                    <tr>
+                                    <tr class="@if($topic->status==1) vh-pale-red @elseif($topic->status==3) vh-pale-yellow @else @endif">
                                             <td>{{$topic->id}}</td>
                                             <td>{{$topic->caption}}</td>
                                             <td>{{$topic->image}}</td>

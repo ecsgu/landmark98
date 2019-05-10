@@ -25,7 +25,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($Comment as $comment)
-                                    <tr>
+                                    <tr class="@if($comment->status==1) vh-pale-red @elseif($comment->status==3) vh-pale-yellow @else @endif">
                                             <td>{{$comment->id}}</td>
                                             <td>{{$comment->idtopic}}</td>
                                             <td>{{$comment->caption}}</td>
