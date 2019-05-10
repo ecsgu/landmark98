@@ -75,6 +75,9 @@
         var today = Date.parse('{{now()}}');
         today = new Date();
         month = today.getMonth();
+        var busyday = {!! json_encode($days) !!};
+        InitCalendar(today,month,busyday);
+/*
         var busy;
         var IsBegin = true;
         document.getElementById("ad-begin").parentElement.addEventListener("click",function(){IsBegin=true;changeEvent(true);});
@@ -91,5 +94,6 @@
                 InitCalendar(today,month,busy,true);
             }
         });
+        */
     </script>
 @endsection
