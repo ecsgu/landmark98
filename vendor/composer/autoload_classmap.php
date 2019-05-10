@@ -10,6 +10,7 @@ return array(
     'App\\Account' => $baseDir . '/app/Account.php',
     'App\\Advertise' => $baseDir . '/app/Advertise.php',
     'App\\Comment' => $baseDir . '/app/Comment.php',
+    'App\\Console\\Commands\\FlushSessions' => $baseDir . '/app/Console/Commands/FlushSessions.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

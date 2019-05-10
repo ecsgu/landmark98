@@ -391,6 +391,7 @@ class ComposerStaticInit705da7445aff63f0970ed96cba5c8405
         'App\\Account' => __DIR__ . '/../..' . '/app/Account.php',
         'App\\Advertise' => __DIR__ . '/../..' . '/app/Advertise.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
+        'App\\Console\\Commands\\FlushSessions' => __DIR__ . '/../..' . '/app/Console/Commands/FlushSessions.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

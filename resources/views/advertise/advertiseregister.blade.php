@@ -52,6 +52,9 @@
                 <label>Thành tiền</label>
                 <input type="text" id="money" name="money" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
                 <small>(Đã bao gồm VAT)</small>
+                <br>
+                <label>Vị trí đã chọn</label>
+                <input type="text" class="form-control" placeholder="{{$Position->name}}" disabled="">
             </div>
             <div class="checkbox form-group col-sm-6">
                 <div  class="form-group col-sm-12">
