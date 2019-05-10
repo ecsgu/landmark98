@@ -205,12 +205,11 @@ function ChangeAvatar(){
     openModal('change-avatar');
 }
 /* Calendar */
-function InitCalendar(today,nummonth,busy,IsBegin){
+function InitCalendar(today,nummonth,busyDates,IsBegin){
     var nextDay = new Date(today);
     today = new Date(today);
     nextDay.setMonth(nummonth);
     var monthday = InitMonthday(firstmonth(nextDay));
-    var busyDates = converDates(busy);
     document.getElementById("landmark-year").innerText = nextDay.getFullYear();
     document.getElementById("landmark-month").innerText = "Tháng " + (nextDay.getMonth()+1);
     var calendar = document.getElementById("landmark-day");
@@ -225,7 +224,7 @@ function InitCalendar(today,nummonth,busy,IsBegin){
             day.classList.add("vh-border-green","vh-border");
         if(monthday[i].getMonth() != nextDay.getMonth())
             day.classList.add("vh-text-grey");
-        if(busyDates.find(function(date){return date.toDateString()==monthday[i].toDateString();}))
+        if(busyDates.find(function(date){return date == toYYYYMMDD(monthday[i]);}))
             day.classList.add("vh-pale-red");
         calendar.insertAdjacentElement("beforeend",day);
     }
@@ -255,47 +254,76 @@ function InitCalendar(today,nummonth,busy,IsBegin){
         tagdiv.classList.add("landmark-day","vh-button");
         tagdiv.innerText = day.getDate();
         if(IsBegin)
-            tagdiv.addEventListener("click",click_beginday);
+            tagdiv.setAttribute("onclick","click_beginday(this,busy);");
         else
-            tagdiv.addEventListener("click",click_endday);
+            tagdiv.setAttribute("onclick","click_endday(this,busy);");
         tagdiv.setAttribute("value",toYYYYMMDD(day));
         return tagdiv;
     }
-    function converDates(array){
-        var dates = [];
-        for(var i=0;i<array.length;i++){
-            dates[i] = new Date(array[i]);
+}
+function converDates(array){
+    var dates = [];
+    for(var i=0;i<array.length;i++){
+        dates[i] = toYYYYMMDD(array[i]);
+    }
+    return dates;
+}
+function toYYYYMMDD(day){
+    day = new Date(day);
+    var str = "";
+    str = day.getFullYear() + "-" + ((day.getMonth() + 1 < 10)? "0" : "") + (day.getMonth() + 1) + "-" + ((day.getDate() < 10)? "0" : "") + day.getDate();
+    return str;
+}
+function click_beginday(btnday,arrbusy){
+    if(!btnday.classList.contains("vh-pale-red") && !btnday.classList.contains("vh-disabled") && checkBeginDay(btnday,arrbusy)){
+        document.getElementsByName("ad-begin")[0].value = btnday.attributes["value"].value;
+        document.getElementById("ad-begin").innerText = btnday.attributes["value"].value;
+    }
+    function checkBeginDay(beginday,arrbusy){
+        var end = document.getElementsByName("ad-end")[0].value;
+        if(end == "") return true;
+        var begin = beginday.attributes["value"].value;
+        if(begin <= end) {
+            for(var i=0;i<arrbusy.length;i++){
+                if(begin < arrbusy[i] && arrbusy[i] < end)
+                    return false;
+            }
+            return true;
         }
-        return dates;
-    }
-    function toYYYYMMDD(day){
-        var str = "";
-        str = day.getFullYear() + "-" + ((day.getMonth() + 1 < 10)? "0" : "") + (day.getMonth() + 1) + "-" + ((day.getDate() < 10)? "0" : "") + day.getDate();
-        return str;
+        return false;
     }
 }
-function click_beginday(evt){
-    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
-        document.getElementsByName("ad-begin")[0].value = this.attributes["value"].value;
-        document.getElementById("ad-begin").innerText =this.attributes["value"].value;
+function click_endday(btnday,arrbusy){
+    if(!btnday.classList.contains("vh-pale-red") && !btnday.classList.contains("vh-disabled") && checkEndDay(btnday,arrbusy)){
+        document.getElementsByName("ad-end")[0].value = btnday.attributes["value"].value;
+        document.getElementById("ad-end").innerText =btnday.attributes["value"].value;
     }
-}
-function click_endday(evt){
-    if(!this.classList.contains("vh-pale-red") && !this.classList.contains("vh-disabled")){
-        document.getElementsByName("ad-end")[0].value = this.attributes["value"].value;
-        document.getElementById("ad-end").innerText =this.attributes["value"].value;
+    function checkEndDay(endday,arrbusy){
+        var begin = document.getElementsByName("ad-begin")[0].value;
+        if(begin == "") return true;
+        var end = endday.attributes["value"].value;
+        if(begin <= end) {
+            for(var i=0;i<arrbusy.length;i++){
+                if(begin < arrbusy[i] && arrbusy[i] < end)
+                    return false;
+            }
+            return true;
+        }
+        return false;
     }
 }
 function changeEvent(IsBegin){
     var calendar = document.getElementById("landmark-day");
     for(var i=0;i<calendar.childNodes.length;i++){
         if(IsBegin){
-            calendar.childNodes[i].removeEventListener("click",click_endday);
-            calendar.childNodes[i].addEventListener("click",click_beginday);
+            calendar.childNodes[i].setAttribute("onclick","click_beginday(this,busy);");
+            document.getElementById("ad-begin").parentElement.classList.add("vh-pale-green");
+            document.getElementById("ad-end").parentElement.classList.remove("vh-pale-green");
         }
         else{
-            calendar.childNodes[i].removeEventListener("click",click_beginday);
-            calendar.childNodes[i].addEventListener("click",click_endday);
+            calendar.childNodes[i].setAttribute("onclick","click_endday(this,busy);");
+            document.getElementById("ad-end").parentElement.classList.add("vh-pale-green");
+            document.getElementById("ad-begin").parentElement.classList.remove("vh-pale-green");
         }
     }
 }

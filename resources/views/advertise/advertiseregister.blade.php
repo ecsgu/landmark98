@@ -10,14 +10,14 @@
             </div>
         </div>
     </div>
-	<div>
+	<div class="vh-white">
         <form action="admin/login" method="post">
             <div class="vh-row">
                 <h1 id="landmark-year" class="vh-col l12 m12 s12 vh-flat-belize-hole vh-center"></h1>
                 <div class="vh-row">
-                    <h1 class="vh-col l3 m3 s3 vh-center vh-button" onclick="InitCalendar(today,--month,busy,IsBegin);"> << </h1>
+                    <h1 class="vh-col l3 m3 s3 vh-center vh-button"> << </h1>
                     <h1 id="landmark-month" class="vh-col l6 m6 s6 vh-center"></h1>
-                    <h1 class="vh-col l3 m3 s3 vh-center vh-button" onclick="InitCalendar(today,++month,busy,IsBegin);"> >> </h1>
+                    <h1 class="vh-col l3 m3 s3 vh-center vh-button"> >> </h1>
                 </div>
                 <div class="vh-row vh-flat-belize-hole vh-hover-flat-belize-hole">
                     <div class="landmark-day vh-button vh-hover-none">CN</div>
@@ -31,9 +31,9 @@
                 <div class="vh-row" id="landmark-day"></div>
             </div>
             <div class="vh-row">
-                <div class="vh-button vh-col l6 m6 s6" onclick="changeEvent(true);">Ngày bắt đầu <div id="ad-begin"></div></div>
+                <div class="vh-button vh-col l6 m6 s6 vh-pale-green vh-hover-pale-green">Ngày bắt đầu <strong id="ad-begin"></strong></div>
                 <input type="date" name="ad-begin" class="vh-hide">
-                <div class="vh-button vh-col l6 m6 s6" onclick="changeEvent(false);">Ngày kết thúc <div id="ad-end"></div></div>
+                <div class="vh-button vh-col l6 m6 s6 vh-hover-pale-green" >Ngày kết thúc <strong id="ad-end"></strong></div>
                 <input type="date" name="ad-end" class="vh-hide">
             </div>
             <div class="form-group col-sm-6">
@@ -42,7 +42,7 @@
 	            	<input type="file"  name="image">
 	            </div>
             </div>
-            <div class="form-group  col-sm-6">
+            <div class="form-group col-sm-6">
                 <label>Link quảng cáo</label>
                 <input type="text" name="username" class="form-control" placeholder="Link website quảng cáo">
             </div>
@@ -77,14 +77,18 @@
         month = today.getMonth();
         var busy;
         var IsBegin = true;
+        document.getElementById("ad-begin").parentElement.addEventListener("click",function(){IsBegin=true;changeEvent(true);});
+        document.getElementById("ad-end").parentElement.addEventListener("click",function(){IsBegin=false;changeEvent(false);});
+        document.getElementById("landmark-month").nextElementSibling.addEventListener("click",function(){InitCalendar(today,++month,busy,IsBegin);});
+        document.getElementById("landmark-month").previousElementSibling.addEventListener("click",function(){InitCalendar(today,--month,busy,IsBegin);});
         $.ajax({
             type: 'get',
             url: 'advertise',
             processData: false,
             contentType: false,
             success : function(data) {
-                InitCalendar(today,month,data,true);
-                busy = data;
+                busy = converDates(data);
+                InitCalendar(today,month,busy,true);
             }
         });
     </script>
