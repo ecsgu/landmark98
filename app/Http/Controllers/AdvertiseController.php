@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Advertise;
 use Carbon\Carbon;
-
+use Auth;
+use DB;
+use Validator;
+use Session;
+use App\Account;
+use App\Customer;
 
 class AdvertiseController extends Controller
 {
@@ -17,19 +22,9 @@ class AdvertiseController extends Controller
     public function index()
     {
         //
-        $Advertise = Advertise::where('end','>=',Now())->orderBy('start','asc')->get();
-        $days = array();
-        foreach($Advertise as $advertise)
-        {
-            $day = Now();
-            $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
-            while($end->gt($day))
-            {
-                array_push($days,$day->toDateString());
-                $day->addDay(1);
-            }
-        }
-        return response($days,201); 
+        if(session('advertiser'))
+            return view('advertise/advertisemanager');
+        return view('advertise/advertiselogin');
     }
 
     /**
@@ -110,23 +105,68 @@ class AdvertiseController extends Controller
     {
         //
     }
-    public function register(){
+    public function showregister(){
         return view('advertise/useradvertise');
     }
-    public function control(){
+    public function register(Request $request){
+        $Account = Account::where('username',$request->input('username'))->get();
+        if($Account->count()>0)
+            return redirect()->back()->withErrors(['username' => "Tài khoản đã có người sử dụng"]);
+        $Account = Account::where('email',$request->input('email'))->get();
+        if($Account->count()>0)
+            return redirect()->back()->withErrors(['email' => "Email đã tồn tại"]);
+        $request->request->add(['role' => '2']);
+        $CC = new CustomerController;
+        $CC->store($request);
+        $this->login($request);
+        return redirect()->action('AdvertiseController@index');
+
+    }
+    public function showlogin(){
+        if(!session('advertiser'))
+            return view('advertise/advertiselogin');
         return view('advertise/advertisemanager');
     }
-    public function login(){
-        return view('advertise/advertiselogin');
+    public function login(Request $request)
+    {
+        $rules = [
+            'username' => 'required',
+            'password' => 'required'
+        ];
+        $validator =  Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+        else{
+            $username = $request->input('username');
+            $password = $request->input('password');
+            if(Auth::attempt(['username' => $username, 'password' => $password])){
+                if((Auth::user()->role & 2) != 0)
+                {
+                    Session::put('advertiser', Auth::user());
+                    return redirect()->action('AdvertiseController@index');
+                }
+                else
+                    return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
+            }
+            else{
+                return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
+            }
+        }
+    }
+    public function logout()
+    {
+        Session::forget('advertiser');
+        return redirect()->action('AdvertiseController@index');
     }
     public function newadvertise($position){
         $Advertise = Advertise::where('position',$position)->where('end','>=',Now())->orderBy('start','asc')->get();
         $days = array();
         foreach($Advertise as $advertise)
         {
-            $day = Now();
+            $day = Carbon::createFromFormat('Y-m-d', $advertise->start);
             $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
-            while($end->gt($day))
+            while($end->ge($day))
             {
                 array_push($days,$day->toDateString());
                 $day->addDay(1);
