@@ -47,7 +47,7 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form action="admin/login" method="post">
+                    <form action="advertiselogin" method="post">
                         <div class="form-group">
                             <label>Tài khoản</label>
                             <input type="text" name="username" class="form-control" placeholder="Nhập Tài khoản">
@@ -57,12 +57,15 @@
                                 <input type="password" name="password"class="form-control" placeholder="Nhập Mật khẩu">
                         </div>
                                 <div class="checkbox">
-                                    <label>
+                                <label>
                                 <input type="checkbox"> Nhớ tài khoản
-                            </label>
-                                    <label class="pull-right">
-                                <a href="#">Quên mật khẩu</a>
-                            </label>
+                                </label>
+                                <label class="pull-right">
+                                <a href="">Quên mật khẩu</a>
+                                </label>
+                                <label class="pull-right">
+                                <a href="useradvertise">Chưa có tài khoản?</a>
+                                </label>
 
                                 </div>
                                 <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>

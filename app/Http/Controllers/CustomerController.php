@@ -59,7 +59,7 @@ class CustomerController extends Controller
         $account->username = $request->input("username");
         $account ->password = Hash::make($request->input("password"));
         $account ->email = $request->input("email");
-        $account ->role = 1;
+        $account ->role = isset($request->role)?$request->role:1;
         $account->created_at = now();
         $account->updated_at = now();
         $account->save();

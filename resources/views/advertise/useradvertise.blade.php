@@ -46,11 +46,16 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form action="advertise_register" method="post">
+                    <form action="useradvertise" method="post">
                         <div class="form-group">
                             <label>Tên đăng nhập</label>
                             <input type="text" name="username" class="form-control" placeholder="Nhập tên đăng nhập">
                         </div>
+                        @if ($errors->has('username'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                        @endif
                         <div class="form-group">
                             <label>Mật khẩu</label>
                             <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu">
@@ -61,11 +66,16 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Nhập Email">
+                            <input type="email" name="email" class="form-control" placeholder="Nhập Email">
                         </div>
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                         <div class="form-group">
                             <label>Họ và tên</label>
-                            <input type="text" class="form-control" placeholder="Nguyễn Văn A">
+                            <input type="text" name="name"class="form-control" placeholder="Nguyễn Văn A">
                         </div>
                         <div class="form-group">
                             <label>Giới tính</label>
@@ -74,17 +84,17 @@
                         </div>
                         <div class="form-group">
                             <label>Số điện thoại</label>
-                            <input type="text" class="form-control" placeholder="Nhập số điện thoại">
+                            <input type="text" name="phone_number" class="form-control" placeholder="Nhập số điện thoại">
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" disabled=""> Đồng ý
+                                <input type="checkbox"> Đồng ý
                                 <a href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" disabled="">Đăng kí</button>
+                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" >Đăng kí</button>
                         <div class="register-link m-t-15 text-center">
-                            <p>Bạn đã có tài khoản ? <a href="{{url('/')}}"> Đăng nhập</a></p>
+                            <p>Bạn đã có tài khoản ? <a href="{{url('/advertiselogin')}}"> Đăng nhập</a></p>
                         </div>
                     </form>
                 </div>

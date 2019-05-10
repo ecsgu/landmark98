@@ -33,9 +33,11 @@ Route::get('post',function() {
 //Route advertise
 
 Route::resource('advertise','AdvertiseController');
-Route::get('useradvertise','AdvertiseController@register');
-Route::get('advertisemanager','AdvertiseController@control');
-Route::get('advertiselogin','AdvertiseController@login');
+Route::get('useradvertise','AdvertiseController@showregister');
+Route::post('useradvertise','AdvertiseController@register');
+Route::get('advertiselogin','AdvertiseController@showlogin');
+Route::post('advertiselogin','AdvertiseController@login');
+Route::get('advertiselogout','AdvertiseController@logout');	
 Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
 Route::get('bank', 'AdvertiseController@bank');
 Route::get('paypal', 'AdvertiseController@paypal');

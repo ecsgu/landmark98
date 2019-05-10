@@ -211,7 +211,7 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa-user"></i> Trang cá nhân</a>
 
-                            <a class="nav-link" href="{{url('admin/logout')}}"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                            <a class="nav-link" href="{{url('advertiselogout')}}"><i class="fa fa-power-off"></i> Đăng xuất</a>
                         </div>
                     </div>
 
