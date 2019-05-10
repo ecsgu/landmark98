@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Topic;
 use App\Customer;
 use App\Notification;
+use App\Advertise;
 use Session;
 use DB;
 class TopicController extends Controller
@@ -20,9 +21,10 @@ class TopicController extends Controller
         //
         if(!Session::has('account'))
             return view('/pages/login');
+        $Advertise = Advertise::where('status','3')->where('start','<=',Now())->where('end','>=',Now())->orderBy('start','asc')->get();
         $Notification = Notification::Where('end','>=',Now())->orderBy('created_at','desc')->get();
         $Topic = Topic::Where('status','2')->orderBy('id','desc')->get();
-        return view('/pages/landmark', compact(['Topic','Notification']));
+        return view('/pages/landmark', compact(['Topic','Notification','Advertise']));
     }
 
     /**

@@ -198,8 +198,8 @@ class Builder
      * Create a new query builder instance.
      *
      * @param  \Illuminate\Database\ConnectionInterface  $connection
-     * @param  \Illuminate\Database\Query\Grammars\Grammar  $grammar
-     * @param  \Illuminate\Database\Query\Processors\Processor  $processor
+     * @param  \Illuminate\Database\Query\Grammars\Grammar|null  $grammar
+     * @param  \Illuminate\Database\Query\Processors\Processor|null  $processor
      * @return void
      */
     public function __construct(ConnectionInterface $connection,
@@ -273,7 +273,7 @@ class Builder
     {
         [$query, $bindings] = $this->createSub($query);
 
-        return $this->fromRaw('('.$query.') as '.$this->grammar->wrap($as), $bindings);
+        return $this->fromRaw('('.$query.') as '.$this->grammar->wrapTable($as), $bindings);
     }
 
     /**
@@ -442,7 +442,7 @@ class Builder
     {
         [$query, $bindings] = $this->createSub($query);
 
-        $expression = '('.$query.') as '.$this->grammar->wrap($as);
+        $expression = '('.$query.') as '.$this->grammar->wrapTable($as);
 
         $this->addBinding($bindings, 'join');
 
@@ -1198,6 +1198,8 @@ class Builder
             $value = $value->format('d');
         }
 
+        $value = str_pad($value, 2, '0', STR_PAD_LEFT);
+
         return $this->addDateBasedWhere('Day', $column, $operator, $value, $boolean);
     }
 
@@ -1236,6 +1238,8 @@ class Builder
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('m');
         }
+
+        $value = str_pad($value, 2, '0', STR_PAD_LEFT);
 
         return $this->addDateBasedWhere('Month', $column, $operator, $value, $boolean);
     }
@@ -1936,6 +1940,26 @@ class Builder
     public function forPage($page, $perPage = 15)
     {
         return $this->skip(($page - 1) * $perPage)->take($perPage);
+    }
+
+    /**
+     * Constrain the query to the previous "page" of results before a given ID.
+     *
+     * @param  int  $perPage
+     * @param  int|null  $lastId
+     * @param  string  $column
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function forPageBeforeId($perPage = 15, $lastId = 0, $column = 'id')
+    {
+        $this->orders = $this->removeExistingOrdersFor($column);
+
+        if (! is_null($lastId)) {
+            $this->where($column, '<', $lastId);
+        }
+
+        return $this->orderBy($column, 'desc')
+                    ->take($perPage);
     }
 
     /**
@@ -2678,6 +2702,10 @@ class Builder
             return $this->insert(array_merge($attributes, $values));
         }
 
+        if (empty($values)) {
+            return true;
+        }
+
         return (bool) $this->take(1)->update($values);
     }
 
@@ -2948,6 +2976,26 @@ class Builder
                 $clone->bindings[$type] = [];
             }
         });
+    }
+
+    /**
+     * Dump the current SQL and bindings.
+     *
+     * @return void
+     */
+    public function dump()
+    {
+        dump($this->toSql(), $this->getBindings());
+    }
+
+    /**
+     * Die and dump the current SQL and bindings.
+     *
+     * @return void
+     */
+    public function dd()
+    {
+        dd($this->toSql(), $this->getBindings());
     }
 
     /**

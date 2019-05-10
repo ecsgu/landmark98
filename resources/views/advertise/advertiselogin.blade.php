@@ -61,7 +61,7 @@
                                 <input type="checkbox"> Nhớ tài khoản
                                 </label>
                                 <label class="pull-right">
-                                <a href="">Quên mật khẩu</a>
+                                <a href="{{url('password/reset')}}">Quên mật khẩu</a>
                                 </label>
                                 <label class="pull-right">
                                 <a href="useradvertise">Chưa có tài khoản?</a>
