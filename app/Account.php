@@ -12,7 +12,7 @@ class Account extends Authenticatable
     use Notifiable;
     protected $table ="account";
     protected $fillable = [
-    	'username','password',
+    	'username','password','role',
     ];
     public function customer(){
         return $this->hasOne('App\Customer','id','username');

@@ -31,8 +31,46 @@
       <a href="{{url('logout')}}" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     <!-- Container -->
-    <div class="vh-container vh-margin-bottom" style="margin-top:70px;">
+    <div class="vh-container vh-margin-bottom" style="margin: 70px 0px">
     @yield('Container')
+    </div>
+    <!-- Modal -->
+    <div id="modal-info" class="vh-overlay" style="z-index:6" onclick="closeSidebar('modal-info');">
+      <div class="vh-display-topright" onclick="closeSidebar('modal-info');"><span class="fa fa-remove vh-text-white vh-padding vh-xlarge"></span></div>
+      <div class="landmark-content vh-animate-zoom" onclick="event.stopImmediatePropagation();">
+        <div class="vh-row">
+          <div class="vh-col l8 landmark-image vh-display-container">
+            <!-- Image -->
+            <img class="vh-display-middle" id="modal-image" />
+          </div>
+          <div class="vh-col l4 vh-white vh-right landmark-info vh-padding">
+            <div class="landmark-scroll">
+              <!-- User post -->
+              <div class="vh-row">
+                <div class="vh-col l2 m2 s2"><img id="modal-avatar" class="vh-circle" src="{{ asset('upload\defaultCus.jpg') }}" width="40px"> </div>
+                <div class="vh-col l10 m10 s10">
+                  <a id="modal-user" href="#"></a>
+                  <div id="modal-created" class="vh-small vh-text-gray"></div>
+                </div>
+              </div>
+              <!-- Caption -->
+              <div class="vh-margin-top" id="modal-caption"></div>
+              <hr/>
+              <!-- Comments -->
+              <div id="modal-comments"></div>
+            </div>
+            <!-- User Comment -->
+            <div class="vh-margin-small">
+              <div class="vh-col l2 m1 s2">
+                <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
+              </div>
+              <div class="vh-col l10 m11 s10">
+                <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2></textarea>
+              </div>          
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       var prevScrollpos = window.pageYOffset;
@@ -47,13 +85,6 @@
           }
         }
         prevScrollpos = currentScrollPos;
-      }
-      function checknightmode(){
-        var nig = document.getElementById('main');
-        nig.classList.toggle('night-mode');
-      }
-      function hideShowBarBlock(){
-        document.getElementById('dropdown').classList.toggle("vh-hide");
       }
     </script>
     </body>

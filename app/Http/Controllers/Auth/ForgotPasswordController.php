@@ -58,7 +58,7 @@ class ForgotPasswordController extends Controller
         $customer= $account->customer;
         Mail::send(
             'email.forgot',
-            ['user' => $account, 'code' => $code],
+            ['user' => $account, 'code' => $code , 'customer' => $customer],
             function($message) use ($account , $customer){
                 $message->to($account->email);
                 $message->subject("Hello $customer->name , Thay đổi mật khẩu của bạn.");
@@ -67,13 +67,18 @@ class ForgotPasswordController extends Controller
     }
     public function resetPassword(Request $request)
     {
+        $account = Account::where('username',$request->username)->first();
         $forgotpw = Forgotpw::where('username',$request->username)->first();
         if($forgotpw->code == $request->code)
         {
+            if($request->password != $request->repassword)
+                return redirect()->back()->with(['error_repassword' => "Mật khẩu nhập lại không khớp", 'success' => 'Success' , 'account' => $account]);
             DB::table('account')
             ->where('username', $request->username)
             ->update(['password' => Hash::make($request->password)]);
         }
+        else 
+            return redirect()->back()->with(['error_code' => 'Mã bảo mật không đúng!','success' => 'Success' , 'account' => $account]);
         return redirect()->action('Auth\LoginController@showLoginForm');
     }
 }

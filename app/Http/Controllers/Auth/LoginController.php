@@ -55,7 +55,7 @@ class LoginController extends Controller
         ];
         $validator =  Validator::make($request->all(),$rules);
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()->withErrors(['fail'=>'Sai tài khoản hoặc mật khẩu']);
         }
         else{
             $username = $request->input('username');
@@ -65,7 +65,7 @@ class LoginController extends Controller
                 return redirect()->action('TopicController@index');
             }
             else{
-                return redirect()->back()->with('fail','Sai tài khoản hoặc mật khẩu');
+                return redirect()->back()->withErrors(['fail'=>'Sai tài khoản hoặc mật khẩu']);
             }
         }
     }

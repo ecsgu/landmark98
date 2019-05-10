@@ -6,17 +6,33 @@
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l3 m3 vh-hide-small">
             <div>
-                <h4 class="vh-center"> Thông báo </h4>
-                <div class="danger">Tòa nhà cháy rồi ahihi :v</div>
-                <div class="warring">Lầu 3,4 cúp nước</div>
-                <div class="info">Đề nghị bà con giữ gìn vệ sinh chung</div>
+                @foreach($Notification as $noti)
+                    @switch($noti->level)
+                    @case(1)
+                        <div class="info">{{$noti->caption}}</div>
+                        @break
+                    @case(2)
+                        <div class="warring">{{$noti->caption}}</div>
+                        @break
+                    @case(3)
+                        <div class="danger">{{$noti->caption}}</div>
+                        @break
+                @endswitch
+                @endforeach
             </div>
             <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
+                {{now()}}
+                @if($Advertise->where('position',1)->first())
+                    <a id="ad_1" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_1" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
             </div>
-            <div class="vh-margin-top">
-                <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
-            </div>
+                @if($Advertise->where('position',3)->first())
+                    <a id="ad_3" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_3" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
@@ -32,16 +48,6 @@
                          </div>
                         <div class="vh-col l9 m7 s7 vh-text-black">
                             <textarea id="caption" class="vh-border-0" placeholder="Hôm nay bạn nghĩ gì?" style="width:100%" rows=3 name="caption"></textarea>
-                            <script>
-                                function TestPost(id_post){
-                                    var post = document.getElementById(id_post);
-                                    if(post.value == "") {
-                                        post.attributes["placeholder"].value = "Bạn phải nhập gì đó!!!";
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                            </script>
                         </div>
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
@@ -73,65 +79,97 @@
                 <img class="vh-image vh-col s3" src="{{ asset('upload/1.PNG') }}"/>
                 <img class="vh-image vh-col s3" src="{{ asset('upload/2.PNG') }}"/>
             </div>
-        @foreach($Topic as $topic)
+        @foreach($Topic as $keytopic=>$topic)
+
+            @php
+            $ad = $Advertise->where('position', 5 )->random();
+            @endphp
+            @if(($keytopic+1) % 3 ==0)
+            <a href="{{$ad->linkad}}" class="vh-margin-top"><img class="vh-image" src="{{ url($ad->image) }}"/>
+            @endif
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">
-                    <div class="vh-col l1 m2 s2"><img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px"> </div>
+                    <div class="vh-col l1 m2 s2">
+                        <a href="{{ url('Customer',[$topic->customer->id]) }}">
+                            <img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px">
+                        </a>
+                    </div>
                     <div class="vh-col l11 m10 s10">
-                        <a href="{{ url('Customer',[$topic->customer->id]) }}">{{ $topic->customer->name }}</a>
-                        <div class="vh-small vh-text-gray">{{ $topic->created_at }}</div>
+                        <a href="{{ url('Customer',[$topic->customer->id]) }}"><strong>{{ $topic->customer->name }}</strong></a>
+                        <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->created_at }}</div></a>
                     </div>
                 </div>
                 <!-- Caption -->
                 <div class="vh-margin-top">
-                    {{ $topic->caption }}
+                    @php
+                        $caption=$topic->caption; 
+                        echo str_replace("\n","<br/>",$caption);
+                    @endphp
                 </div>
                 <!-- Image -->
                 @if(isset($topic->image))
-                <img src="{{ asset($topic->image) }}" width="100%" />
+                <br>
+                <img src="{{ asset($topic->image) }}" width="100%" onclick="addInfoModal('{{$topic->id}}')"/>
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
-                            <a href="{{ url('Customer',[session('account')->username]) }}">
-                            <img class="vh-circle" src="{{Session::get('account')->customer->image}}" width="40px">
-                            </a>
+                            <img class="vh-circle" src="{{ asset(Session::get('account')->customer->image)}}" width="40px">
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <textarea onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1></textarea>
+                            <textarea id="txt_{{$topic->id}}" onfocus="this.attributes['rows'].value = 3" onblur="this.attributes['rows'].value = 1" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=1 onkeydown="keydown_Comment('{{ $topic->id }}',false,event)"></textarea>
                         </div>
                     </div>
-                    @foreach($topic->comment as $comment)
+                    @if($topic->comment->where('status', 2)->count() > 1)
+                    <div class="vh-hide" id="{{$topic->id}}"> 
+                    @endif
+                    @foreach($topic->comment->where('status', 2) as $key=>$comment)
+                    <!-- 1 Comment -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
                             <a href="{{ url('Customer',[$comment->customer->id]) }}">
-                            <img class="vh-circle" src="{{$comment->customer->image}}" width="40px">
+                                <img class="vh-circle" src="{{asset($comment->customer->image)}}" width="40px">
                             </a>
                         </div>
                         <div class="vh-col l11 m10 s10">
-                            <a href="#">{{ $comment->customer->name }}</a> 
-                            {{ $comment->caption }}
+                            <a href="{{ url('Customer',[$comment->customer->id]) }}"><strong>{{ $comment->customer->name }}</strong></a> 
+                            @php
+                                $caption=$comment->caption; 
+                                echo str_replace("\n","<br/>",$caption);
+                            @endphp
                             <div class="vh-small vh-text-gray">{{ $comment->updated_at }}</div>
                         </div>
                     </div>
+                    @if($topic->comment->where('status', 2)->count() - 2 == $key) 
+                    </div> 
+                    @endif
                     @endforeach
+                    @if($topic->comment->where('status', 2)->count() > 1)
+                    <a id="btn_{{$topic->id}}" href="javascript:void()" onclick="ShowMore('{{$topic->id}}')">Xem thêm</a>
+                    @endif
                 </div>
-                <a href="#">Xem thêm</a>
             </div>
             @endforeach
         </div>
         <!-- Quảng cáo bên phải -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div id="ad-right">
-                <div class="vh-margin-top">
-                    <img class="vh-image" src="{{ asset('upload/1.PNG') }}"/>
-                </div>
-                <div class="vh-margin-top">
-                    <img class="vh-image" src="{{ asset('upload/2.PNG') }}"/>
-                </div>
+            <div >
+                @if($Advertise->where('position',2)->first())
+                    <a id="ad_2" href="{{$Advertise->where('position',2)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',2)->first()->image) }}"/></a>
+                @else
+                    <a id="ad_2" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
+                @if($Advertise->where('position',4)->first())
+                <a id="ad_4" href="{{$Advertise->where('position',4)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',4)->first()->image) }}"/></a>
+                @else
+                <a id="ad_4" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                @endif
             <div>
         </div>
     </div>
+    <script>
+        var Advertise = {!! $Advertise !!}
+    </script>
 @endsection

@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class NhanThemCotImageCustomer extends Migration
 {
     /**
@@ -17,9 +15,7 @@ class NhanThemCotImageCustomer extends Migration
         Schema::table('Customer',function($table){
             $table->string('image');
         });
-
     }
-
     /**
      * Reverse the migrations.
      *

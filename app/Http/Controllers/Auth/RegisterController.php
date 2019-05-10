@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\LoginController;
 use Session;
+use App\Account;
 
 class RegisterController extends Controller
 {
@@ -80,6 +81,12 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
+        $Account = Account::where('username',$request->input('username'))->get();
+        if($Account->count()>0)
+            return redirect()->back()->withErrors(['username' => "Tài khoản đã có người sử dụng"]);
+        $Account = Account::where('email',$request->input('email'))->get();
+        if($Account->count()>0)
+            return redirect()->back()->withErrors(['email' => "Email đã tồn tại"]);
         $CC = new CustomerController;
         $CC->store($request);
         LoginController::login($request);

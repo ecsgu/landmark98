@@ -42,6 +42,13 @@ class DatabaseManager implements ConnectionResolverInterface
     protected $extensions = [];
 
     /**
+     * The callback to be executed to reconnect to a database.
+     *
+     * @var callable
+     */
+    protected $reconnector;
+
+    /**
      * Create a new database manager instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
@@ -52,6 +59,10 @@ class DatabaseManager implements ConnectionResolverInterface
     {
         $this->app = $app;
         $this->factory = $factory;
+
+        $this->reconnector = function ($connection) {
+            $this->reconnect($connection->getName());
+        };
     }
 
     /**
@@ -140,7 +151,8 @@ class DatabaseManager implements ConnectionResolverInterface
             throw new InvalidArgumentException("Database [{$name}] not configured.");
         }
 
-        return $config;
+        return (new ConfigurationUrlParser)
+                    ->parseConfiguration($config);
     }
 
     /**
@@ -164,9 +176,7 @@ class DatabaseManager implements ConnectionResolverInterface
         // Here we'll set a reconnector callback. This reconnector can be any callable
         // so we will set a Closure to reconnect from this manager with the name of
         // the connection, which will allow us to reconnect from the connections.
-        $connection->setReconnector(function ($connection) {
-            $this->reconnect($connection->getName());
-        });
+        $connection->setReconnector($this->reconnector);
 
         return $connection;
     }
@@ -313,6 +323,17 @@ class DatabaseManager implements ConnectionResolverInterface
     public function getConnections()
     {
         return $this->connections;
+    }
+
+    /**
+     * Set the database reconnector callback.
+     *
+     * @param  callable  $reconnector
+     * @return void
+     */
+    public function setReconnector(callable $reconnector)
+    {
+        $this->reconnector = $reconnector;
     }
 
     /**

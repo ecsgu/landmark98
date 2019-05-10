@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-
+use Illuminate\Http\Request;
+use DB;
+use Hash;
 class ResetPasswordController extends Controller
 {
     /*
@@ -35,5 +37,15 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    public function reset(Request $request)
+    {
+        $account = DB::table('account')->where('username',$request->username)->first();
+        if(!Hash::check($request->oldpassword,$account->password))
+            return redirect()->back()->with(['error_oldpassword' => "Mật khẩu không đúng khớp"]);
+        if($request->password != $request->repassword)
+            return redirect()->back()->with(['error_repassword' => "Mật khẩu nhập lại không khớp"]);
+        DB::table('account')->where('username',$request->username)->update(['password' => Hash::make($request->password)]);
+        return redirect()->back();
     }
 }

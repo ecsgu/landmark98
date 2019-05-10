@@ -24,7 +24,7 @@ class CommentSeeder extends Seeder
                 'idtopic' => $topic->random()->id, 
                 'caption' => $faker->sentence,
                 'username' => $account->random()->username,
-                'status' => rand(0,1),
+                'status' => rand(1,3),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

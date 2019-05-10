@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
+use File;
 use Hash;
 use Session;
 
@@ -57,7 +59,7 @@ class CustomerController extends Controller
         $account->username = $request->input("username");
         $account ->password = Hash::make($request->input("password"));
         $account ->email = $request->input("email");
-        $account ->role = 1;
+        $account ->role = isset($request->role)?$request->role:1;
         $account->created_at = now();
         $account->updated_at = now();
         $account->save();
@@ -74,6 +76,9 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find($id);
+        for($i=0;$i<$Customer->topic->count();$i++)
+            if($Customer->topic[$i]->status != 2)
+                unset($Customer->topic[$i]);
         return view('/pages/customer', compact('Customer'));
         //$account->save();
     }
@@ -84,10 +89,17 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public static function edit(Request $request)
     {
         //
-        echo "edit";
+        $Customer = Customer::find(session('account')->customer->id);
+        File::delete(public_path()."/".$Customer->image);
+        $Customer->image=$request->filename;
+        $Customer->save();
+        $username = session('account')->username;
+        $password = session('account')->password;
+        Auth::loginUsingId(['username' => $username]);
+        Session::put('account', Auth::user());
     }
 
     /**
