@@ -73,27 +73,15 @@
     </div>
     <script>
         var today = Date.parse('{{now()}}');
+        var IsBegin = true;
         today = new Date();
         month = today.getMonth();
         var busyday = {!! json_encode($days) !!};
-        InitCalendar(today,month,busyday);
-/*
-        var busy;
-        var IsBegin = true;
+        InitCalendar(today,month,busyday,IsBegin);
+        var busy = converDates(busyday);
         document.getElementById("ad-begin").parentElement.addEventListener("click",function(){IsBegin=true;changeEvent(true);});
         document.getElementById("ad-end").parentElement.addEventListener("click",function(){IsBegin=false;changeEvent(false);});
         document.getElementById("landmark-month").nextElementSibling.addEventListener("click",function(){InitCalendar(today,++month,busy,IsBegin);});
         document.getElementById("landmark-month").previousElementSibling.addEventListener("click",function(){InitCalendar(today,--month,busy,IsBegin);});
-        $.ajax({
-            type: 'get',
-            url: 'advertise',
-            processData: false,
-            contentType: false,
-            success : function(data) {
-                busy = converDates(data);
-                InitCalendar(today,month,busy,true);
-            }
-        });
-        */
     </script>
 @endsection
