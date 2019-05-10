@@ -59,7 +59,7 @@ class WebmasterController extends Controller
     }
     public function notification()
     {
-        $Notification = Notification::all();
+        $Notification = Notification::orderBy('end', 'desc')->get();
         return view('webmaster/notification', compact('Notification'));
     }
     public function postnotification(Request $request)

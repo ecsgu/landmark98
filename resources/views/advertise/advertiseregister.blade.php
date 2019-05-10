@@ -81,14 +81,7 @@
         var today = Date.parse('{{now()}}');
         today = new Date();
         month = today.getMonth();
-        $.ajax({
-        type: 'get',
-        url: 'advertise',
-        processData: false,
-        contentType: false,
-        success : function(data) {
-            InitCalendar(today,month,data);
-        }
-    });
+        var busyday = {!! json_encode($days) !!};
+        InitCalendar(today,month,busyday);
     </script>
 @endsection

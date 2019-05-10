@@ -36,7 +36,7 @@ Route::resource('advertise','AdvertiseController');
 Route::get('useradvertise','AdvertiseController@register');
 Route::get('advertisemanager','AdvertiseController@control');
 Route::get('advertiselogin','AdvertiseController@login');
-Route::get('advertiseregister','AdvertiseController@newadvertise');
+Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
 Route::get('bank', 'AdvertiseController@bank');
 Route::get('paypal', 'AdvertiseController@paypal');
 //route webmaster

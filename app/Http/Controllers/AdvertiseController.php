@@ -119,8 +119,20 @@ class AdvertiseController extends Controller
     public function login(){
         return view('advertise/advertiselogin');
     }
-    public function newadvertise(){
-        return view('advertise/advertiseregister');
+    public function newadvertise($position){
+        $Advertise = Advertise::where('position',$position)->where('end','>=',Now())->orderBy('start','asc')->get();
+        $days = array();
+        foreach($Advertise as $advertise)
+        {
+            $day = Now();
+            $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
+            while($end->gt($day))
+            {
+                array_push($days,$day->toDateString());
+                $day->addDay(1);
+            }
+        }
+        return view('advertise/advertiseregister', compact('days'));
     }
     public function bank(){
         return view('advertise/bank');
