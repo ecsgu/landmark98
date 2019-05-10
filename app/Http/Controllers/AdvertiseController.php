@@ -23,8 +23,10 @@ class AdvertiseController extends Controller
     public function index()
     {
         //
-        if(session('advertiser'))
-            return view('advertise/advertisemanager');
+        if(session('advertiser')){
+            $Advertise = Advertise::where('username',session('advertiser')->username)->get();
+            return view('advertise/advertisemanager',compact('Advertise'));
+        }
         return view('advertise/advertiselogin');
     }
 
@@ -107,7 +109,7 @@ class AdvertiseController extends Controller
         //
     }
     public function showregister(){
-        return view('advertise/useradvertise');
+        return view('advertise/useradvertise',compact('Position'));
     }
     public function register(Request $request){
         $Account = Account::where('username',$request->input('username'))->get();
@@ -116,7 +118,7 @@ class AdvertiseController extends Controller
         $Account = Account::where('email',$request->input('email'))->get();
         if($Account->count()>0)
             return redirect()->back()->withErrors(['email' => "Email đã tồn tại"]);
-        $request->request->add(['role' => '2']);
+        $request->request->add(['role' => '3']);
         $CC = new CustomerController;
         $CC->store($request);
         $this->login($request);
@@ -161,14 +163,20 @@ class AdvertiseController extends Controller
         return redirect()->action('AdvertiseController@index');
     }
     public function showposition(){
-        if(session('advertiser'))
-            return view('advertise/chooseposition');
+        if(session('advertiser')){
+
+            $Position = Position::all();
+            return view('advertise/chooseposition',compact('Position'));
+        }
         return redirect()->action('AdvertiseController@index');
     }
     public function newadvertise($position){
         if(!Session::has('advertiser'))
             return redirect()->action('AdvertiseController@index');
-        $Advertise = Advertise::where('position',$position)->where('end','>=',Now())->orderBy('start','asc')->get();
+        if($position!=5)
+            $Advertise = Advertise::where('position',$position)->where('end','>=',Now())->orderBy('start','asc')->get();
+        else
+            $Advertise = Advertise::where('status','0')->get();
         $Position = Position::find($position);
         $days = array();
         foreach($Advertise as $advertise)
@@ -182,6 +190,19 @@ class AdvertiseController extends Controller
             }
         }
         return view('advertise/advertiseregister', compact('days','Position'));
+    }
+    public function deleteadvertise(Request $request)
+    {
+        if(session('advertiser'))
+        {
+            $Advertise = Advertise::find($request->id);
+            if($Advertise->username != session('advertiser')->username)
+                return "false";
+            else
+                $Advertise->delete();
+            return "true";
+        }
+        return "false";
     }
     public function postnewadvertise(Request $request)
     {
@@ -213,14 +234,14 @@ class AdvertiseController extends Controller
         $Advertise->start = $start;
         $Advertise->end = $end;
         $Advertise->position = $request->input('position');
-        $Advertise->money=$start->diffInDays($end)*$Position->price;
+        $Advertise->money=($start->diffInDays($end)+1)*$Position->price;
         $Advertise->click=0;
         $Advertise->status=1;
         $Advertise->save();
         if($request->input('thanhtoan')=="paypal")
             return view('advertise/paypal',compact('Advertise'));
         else
-            return view('advertise/bank',compact('bank'));
+            return view('advertise/bank',compact('Advertise'));
 
     }
     public function bank(){

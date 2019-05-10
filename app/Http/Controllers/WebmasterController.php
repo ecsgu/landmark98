@@ -58,6 +58,17 @@ class WebmasterController extends Controller
         }
         return redirect()->action('WebmasterController@index');
     }
+    public function duyetadvertise(Request $request)
+    {
+        if((session('admin')->role & 16)!=0 )
+        {
+            $advertise = Advertise::find($request->id);
+            $advertise->status=3;
+            $advertise->save();
+            return "true";
+        }
+        return "false";
+    }
     public function notification()
     {
         $Notification = Notification::orderBy('end', 'desc')->get();

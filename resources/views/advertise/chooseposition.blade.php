@@ -23,11 +23,11 @@
             <area class="area" shape="rect" href="{{ url('advertiseregister','5') }}" coords="270,285,780,520" >
         </map>
         <div class="vh-pale-yellow vh-padding-large vh-center vh-leftbar vh-border-yellow">
-            <div>Vị trí 1: 1000</div>
-            <div>Vị trí 2: 1000</div>
-            <div>Vị trí 3: 1000</div>
-            <div>Vị trí 4: 1000</div>
-            <div>Vị trí 5: 1000</div>
+            <div>Vị trí 1: {{$Position->find(1)->price}}</div>
+            <div>Vị trí 2: {{$Position->find(2)->price}}</div>
+            <div>Vị trí 3: {{$Position->find(3)->price}}</div>
+            <div>Vị trí 4: {{$Position->find(4)->price}}</div>
+            <div>Vị trí 5: {{$Position->find(5)->price}}</div>
         </div>
     </div>
     <div>
@@ -37,8 +37,8 @@
             <area class="area" shape="rect" href="{{ url('advertiseregister','7') }}" coords="790,60,1045,365" >
         </map>
         <div class="vh-pale-yellow vh-padding-large vh-center vh-leftbar vh-border-yellow">
-            <div>Vị trí 6: 1000</div>
-            <div>Vị trí 7: 1000</div>
+            <div>Vị trí 6: {{$Position->find(6)->price}}</div>
+            <div>Vị trí 7: {{$Position->find(7)->price}}</div>
         </div>
     </div>
     <div>
@@ -50,10 +50,10 @@
             <area class="area" shape="rect" href="{{ url('advertiseregister','11') }}" coords="790,360,1045,600" >
         </map>
         <div class="vh-pale-yellow vh-padding-large vh-center vh-leftbar vh-border-yellow">
-            <div>Vị trí 8: 1000</div>
-            <div>Vị trí 9: 1000</div>
-            <div>Vị trí 10: 1000</div>
-            <div>Vị trí 11: 1000</div>
+            <div>Vị trí 8: {{$Position->find(8)->price}}</div>
+            <div>Vị trí 9: {{$Position->find(9)->price}}</div>
+            <div>Vị trí 10: {{$Position->find(10)->price}}</div>
+            <div>Vị trí 11: {{$Position->find(11)->price}}</div>
         </div>
     </div>
 @endsection

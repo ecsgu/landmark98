@@ -315,6 +315,7 @@ function click_beginday(btnday,arrbusy){
         }
         return false;
     }
+    tinhtien();
 }
 function click_endday(btnday,arrbusy){
     if(!btnday.classList.contains("vh-pale-red") && !btnday.classList.contains("vh-disabled") && checkEndDay(btnday,arrbusy)){
@@ -346,6 +347,7 @@ function click_endday(btnday,arrbusy){
         }
         return false;
     }
+    tinhtien();
 }
 function changeEvent(IsBegin){
     var calendar = document.getElementById("landmark-day");
@@ -361,4 +363,30 @@ function changeEvent(IsBegin){
             document.getElementById("ad-begin").parentElement.classList.remove("vh-pale-green");
         }
     }
+}
+function tinhtien(){
+    if(document.getElementById('ad-begin').innerHTML == "" || document.getElementById('ad-end').innerHTML=="")
+        return;
+    var start = Date.parse(document.getElementById('ad-begin').innerHTML);
+    var end = Date.parse(document.getElementById('ad-end').innerHTML);
+    document.getElementById('money').value=((end-start)/86400000+1)*position.price;
+
+}
+function deleteadvertise(id){
+    var formData = new FormData();
+    formData.append('id', id);
+    $.ajax({
+        type: 'post',
+        url: 'deleteadvertise',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(image) {
+            if(image=="false")
+                alert("Bạn không có quyền này");
+            else
+                history.back();
+        }
+    });
+
 }

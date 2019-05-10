@@ -50,7 +50,7 @@
             </div>
             <div class="form-group col-sm-6">
                 <label>Thành tiền</label>
-                <input type="text" name="money" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
+                <input type="text" id="money" name="money" class="form-control" placeholder="Tổng tiền (VNĐ)" disabled="">
                 <small>(Đã bao gồm VAT)</small>
             </div>
             <div class="checkbox form-group col-sm-6">
@@ -84,6 +84,7 @@
         var IsBegin = true;
         today = new Date();
         month = today.getMonth();
+        var position = {!! json_encode($Position) !!};
         var busyday = {!! json_encode($days) !!};
         InitCalendar(today,month,busyday,IsBegin);
         var busy = converDates(busyday);

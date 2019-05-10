@@ -20,7 +20,7 @@ class TopicController extends Controller
     {
         //
         if(!Session::has('account'))
-            return view('/pages/login');
+            return view('/auth/register');
         $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $now=now();
         $Notification = Notification::Where('end','>=',Now())->orderBy('created_at','desc')->get();

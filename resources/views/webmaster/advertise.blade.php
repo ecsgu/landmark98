@@ -12,7 +12,7 @@
                                 <strong class="card-title">Data Table</strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <table id="abc" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>id</th>
@@ -24,13 +24,14 @@
                                             <th>Vị trí</th>
                                             <th>Tổng tiền</th>
                                             <th>Trạng thái</th>
+                                            <th>Điều khiển</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($Advertise as $ad)
                                         <tr>
                                             <td>{{$ad->id}}</td>
-                                            <td>{{$ad->linkad}}</td>
+                                            <td><a href="{{$ad->linkad}}">{{$ad->linkad}}</a></td>
                                             <td><img src="{{url($ad->image)}}"></td>
                                             <td>{{$ad->username}}</td>
                                             <td>{{$ad->start}}</td>
@@ -38,6 +39,9 @@
                                             <td>{{$ad->position}}</td>
                                             <td>{{$ad->money}}$</td>
                                             <td>{{ $ad->status==1?"Chưa thanh toán":($ad->status==2?"Đã thanh toán":"Đã duyệt")  }}</td>
+                                            <td>@if($ad->status==2)<input type="button" onclick="duyetadvertise('{{$ad->id}}')" value="Duyệt">
+                                                @endif
+                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -45,9 +49,13 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
+        <script>
+            window.onload= function(){$('#abc').DataTable( {
+                 "order": [[ 0, "desc" ]],
+                 "paging": true,
+            } )};
+        </script>
 @endsection

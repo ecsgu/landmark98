@@ -97,7 +97,7 @@
                     <div class="col-sm-5">&nbsp
                     </div>
                     <div class="col-sm-5" id="paypal-button"></div>
-                    <button onclick="history.back()" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
+                    <button onclick="deleteadvertise('{{$Advertise->id}}')" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
                 </div>
             </form>
         </div>

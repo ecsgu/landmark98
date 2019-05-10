@@ -97,7 +97,7 @@
                         <a href="{{ url('advertiseregister') }}"> <i class="menu-icon fa fa-star"></i>Đăng kí quảng cáo</a>
                     </li>
                     <li>
-                        <a href="{{ url('advertisemanager') }}"> <i class="menu-icon fa fa-cog"></i>Quảng cáo của tôi</a>
+                        <a href="{{ url('advertise') }}"> <i class="menu-icon fa fa-cog"></i>Quảng cáo của tôi</a>
                     </li>
                     <h3 class="menu-title">Trang phụ</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -205,11 +205,11 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{asset('images/admin.jpg')}}" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="{{url(session('advertiser')->customer->image)}}" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Trang cá nhân</a>
+                            <a class="nav-link" href="Customer/{{session('advertiser')->username}}"><i class="fa fa-user"></i> Trang cá nhân</a>
 
                             <a class="nav-link" href="{{url('advertiselogout')}}"><i class="fa fa-power-off"></i> Đăng xuất</a>
                         </div>

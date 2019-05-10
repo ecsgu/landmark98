@@ -79,24 +79,27 @@
                 <div class="col-sm-12">
                     <div class="col-sm-6">
                         <div class="form-group col-sm-12">
-                            <label>Người dùng: </label>
+                            <label>Người dùng: {{session('advertiser')->customer->name}}</label>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label>Link quảng cáo: </label>
+                            <label>Link quảng cáo:<br>{{$Advertise->linkad}} </label>
                         </div>  
                         <div class="form-group col-sm-12">
-                            <label>Ngày bắt đầu: </label>
+                            <label>Ngày bắt đầu: {{$Advertise->start}}</label>
                         </div>     
                         <div class="form-group col-sm-12">
-                            <label>Ngày kết thúc: </label>
+                            <label>Ngày kết thúc: {{$Advertise->end}}</label>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label>Vị trí: </label>
-                        </div>   
+                            <label>Vị trí: {{$Advertise->position}} </label>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label>Số tiền: {{$Advertise->money}}$ </label>
+                        </div>      
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group col-sm-12">
-                            <label>Ảnh: </label>
+                            <label>Ảnh: <img src="{{url($Advertise->image)}}"></label>
                         </div> 
                     </div>
                 </div>
@@ -190,16 +193,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">2. Bạn vui lòng chuyển tiền vào tài khoản Landmark 98  trước ngày quảng cáo 1 ngày, sau thời gian này quảng cáo không thánh thì sẽ bị hủy.</div>
+                    <div class="col-sm-12">2. Bạn vui lòng chuyển tiền vào tài khoản Landmark 98  trước ngày quảng cáo 1 ngày, sau thời gian này quảng cáo không được thanh toán sẽ bị hủy.</div>
                     <div class="col-sm-12">3. Sau khi nhận được thông báo chuyển khoản thành công từ ngân hàng. Landmark 98 sẽ gửi thông báo điện tử về quảng cáo của bạn qua mail của bạn.</div>
-                </div>
                 </div>
             </form>
         </div>
         <div class="links pb-3 col-sm-12">
         <div class="col-sm-7">&nbsp
         </div>
-            <button type="button" class="col-sm-2 btn btn-success" style="border-radius: 23px; height: 45px">Thanh toán</button>
+            <button type="button" onclick="location.href='advertise';" class="col-sm-2 btn btn-success" style="border-radius: 23px; height: 45px">Hoàn thành</button>
             <button onclick="history.back()" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
         </div>
         <script>
