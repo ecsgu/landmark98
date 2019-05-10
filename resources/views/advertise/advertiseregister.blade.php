@@ -75,10 +75,9 @@
         var today = Date.parse('{{now()}}');
         today = new Date();
         month = today.getMonth();
-<<<<<<< HEAD
         var busyday = {!! json_encode($days) !!};
         InitCalendar(today,month,busyday);
-=======
+/*
         var busy;
         var IsBegin = true;
         $.ajax({
@@ -91,6 +90,6 @@
                 busy = data;
             }
         });
->>>>>>> ecc1283d63cdf8884f70dc33af956c240d3ca28f
+        */
     </script>
 @endsection
