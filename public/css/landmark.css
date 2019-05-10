@@ -76,3 +76,4 @@ img:hover{cursor:pointer;}
 .landmark-scroll::-webkit-scrollbar-thumb:hover{background:gray;}
 .landmark-day.vh-hover-none{width:13.5%}
 .landmark-day{width: 14%}
+.vh-pale-red{cursor:not-allowed;}

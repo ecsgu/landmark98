@@ -207,6 +207,8 @@ function ChangeAvatar(){
 /* Calendar */
 function InitCalendar(today,nummonth,busyDates,IsBegin){
     var nextDay = new Date(today);
+    var begin = document.getElementsByName("ad-begin")[0].value;
+    var end = document.getElementsByName("ad-end")[0].value;
     today = new Date(today);
     nextDay.setMonth(nummonth);
     var monthday = InitMonthday(firstmonth(nextDay));
@@ -258,6 +260,14 @@ function InitCalendar(today,nummonth,busyDates,IsBegin){
         else
             tagdiv.setAttribute("onclick","click_endday(this,busy);");
         tagdiv.setAttribute("value",toYYYYMMDD(day));
+
+        if(begin != "" && end != ""){
+            if(begin <= tagdiv.attributes["value"].value && tagdiv.attributes["value"].value <= end)
+                tagdiv.classList.add("vh-pale-green");
+        } else {
+            if(begin == tagdiv.attributes["value"].value || end == tagdiv.attributes["value"].value)
+                tagdiv.classList.add("vh-pale-green");
+        }
         return tagdiv;
     }
 }
@@ -276,8 +286,21 @@ function toYYYYMMDD(day){
 }
 function click_beginday(btnday,arrbusy){
     if(!btnday.classList.contains("vh-pale-red") && !btnday.classList.contains("vh-disabled") && checkBeginDay(btnday,arrbusy)){
-        document.getElementsByName("ad-begin")[0].value = btnday.attributes["value"].value;
+        var i = btnday.previousElementSibling;
+        var begin = document.getElementsByName("ad-begin")[0];
+        while(i != null && i.attributes["value"].value >= begin.value){
+            i.classList.remove("vh-pale-green");
+            i = i.previousElementSibling;
+        }
+        begin.value = btnday.attributes["value"].value;
         document.getElementById("ad-begin").innerText = btnday.attributes["value"].value;
+        var end = document.getElementsByName("ad-end")[0];
+        i = btnday;
+        do{
+            i.classList.add("vh-pale-green");
+            i = i.nextElementSibling;
+        }while(i.attributes["value"].value <= end.value);
+        document.getElementById("ad-end").parentElement.click();
     }
     function checkBeginDay(beginday,arrbusy){
         var end = document.getElementsByName("ad-end")[0].value;
@@ -295,8 +318,20 @@ function click_beginday(btnday,arrbusy){
 }
 function click_endday(btnday,arrbusy){
     if(!btnday.classList.contains("vh-pale-red") && !btnday.classList.contains("vh-disabled") && checkEndDay(btnday,arrbusy)){
-        document.getElementsByName("ad-end")[0].value = btnday.attributes["value"].value;
+        var i = btnday.nextElementSibling;
+        var end = document.getElementsByName("ad-end")[0];
+        while(i != null && i.attributes["value"].value <= end.value){
+            i.classList.remove("vh-pale-green");
+            i = i.nextElementSibling;
+        }
+        end.value = btnday.attributes["value"].value;
         document.getElementById("ad-end").innerText =btnday.attributes["value"].value;
+        var begin = document.getElementsByName("ad-begin")[0];
+        i = btnday;
+        do{
+            i.classList.add("vh-pale-green");
+            i = i.previousElementSibling;
+        }while(i.attributes["value"].value >= begin.value);
     }
     function checkEndDay(endday,arrbusy){
         var begin = document.getElementsByName("ad-begin")[0].value;
