@@ -166,7 +166,7 @@ class AdvertiseController extends Controller
         {
             $day = Carbon::createFromFormat('Y-m-d', $advertise->start);
             $end = Carbon::createFromFormat('Y-m-d', $advertise->end);
-            while($end->ge($day))
+            while($end->gte($day))
             {
                 array_push($days,$day->toDateString());
                 $day->addDay(1);
