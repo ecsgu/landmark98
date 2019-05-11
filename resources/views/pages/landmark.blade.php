@@ -27,11 +27,13 @@
                     <a id="ad_1" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
             </div>
+            <div class="vh-margin-top">
                 @if($Advertise->where('position',3)->first())
                     <a id="ad_3" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
                 @else
                     <a id="ad_3" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
+            </div>
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
