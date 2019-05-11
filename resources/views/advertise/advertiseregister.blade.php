@@ -10,6 +10,15 @@
             </div>
         </div>
     </div>
+    <div class="breadcrumbs vh-pale-blue">
+        <div class="col-sm-4 ">
+            <div class="page-header float-left vh-pale-blue">
+                <a class="page-title" href="{{ url('advertiseregister') }}">
+                    <h1>Chọn lại vị trí khác</h1>
+                </a>
+            </div>
+        </div>
+    </div>
 	<div class="vh-white">
         <form action="{{url('advertiseregister')}}" enctype="multipart/form-data" method="post">
             @csrf
@@ -33,10 +42,11 @@
                 <div class="vh-row" id="landmark-day"></div>
             </div>
             <div class="vh-row">
-                <div class="vh-button vh-col l6 m6 s6 vh-pale-green vh-hover-pale-green">Ngày bắt đầu <strong id="ad-begin"></strong></div>
+                <div class="vh-button vh-col l5 m5 s5 vh-pale-green vh-hover-pale-green">Ngày bắt đầu <strong id="ad-begin"></strong></div>
                 <input type="date" name="ad-begin" class="vh-hide">
-                <div class="vh-button vh-col l6 m6 s6 vh-hover-pale-green" >Ngày kết thúc <strong id="ad-end"></strong></div>
+                <div class="vh-button vh-col l5 m5 s5 vh-hover-pale-green" >Ngày kết thúc <strong id="ad-end"></strong></div>
                 <input type="date" name="ad-end" class="vh-hide">
+                <div id="reset" class="vh-button vh-col l2 m2 s2 vh-hover-pale-green">Chọn lại ngày</div>
             </div>
             <div class="form-group col-sm-6">
             	<label>Ảnh</label>
@@ -95,5 +105,6 @@
         document.getElementById("ad-end").parentElement.addEventListener("click",function(){IsBegin=false;changeEvent(false);});
         document.getElementById("landmark-month").nextElementSibling.addEventListener("click",function(){InitCalendar(today,++month,busy,IsBegin);});
         document.getElementById("landmark-month").previousElementSibling.addEventListener("click",function(){InitCalendar(today,--month,busy,IsBegin);});
+        document.getElementById("reset").addEventListener("click",click_reset);
     </script>
 @endsection
