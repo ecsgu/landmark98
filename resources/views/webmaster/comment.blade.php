@@ -53,10 +53,9 @@
             </div><!-- .animated -->
         </div><!-- .content -->
         <script>
-            $(document).ready( function () {
-              var table = $('#table').DataTable({
-                "aaSorting": [[ 0, "desc" ]]
-              });
-            } );
+            window.onload= function(){$('#table').DataTable( {
+                 "order": [[ 0, "desc" ]],
+                 "paging": true,
+            } )};
         </script>
 @endsection
