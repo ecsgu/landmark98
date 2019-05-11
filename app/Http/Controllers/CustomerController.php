@@ -20,8 +20,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $Customer = Customer::all();
-        return $Customer;
+        return redirect()->back();
     }
 
     /**

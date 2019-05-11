@@ -150,8 +150,8 @@ function keydown_Comment(id_post,Ismodal,event){
     var server= location.href;
     if(server.indexOf("Customer") > -1)
         server = server.substring(0,server.indexOf("Customer"));
-    if(server.indexOf("Topic/") > -1)
-        server = server.substring(0,server.indexOf("Topic/"));
+    if(server.indexOf("Topic") > -1)
+        server = server.substring(0,server.indexOf("/Topic"));
     if(Ismodal === true) txt =document.getElementById("txt_modal");
     else txt = document.getElementById("txt_"+id_post);
     if(event.keyCode == 13){
@@ -163,7 +163,7 @@ function keydown_Comment(id_post,Ismodal,event){
                 formData.append('csrfmiddlewaretoken', $('input[name=_token]'));
                 $.ajax({
                     type: 'post',
-                    url: server+ 'Comment',
+                    url: server+ '/Comment',
                     data: formData,
                     processData: false,
                     contentType: false,
