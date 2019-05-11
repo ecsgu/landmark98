@@ -33,15 +33,21 @@
                                             <td>{{$ad->id}}</td>
                                             <td><a href="{{$ad->linkad}}">{{$ad->linkad}}</a></td>
                                             <td><img src="{{url($ad->image)}}"></td>
-                                            <td>{{$ad->username}}</td>
+                                            <td><a href="../Customer/{{$ad->username}}">{{$ad->username}}</a></td>
                                             <td>{{$ad->start}}</td>
                                             <td>{{$ad->end}}</td>
                                             <td>{{$ad->position}}</td>
                                             <td>{{$ad->money}}$</td>
-                                            <td>{{ $ad->status==1?"Chưa thanh toán":($ad->status==2?"Đã thanh toán":"Đã duyệt")  }}</td>
+                                            <td>@switch($ad->status)
+                                                @case(1){{"Chưa thanh toán"}}@break;
+                                                @case(2){{"Đã thanh toán"}}@break;
+                                                @case(3){{"Đã duyệt"}}@break;
+                                                @case(4){{"Không hợp lệ"}}@break;
+                                                @endswitch
+                                            </td>
                                             <td>@if($ad->status==2)<input type="button" onclick="duyetadvertise('{{$ad->id}}')" value="Duyệt">
+                                                <input type="button" onclick="xoaadvertise('{{$ad->id}}')" value="Không hợp lệ">
                                                 @endif
-                                                <input type="button" onclick="xoaadvertise('{{$ad->id}}')" value="Xóa">
                                              </td>
                                         </tr>
                                     @endforeach

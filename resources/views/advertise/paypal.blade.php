@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group col-sm-12">
-                            <label>Ảnh:<img src="{{$Advertise->image}}"> </label>
+                            <label>Ảnh:<img src="{{url($Advertise->image)}}"> </label>
                         </div> 
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 formData.append('id', {!!$Advertise->id!!});
                 $.ajax({
                     type: 'post',
-                    url: 'advertisethanhtoan',
+                    url: '{!! url('advertisethanhtoan') !!}',
                     data: formData,
                     processData: false,
                     contentType: false,

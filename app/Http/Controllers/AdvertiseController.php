@@ -215,6 +215,15 @@ class AdvertiseController extends Controller
         }
         return "false";
     }
+    public function thanhtoanpaypal($id)
+    {
+        if(session('advertiser'))
+        {
+            $Advertise = Advertise::find($id);
+            return view('advertise/paypal',compact('Advertise'));
+        }
+        return redirect()->back();
+    }
     public function postnewadvertise(Request $request)
     {
         $Advertise = new Advertise;
