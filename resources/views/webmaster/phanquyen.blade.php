@@ -25,8 +25,8 @@
                                     @foreach($Account as $account)
                                     <tr>
                                             <td><img src="{{url($account->customer->image)}}" width="100px" height="100px"></td>
-                                            <td>{{$account->username}}</td>
-                                            <td>{{$account->customer->name}}</td>
+                                            <td><a target="_blank" href="{{ url('Customer',$account->username) }}">{{$account->username}}</a></td>
+                                            <td><a target="_blank" href="{{ url('Customer',$account->username) }}">{{$account->customer->name}}</a></td>
                                             <td>{{$account->email}}</td>
                                             <td id="{{$account->username}}">
                                                 <div class="vh-tooltip">
