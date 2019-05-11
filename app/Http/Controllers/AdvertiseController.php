@@ -220,7 +220,9 @@ class AdvertiseController extends Controller
         if(session('advertiser'))
         {
             $Advertise = Advertise::find($id);
-            return view('advertise/paypal',compact('Advertise'));
+            if($Advertise->status == 1)
+                return view('advertise/paypal',compact('Advertise'));
+            return redirect()->back();
         }
         return redirect()->back();
     }
