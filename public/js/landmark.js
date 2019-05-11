@@ -388,5 +388,16 @@ function deleteadvertise(id){
                 history.back();
         }
     });
-
+}
+function click_reset(){
+    document.getElementsByName("ad-begin")[0].value = "";
+    document.getElementById("ad-begin").innerText = "";
+    document.getElementsByName("ad-end")[0].value = "";
+    document.getElementById("ad-end").innerText = "";
+    var days = document.getElementById("landmark-day").getElementsByClassName("vh-pale-green");
+    var i = 0;
+    while(days.length > 0) {
+        days[i].classList.remove("vh-pale-green");
+    }
+    document.getElementById("ad-begin").parentElement.click();
 }

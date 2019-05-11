@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section('Container')
+<div class="vh-row-padding">
+    <div class="vh-col l3 m3 vh-hide-small">
+        <div class="vh-margin-top">
+            <a id="ad_8" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+        </div>
+        <div class="vh-margin-top">
+            <a id="ad_10" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+        </div>
+    </div>
     <!-- Modal -->
     <form id="updateimage" action="{{url('file')}}" method="post" enctype="multipart/form-data"></form>
     @csrf
@@ -14,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="user-main">
+    <div class="vh-col l6 m6 s12">
         <div class="vh-row">
             <div class="vh-col l3 m12">
                 <!-- Avatar -->
@@ -213,4 +222,13 @@
             @endforeach
         </div>
     </div>
+    <div class="vh-col l3 s3 vh-hide-small">
+        <div class="vh-margin-top">
+            <a id="ad_8" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+        </div>
+        <div class="vh-margin-top">
+            <a id="ad_10" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+        </div>
+    </div>
+</div>
 @endsection
