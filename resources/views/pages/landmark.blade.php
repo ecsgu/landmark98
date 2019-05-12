@@ -120,7 +120,6 @@
                 @endif
                 <!-- Comments -->
                 <div class="vh-padding">
-
                     @if(session('account'))
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
@@ -160,6 +159,7 @@
                     @endif
                 </div>
             </div>
+        </div>
             @endforeach
         </div>
         <!-- Quảng cáo bên phải -->
