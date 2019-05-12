@@ -42,7 +42,7 @@ class ResetPasswordController extends Controller
     {
         $account = DB::table('account')->where('username',$request->username)->first();
         if(!Hash::check($request->oldpassword,$account->password))
-            return redirect()->back()->with(['error_oldpassword' => "Mật khẩu không đúng khớp"]);
+            return redirect()->back()->with(['error_oldpassword' => "Mật khẩu cũ không đúng"]);
         if($request->password != $request->repassword)
             return redirect()->back()->with(['error_repassword' => "Mật khẩu nhập lại không khớp"]);
         DB::table('account')->where('username',$request->username)->update(['password' => Hash::make($request->password)]);

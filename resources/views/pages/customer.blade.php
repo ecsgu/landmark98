@@ -95,7 +95,7 @@
             @if(session('account')->username == $Customer->id)
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
             <div class="vh-xlarge">Tài khoản</div>
-                <form method="post" action="{{url('password/reset')}}">
+                <form method="post" action="{{url('password/reset')}}" onsubmit="return Click_Submit();">
                     @csrf
                     <table class="vh-table-all">
                         <tr>
@@ -120,14 +120,63 @@
                                 {{ session('error_repassword')}}
                             </div>
                         @endif
-                        @if(session('error_oldpassword'))
-                            <div>
-                                {{ session('error_oldpassword')}}
-                            </div>
-                        @endif
                     </table>
                     <div class="vh-bar"><input class="vh-button vh-right" type="submit" value="Thay đổi" /></div>
                 </form>
+                <script>
+                    document.getElementsByName("password")[0].addEventListener("blur",function(){TestPassword(this);});
+                    document.getElementsByName("repassword")[0].addEventListener("blur",function(){TestRePassword(document.getElementsByName("password")[0],this);});
+                    function TestPassword(pass){
+                        if(pass.value.length >= 8){
+                            pass.classList.remove("vh-border-red");
+                            RemoveNoti(pass);
+                            return true;
+                        } else {
+                            pass.classList.add("vh-border-red");
+                            if(pass.nextElementSibling == null)
+                                pass.insertAdjacentElement("afterend",CreateNoti("Password phải 8 kí tự trở lên"));
+                            return false;
+                        }
+                    }
+                    function TestRePassword(pass, repass){
+                        if(pass.value != repass.value){
+                            repass.classList.add("vh-border-red");
+                            if(repass.nextElementSibling == null)
+                                repass.insertAdjacentElement("afterend",CreateNoti("Password không trùng khớp"));
+                            return false;
+                        } 
+                        else {
+                            repass.classList.remove("vh-border-red");
+                            RemoveNoti(repass);
+                            return true;
+                        } 
+                    }
+                    function CreateNoti(str){
+                        var div = document.createElement("DIV");
+                        div.classList.add("vh-tiny","vh-text-red");
+                        div.innerText = str;
+                        return div;
+                    }
+                    function RemoveNoti(inp){
+                        var parent = inp.parentElement;
+                        if(inp.nextElementSibling != null)
+                            parent.removeChild(inp.nextElementSibling);
+                    }
+                    function Click_Submit(){
+                        var newpass = document.getElementsByName("password")[0];
+                        var repass = document.getElementsByName("repassword")[0]; 
+                        var notErr = true;
+                        if(!TestRePassword(newpass,repass)){
+                            notErr = false;
+                            repass.focus();
+                        }
+                        if(!TestPassword(newpass)){
+                            notErr = false;
+                            newpass.focus();
+                        }
+                        return notErr;
+                    }
+                </script>
             </div>
             @endif
         </div>
@@ -266,5 +315,8 @@
 </div>
 <script>
     document.getElementById("main").addEventListener("click",hideDropdown);
+    @if(session('error_oldpassword'))
+        alert('{{ session("error_oldpassword")}}');
+    @endif
 </script>
 @endsection
