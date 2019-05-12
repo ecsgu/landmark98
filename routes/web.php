@@ -33,6 +33,7 @@ Route::get('post',function() {
 //Route advertise
 
 Route::resource('advertise','AdvertiseController');
+Route::get('advertise/verify/{username}/{code}','AdvertiseController@verify');
 Route::get('useradvertise','AdvertiseController@showregister');
 Route::post('useradvertise','AdvertiseController@register');
 Route::get('advertiselogin','AdvertiseController@showlogin');

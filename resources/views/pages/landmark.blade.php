@@ -85,9 +85,9 @@
         @foreach($Topic as $keytopic=>$topic)
             @if(($keytopic+1) % 5 ==0)
                 @php
-                $ad = $Advertise->where('position', 5 )->random();
+                $ad = $Advertise->where('position',5 )->random();
                 @endphp
-                <a href="{{$ad->linkad}}" class="vh-margin-top"><img width="100%" height="180px"  src="{{$ad->image}}"/></a>
+                <a target="_blank" href="{{$ad->linkad}}" class="vh-margin-top"><img width="100%" height="180px"  src="{{$ad->image}}"/></a>
             @endif
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
