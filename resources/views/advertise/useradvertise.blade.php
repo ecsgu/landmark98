@@ -129,13 +129,16 @@
         document.getElementById("reg-gender").addEventListener("blur", onblur_gender);
         document.getElementById("reg-phone").addEventListener("blur", onblur_phone);
         function TestInput(input){
-            if(input.value == "" || input.value == null){
-                input.classList.add("vh-border-red");
-                return false;
+            if(input.value != ""){
+                input.classList.remove("vh-border-red");
+                RemoveNoti(input);
+                return true;
             } 
             else {
-                input.classList.remove("vh-border-red");
-                return true;
+                input.classList.add("vh-border-red");
+                if(input.nextElementSibling == null)
+                    input.insertAdjacentElement("afterend",CreateNoti("Không được để trống"));
+                return false;
             } 
         }
         function TestPassword(pass){
@@ -187,7 +190,7 @@
         function RemoveNoti(inp){
                 var parent = inp.parentElement;
                 if(inp.nextElementSibling != null)
-                    parent.removeChild(inp.nextElementSibling());
+                    parent.removeChild(inp.nextElementSibling);
         }
         function TestRePassword(pass, repass){
             if(pass.value != repass.value){
