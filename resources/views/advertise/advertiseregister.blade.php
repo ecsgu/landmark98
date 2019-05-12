@@ -20,7 +20,7 @@
         </div>
     </div>
 	<div class="vh-white">
-        <form action="{{url('advertiseregister')}}" enctype="multipart/form-data" method="post">
+        <form action="{{url('advertiseregister')}}" enctype="multipart/form-data" method="post" onsubmit="return onclick_Submit();">
             @csrf
             <input type="hidden" name="position" value="{{$Position->id}}">
             <div class="vh-row">
@@ -108,5 +108,14 @@
         document.getElementById("landmark-month").nextElementSibling.addEventListener("click",function(){InitCalendar(today,++month,busy,IsBegin);});
         document.getElementById("landmark-month").previousElementSibling.addEventListener("click",function(){InitCalendar(today,--month,busy,IsBegin);});
         document.getElementById("reset").addEventListener("click",click_reset);
+        function Test_Begin(inp){
+            if(inp.value == "")
+        }
+        function onclick_Submit(){
+            
+            document.getElementsByName("ad-end")[0].value == "";
+            document.getElementsByName("linkad")[0].value == "";
+            document.getElementsByName("image")[0].value == ""
+        }
     </script>
 @endsection
