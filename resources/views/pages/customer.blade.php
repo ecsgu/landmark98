@@ -172,11 +172,18 @@
                     <div class="vh-col l1 m2 s2">
                         <img class="vh-circle" src="{{ asset($topic->customer->image) }}" width="40px">
                     </div>
-                    <div class="vh-col l11 m10 s10">
+                    <div class="vh-col l10 m9 s9">
                         <a><strong>{{ $topic->customer->name }}</strong></a>
                         <a class="vh-small vh-text-gray" href="{{ url('Topic',[$topic->id]) }}"><div>{{ $topic->created_at }}</div></a>
                     </div>
+                    <div class="vh-col l1 m1 s1 vh-right vh-popup" onclick="dropdown('{{$topic->id}}');event.stopImmediatePropagation();">
+                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        <div class="vh-tooltiptext-bottom vh-white vh-border vh-border-dark-grey" id="{{$topic->id}}" onclick="event.stopImmediatePropagation();">
+                            <a href="" >Ẩn</a>
+                        </div>
+                    </div>
                 </div>
+                
                 <!-- Caption -->
                 <div class="vh-margin-top">
                     @php
@@ -251,4 +258,7 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("main").addEventListener("click",hideDropdown);
+</script>
 @endsection

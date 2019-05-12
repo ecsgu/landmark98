@@ -8,6 +8,12 @@ function checknightmode(){
 function hideShowBarBlock(){
     document.getElementById('dropdown').classList.toggle("vh-hide");
 }
+function hideDropdown(){
+    var hide = document.getElementsByClassName("vh-tooltiptext-bottom");
+    for(var i = 0;i < hide.length; i++){
+        hide[i].classList.remove("vh-show");
+    }
+}
 /* Modal */
 function addInfoModal(id_topic){
     $.ajax({
@@ -132,6 +138,7 @@ function TestPost(id_post){
     }
     return true;
 }
+//function 
 /* Comment */
 function ShowMore(id_post){
     var btn = document.getElementById("btn_"+id_post);
