@@ -64,10 +64,13 @@
         function TestInput(input){
             if(input.value == "" || input.value == null){
                 input.classList.add("vh-border-red");
+                RemoveNoti(pass);
                 return false;
             } 
             else {
                 input.classList.remove("vh-border-red");
+                if(input.nextElementSibling == null)
+                    input.insertAdjacentElement("afterend",CreateNoti("Không được để trống"));
                 return true;
             } 
         }
@@ -118,9 +121,9 @@
             return div;
         }
         function RemoveNoti(inp){
-                var parent = inp.parentElement;
-                if(inp.nextElementSibling != null)
-                    parent.removeChild(inp.nextElementSibling());
+            var parent = inp.parentElement;
+            if(inp.nextElementSibling != null)
+                parent.removeChild(inp.nextElementSibling);
         }
         function TestRePassword(pass, repass){
             if(pass.value != repass.value){
