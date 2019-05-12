@@ -77,7 +77,9 @@ class CustomerController extends Controller
         //
         $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $Customer = Customer::find($id);
-        if(!$Customer || !Session::has('account') || !Session::has('admin'))
+        if(!$Customer)
+            return redirect()->action('TopicController@index');
+        if(!Session::has('account') && !Session::has('admin'))
             return redirect()->action('TopicController@index');
         for($i=0;$i<$Customer->topic->count();$i++)
             if($Customer->topic[$i]->status != 2)
