@@ -159,7 +159,6 @@
                     @endif
                 </div>
             </div>
-        </div>
             @endforeach
         </div>
         <!-- Quảng cáo bên phải -->
