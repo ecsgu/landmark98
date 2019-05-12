@@ -86,14 +86,10 @@
         }
         var ad_left = document.getElementById("ad-left");
         var ad_right = document.getElementById("ad-right");
-        var notification = document.getElementById("landmark-notification");
         if(currentScrollPos + $(window).height() >= 70 + ad_left.offsetHeight){
           ad_left.style.top = (currentScrollPos - 100 - (ad_left.offsetHeight - $(window).height()) + "px");
         } else {
-          if(notification == null)
             ad_left.style.top = "0px";
-          else 
-            ad_left.style.top = (16 + notification.offsetHeight) + "px";
         }
         if(currentScrollPos + $(window).height() >= 70 + ad_right.offsetHeight){
           ad_right.style.top = (currentScrollPos - 100 - (ad_right.offsetHeight - $(window).height()) + "px");
