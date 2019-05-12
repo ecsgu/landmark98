@@ -101,7 +101,8 @@
                 </div>
             </form>
         </div>
-    <script src="{{ asset('js/paypalobjects.js') }}"></script>
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <!--<script src="{{ asset('js/paypalobjects.js') }}"></script>-->
     <script>
       paypal.Button.render({
         env: 'sandbox', // Or 'production'
