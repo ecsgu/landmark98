@@ -22,7 +22,7 @@ class AdvertiseSeeder extends Seeder
                 'image' => ($i==5)?'upload/3.png':'upload/1.png',
                 'username' => 'admin',
                 'start' => Carbon::minValue(),
-                'end' => Carbon::maxValue(), 
+                'end' => ($i==5)?Carbon::maxValue():now(), 
                 'position' => $i,
                 'money' => 0,
                 'click' => 0,

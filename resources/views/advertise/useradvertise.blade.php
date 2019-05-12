@@ -101,7 +101,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+        window.onload=function(){
+            alert('Chúng tôi đã gửi liên kết xác nhận đăng ký vào email của bạn. Bấm vào liên kết để xác nhận rằng bạn đã đăng ký. Kiểm tra hộp thư rác nếu không thấy thư trong hộp thư chính. Trân trọng');
+        }
+    </script>
 
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
