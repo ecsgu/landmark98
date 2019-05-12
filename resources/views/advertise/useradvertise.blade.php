@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link href='{{ asset("css/VH.css") }}' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -46,10 +46,10 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form action="useradvertise" method="post">
+                    <form action="useradvertise" method="post" onsubmit="return onclick_TestReg();">
                         <div class="form-group">
                             <label>Tên đăng nhập</label>
-                            <input type="text" name="username" class="form-control" placeholder="Nhập tên đăng nhập">
+                            <input id="reg-username" type="text" name="username" class="form-control" placeholder="Nhập tên đăng nhập">
                         </div>
                         @if ($errors->has('username'))
                         <span class="help-block">
@@ -58,15 +58,15 @@
                         @endif
                         <div class="form-group">
                             <label>Mật khẩu</label>
-                            <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu">
+                            <input id="reg-password" type="password" name="password" class="form-control" placeholder="Nhập mật khẩu">
                         </div>
                         <div class="form-group">
                             <label>Nhập lại mật khẩu</label>
-                            <input type="password" name="repassword" class="form-control" placeholder="Nhập lại mật khẩu">
+                            <input id="reg-repassword" type="password" name="repassword" class="form-control" placeholder="Nhập lại mật khẩu">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Nhập Email">
+                            <input id="reg-email" type="email" name="email" class="form-control" placeholder="Nhập Email">
                         </div>
                         @if ($errors->has('email'))
                         <span class="help-block">
@@ -75,16 +75,16 @@
                         @endif
                         <div class="form-group">
                             <label>Họ và tên</label>
-                            <input type="text" name="name"class="form-control" placeholder="Nguyễn Văn A">
+                            <input id="reg-name" type="text" name="name"class="form-control" placeholder="Nguyễn Văn A">
                         </div>
                         <div class="form-group">
                             <label>Giới tính</label>
-                            <input type="radio" name="gender" value="Nam">Nam
-                            <input type="radio" name="gender" value="Nữ">Nữ
+                            <input id="reg-gender" type="radio" name="gender" value="Nam">Nam
+                            <input id="reg-gender" type="radio" name="gender" value="Nữ">Nữ
                         </div>
                         <div class="form-group">
                             <label>Số điện thoại</label>
-                            <input type="text" name="phone_number" class="form-control" placeholder="Nhập số điện thoại">
+                            <input id="reg-phone" type="text" name="phone_number" class="form-control" placeholder="Nhập số điện thoại">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -111,7 +111,199 @@
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-
+    <script>
+        // Init Register
+        document.getElementById("reg-username").addEventListener("keypress", keypress_username);
+        document.getElementById("reg-password").addEventListener("keypress", keypress_password);
+        document.getElementById("reg-repassword").addEventListener("keypress", keypress_repassword);
+        document.getElementById("reg-email").addEventListener("keypress", keypress_email);
+        document.getElementById("reg-name").addEventListener("keypress", keypress_name);
+        document.getElementById("reg-gender").addEventListener("keypress", keypress_gender);
+        document.getElementById("reg-phone").addEventListener("keypress", keypress_phone);
+        document.getElementById("reg-username").addEventListener("blur", onblur_username);
+        document.getElementById("reg-password").addEventListener("blur", onblur_password);
+        document.getElementById("reg-repassword").addEventListener("blur", onblur_repassword);
+        document.getElementById("reg-email").addEventListener("blur", onblur_email);
+        document.getElementById("reg-name").addEventListener("blur", onblur_name);
+        document.getElementById("reg-gender").addEventListener("blur", onblur_gender);
+        document.getElementById("reg-phone").addEventListener("blur", onblur_phone);
+        function TestInput(input){
+            if(input.value == "" || input.value == null){
+                input.classList.add("vh-border-red");
+                return false;
+            } 
+            else {
+                input.classList.remove("vh-border-red");
+                return true;
+            } 
+        }
+        function TestPassword(pass){
+            if(pass.value.length >= 8){
+                pass.classList.remove("vh-border-red");
+                RemoveNoti(pass);
+                return true;
+            } else {
+                pass.classList.add("vh-border-red");
+                if(pass.nextElementSibling == null)
+                    pass.insertAdjacentElement("afterend",CreateNoti("Password phải 8 kí tự trở lên"));
+                return false;
+            }
+        }
+        function TestPhone(phone){
+            var patphone = /^0[35789]\d{8}$/g;
+            if(patphone.test(phone.value)) {
+                phone.classList.remove("vh-border-red");
+                RemoveNoti(phone);
+                return true;
+            } 
+            else {
+                phone.classList.add("vh-border-red");
+                if(phone.nextElementSibling == null)
+                    phone.insertAdjacentElement("afterend",CreateNoti("Điện thoại không đúng đinh dạng"));
+                return false;
+            } 
+        }
+        function TestEmail(email){
+            var patemail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
+            if(patemail.test(email.value)){
+                email.classList.remove("vh-border-red");
+                RemoveNoti(email);
+                return true;
+            } 
+            else {
+                email.classList.add("vh-border-red");
+                if(email.nextElementSibling == null)
+                    email.insertAdjacentElement("afterend",CreateNoti("Email không đúng đinh dạng"));
+                return false;
+            } 
+        }
+        function CreateNoti(str){
+            var div = document.createElement("DIV");
+            div.classList.add("vh-tiny","vh-text-red");
+            div.innerText = str;
+            return div;
+        }
+        function RemoveNoti(inp){
+                var parent = inp.parentElement;
+                if(inp.nextElementSibling != null)
+                    parent.removeChild(inp.nextElementSibling());
+        }
+        function TestRePassword(pass, repass){
+            if(pass.value != repass.value){
+                repass.classList.add("vh-border-red");
+                if(repass.nextElementSibling == null)
+                    repass.insertAdjacentElement("afterend",CreateNoti("Password không trùng khớp"));
+                return false;
+            } 
+            else {
+                repass.classList.remove("vh-border-red");
+                RemoveNoti(repass);
+                return true;
+            } 
+        }
+        function keypress_username(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-password").focus();
+            }
+        }
+        function keypress_password(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-repassword").focus();
+            }
+        }
+        function keypress_repassword(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-email").focus();
+            }
+        }
+        function keypress_email(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-name").focus();
+            }
+        }
+        function keypress_name(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-gender").focus();
+            }
+        }
+        function keypress_gender(){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.getElementById("reg-phone").focus();
+            }
+        }
+        function keypress_phone(){
+            if((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 13){
+                event.preventDefault();
+                TestPhone(document.getElementById("reg-name"));
+            }
+        }
+        function onblur_username(){
+            TestInput(document.getElementById("reg-username"));
+        }
+        function onblur_password(){
+            TestPassword(document.getElementById("reg-password"));
+        }
+        function onblur_repassword(){
+            TestRePassword(document.getElementById("reg-password"),document.getElementById("reg-repassword"));
+        }
+        function onblur_email(){
+            TestEmail(document.getElementById("reg-email"));
+        }
+        function onblur_name(){
+            TestInput(document.getElementById("reg-name"));
+        }
+        function onblur_gender(){
+            TestInput(document.getElementById("reg-gender"));
+        }
+        function onblur_phone(){
+            TestPhone(document.getElementById("reg-phone"));
+        }
+        function onclick_TestReg(){
+            var username = document.getElementById("reg-username");
+            var pwd = document.getElementById("reg-password");
+            var repwd = document.getElementById("reg-repassword");
+            var email = document.getElementById("reg-email");
+            var name = document.getElementById("reg-name");
+            var gender = document.getElementById("reg-gender");
+            var phone = document.getElementById("reg-phone");
+            var notErr = true;
+            if(!TestPhone(phone)){
+                notErr = false;
+                phone.focus();
+            }
+            if(!TestInput(gender)){
+                notErr = false;
+                gender.focus();
+            }
+            if(!TestInput(name)){
+                notErr = false;
+                name.focus();
+            }
+            if(!TestEmail(email)){
+                notErr = false;
+                email.focus();
+            }
+            if(!TestRePassword(pwd,repwd)){
+                notErr = false;
+                repwd.focus();
+            }
+            if(!TestPassword(pwd)){
+                notErr = false;
+                pwd.focus();
+            }
+            if(!TestInput(username)){
+                notErr = false;
+                username.focus();
+            }
+            return notErr;
+        }
+    </script>
 
 </body>
 

@@ -119,7 +119,8 @@
         }
         function RemoveNoti(inp){
                 var parent = inp.parentElement;
-                parent.removeChild(inp.nextSibling)
+                if(inp.nextElementSibling != null)
+                    parent.removeChild(inp.nextElementSibling());
         }
         function TestRePassword(pass, repass){
             if(pass.value != repass.value){
@@ -230,7 +231,7 @@
                 previous.click();
                 repwd.focus();
             }
-            if(!TestInput(pwd)){
+            if(!TestPassword(pwd)){
                 notErr = false;
                 previous.click();
                 pwd.focus();
