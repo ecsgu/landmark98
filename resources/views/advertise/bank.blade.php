@@ -145,6 +145,9 @@
                                     <div class=" col-sm-12">
                                         <label>Số tài khoản: 0190016819000 </label>
                                     </div>
+                                    <div class=" col-sm-12">
+                                        <label>Nội dung: Thanh toán quảng cáo {{session('advertiser')->username}}::{{$Advertise->id}} </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -166,6 +169,9 @@
                                     </div>  
                                     <div class=" col-sm-12">
                                         <label>Số tài khoản: 1703199810009 </label>
+                                    </div>
+                                    <div class=" col-sm-12">
+                                        <label>Nội dung: Thanh toán quảng cáo {{session('advertiser')->username}}::{{$Advertise->id}} </label>
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +195,9 @@
                                     <div class=" col-sm-12">
                                         <label>Số tài khoản: 1720689102 </label>
                                     </div>
+                                    <div class=" col-sm-12">
+                                        <label>Nội dung: Thanh toán quảng cáo {{session('advertiser')->username}}::{{$Advertise->id}} </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +210,7 @@
         <div class="links pb-3 col-sm-12">
         <div class="col-sm-7">&nbsp
         </div>
-            <button type="button" onclick="location.href='advertise';" class="col-sm-2 btn btn-success" style="border-radius: 23px; height: 45px">Hoàn thành</button>
+            <button type="button" onclick="location.href='{{url('advertise')}}';" class="col-sm-2 btn btn-success" style="border-radius: 23px; height: 45px">Hoàn thành</button>
             <button onclick="history.back()" type="button" style="border-radius: 23px; height: 45px" class="btn btn-secondary col-sm-2">Quay lại</button>
         </div>
         <script>
