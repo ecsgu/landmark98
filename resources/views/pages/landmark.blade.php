@@ -2,10 +2,10 @@
 @extends('layouts.master')
 
 @section('Container')
-    <div class="vh-row-padding">
+    <div class="vh-row">
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div>
+            <div id="landmark-notification" >
                 @foreach($Notification as $noti)
                     @switch($noti->level)
                     @case(1)
@@ -20,15 +20,15 @@
                 @endswitch
                 @endforeach
             </div>
-        <div id="ad-left">
-            <div class="vh-margin-top">
+        <div id="ad-left" style="position: relative;">
+            <div class="vh-margin-top vh-padding">
                 @if($Advertise->where('position',1)->first())
                     <a id="ad_1" target="_blank" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
                 @else
                     <a id="ad_1" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
             </div>
-            <div class="vh-margin-top">
+            <div class="vh-margin-top vh-padding">
                 @if($Advertise->where('position',3)->first())
                     <a id="ad_3" target="_blank" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
                 @else
@@ -157,15 +157,15 @@
         </div>
         <!-- Quảng cáo bên phải -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div id="ad-right" style="position: absolute;">
-                <div class="vh-margin-top">
+            <div id="ad-right" style="position: relative;">
+                <div class="vh-margin-top vh-padding">
                 @if($Advertise->where('position',2)->first())
                     <a id="ad_2" target="_blank" href="{{$Advertise->where('position',2)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',2)->first()->image) }}"/></a>
                 @else
                     <a id="ad_2" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
                 </div>
-                <div class="vh-margin-top">
+                <div class="vh-margin-top vh-padding">
                 @if($Advertise->where('position',4)->first())
                     <a id="ad_4" target="_blank" href="{{$Advertise->where('position',4)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',4)->first()->image) }}"/></a>
                 @else
