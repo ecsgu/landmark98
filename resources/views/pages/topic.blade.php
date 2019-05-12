@@ -2,9 +2,13 @@
 
 @section('Container')
 <div class="vh-row-padding">
-    <div class="vh-col l3 m3 vh-hide-small">
+    <div class="vh-col l3 m3 vh-hide-small" id="ad-left">
         <div class="vh-margin-top">
-            <a id="ad_6" href="#"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+            @if($Advertise->where('position',6)->first())
+                <a id="ad_6" target="_blank" href="{{$Advertise->where('position',6)->first()->linked}}"><img class="vh-image" src="{{ url($Advertise->where('position',6)->first()->image) }}"/></a>
+            @else
+                <a id="ad_6" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}" /></a>
+            @endif
         </div>
     </div>
     <div class="vh-col l6 m6 s12">
@@ -61,9 +65,13 @@
             </div>
         </div>
     </div>
-    <div class="vh-col l3 m3 vh-hide-small">
+    <div class="vh-col l3 m3 vh-hide-small" id="ad-right">
         <div class="vh-margin-top">
-            <a id="ad_7" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+            @if($Advertise->where('position',7)->first())
+                <a id="ad_7" target="_blank" href="{{$Advertise->where('position',7)->first()->linked}}"><img class="vh-image" src="{{ url($Advertise->where('position',7)->first()->image) }}"/></a>
+            @else
+                <a id="ad_7" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}" /></a>
+            @endif
         </div>
     </div>
 </div>

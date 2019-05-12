@@ -84,6 +84,13 @@
             hideShowBarBlock();
           }
         }
+        var ad_left = document.getElementById("ad-left");
+        var ad_right = document.getElementById("ad-right");
+        if(ad_right.offsetTop < currentScrollPos){
+          ad_right.style.top = (currentScrollPos + 16 - (ad_right.offsetHeight - $(window).height()) + "px");
+        } else {
+          ad_right.style.top = "0px"
+        }
         prevScrollpos = currentScrollPos;
       }
     </script>
