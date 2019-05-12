@@ -29,7 +29,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($Advertise as $ad)
-                                        <tr class="@if($ad->status==2) vh-pale-red @endif">
+                                        <tr class="@if($ad->status==2) vh-pale-red @elseif($ad->status==1) vh-pale-yellow @else @endif">
                                             <td>{{$ad->id}}</td>
                                             <td><a target="_blank" href="{{$ad->linkad}}">{{$ad->linkad}}</a></td>
                                             <td><a target="_blank" href="{{url($ad->image)}}"><img src="{{url($ad->image)}}"></a></td>

@@ -39,6 +39,16 @@
                                                 <input type="button" value="Thanh toán paypal" onclick="location.href='paypal/{{$ad->id}}';">
                                                 <input type="button" value="Thanh toán ngân hàng" onclick="location.href='bank/{{$ad->id}}';">
                                                 @endif
+                                                @if($ad->status==4)
+                                                <form action="post" >
+                                                    <input type="hidden" name="id" value="{{ $ad->id }}" />
+                                                    <label>
+                                                        <input type="file" name="image" class="vh-hide" />
+                                                        <div class="vh-button" >Đổi ảnh</div>
+                                                    </label>
+                                                    <button type="submit">Lưu</button>
+                                                </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

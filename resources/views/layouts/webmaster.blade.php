@@ -80,14 +80,7 @@
                         <a href="{{ url('admin/phanquyen') }}"> <i class="menu-icon fa fa-user"></i>Phân Quyền</a>
                     </li>
                     @endif
-                    <h3 class="menu-title">Trang phụ</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Trang</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Đăng nhập</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Quên mật khẩu</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -105,7 +98,9 @@
             <div class="header-menu">
 
                 <div class="col-sm-7">
-                    
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                    </div>
                 </div>
 
                 <div class="col-sm-5">
