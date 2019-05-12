@@ -58,7 +58,7 @@
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
                                 <span class="fas fa-image" aria-hidden="true"></span>
-                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail()">
+                                <input id="file" accept="image/*, image/heic, image/heif" class="vh-hide" type="file" name="image" oninput="createThumbnail()">
                             </label>
                         </div>
                     </div>

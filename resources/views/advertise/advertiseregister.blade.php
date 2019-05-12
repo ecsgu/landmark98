@@ -51,7 +51,7 @@
             <div class="form-group col-sm-6">
             	<label>Ảnh</label>
 	            <div class="form-group col-sm-12">
-	            	<input type="file"  name="image">
+	            	<input type="file" accept="image/*, image/heic, image/heif" name="image">
 	            </div>
             </div>
             <div class="form-group col-sm-6">
