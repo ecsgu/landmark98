@@ -66,6 +66,7 @@
                 <label>Vị trí đã chọn</label>
                 <input type="text" class="form-control" placeholder="{{$Position->name}}" disabled="">
             </div>
+            
             <div class="checkbox form-group col-sm-6">
                 <div  class="form-group col-sm-12">
                 <label>
@@ -90,6 +91,7 @@
                     document.getElementsByName('thanhtoan')[1].disabled=true;
                 }
             }
+            
         </script>
     </div>
     <script>
