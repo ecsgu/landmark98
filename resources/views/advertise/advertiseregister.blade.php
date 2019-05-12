@@ -108,14 +108,36 @@
         document.getElementById("landmark-month").nextElementSibling.addEventListener("click",function(){InitCalendar(today,++month,busy,IsBegin);});
         document.getElementById("landmark-month").previousElementSibling.addEventListener("click",function(){InitCalendar(today,--month,busy,IsBegin);});
         document.getElementById("reset").addEventListener("click",click_reset);
-        function Test_Begin(inp){
-            if(inp.value == "")
+        function Test_Day(inp){
+            if(inp.value == ""){
+                inp.previousElementSibling.click();
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function Test_Image_Link(inp){
+            if(inp.value == ""){
+                inp.focus();
+                inp.classList.add("vh-border","vh-border-red");
+                return false;
+            } else {
+                inp.classList.remove("vh-border","vh-border-red");
+                return true;
+            }
         }
         function onclick_Submit(){
-            
-            document.getElementsByName("ad-end")[0].value == "";
-            document.getElementsByName("linkad")[0].value == "";
-            document.getElementsByName("image")[0].value == ""
+            var notErr = true;
+
+            if(!Test_Image_Link(document.getElementsByName("linkad")[0]))
+                notErr = false;
+            if(!Test_Image_Link(document.getElementsByName("image")[0]))
+                notErr = false;
+            if(!Test_Day(document.getElementsByName("ad-end")[0]))
+                notErr = false;
+            if(!Test_Day(document.getElementsByName("ad-begin")[0]))
+                notErr = false;
+            return notErr;
         }
     </script>
 @endsection
