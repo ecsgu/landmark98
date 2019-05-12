@@ -19,8 +19,8 @@ class TopicController extends Controller
     public static function index()
     {
         //
-        if(!Session::has('account'))
-            return view('/auth/register');
+        //if(!Session::has('account'))
+        //   return view('/auth/register');
         $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $now=now();
         $Notification = Notification::Where('end','>=',Now())->orderBy('created_at','desc')->get();
@@ -69,7 +69,7 @@ class TopicController extends Controller
         //
         $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $topic = Topic::find($id);
-        if(!$topic || !session('account'))
+        if(!$topic)
             return abort(404);
         if($topic->status==2)
             return view('pages/topic', compact('topic','Advertise'));

@@ -19,17 +19,20 @@
     <!-- Header -->
     <div class="vh-container vh-bar vh-top vh-safety-blue vh-faster" id="navbar" style="z-index:4">
         <div class="vh-bar-item"><a href="{{ asset('') }}"><img src="{{ asset('logo.ico') }}" width="40px"></a></div>
+        @if(session('account'))
         <div class="vh-bar-item vh-right" style="margin:8px 16px;" onclick="hideShowBarBlock();"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
+        @endif
         <label class="vh-switch-round vh-right" style="margin:8px 16px;">
             <input type="checkbox">
             <span class="vh-switch-slider" onclick="checknightmode();"></span>
         </label>
     </div>
+    @if(session('account'))
     <div id="dropdown" class="vh-bar-block vh-card vh-safety-blue vh-hide" style="position:fixed;z-index:1;right:0px">
       <a href="{{ url('Customer',[session('account')->username]) }}" class="vh-bar-item vh-button">{{session('account')->customer->name}}</a>
-      <a href="#" class="vh-bar-item vh-button">Link 2</a>
       <a href="{{url('logout')}}" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
+    @endif
     <!-- Container -->
     <div class="vh-row-padding vh-margin-bottom" style="margin: 70px 0px">
     @yield('Container')
@@ -60,6 +63,7 @@
               <div id="modal-comments"></div>
             </div>
             <!-- User Comment -->
+            @if(session('account'))
             <div class="vh-margin-small">
               <div class="vh-col l2 m1 s2">
                 <img class="vh-circle" src="{{asset(Session::get('account')->customer->image)}}" width="40px">
@@ -68,6 +72,7 @@
                 <textarea id="txt_modal" class="vh-border-0" placeholder="Bạn hãy nhập bình luận..." style="width:100%" rows=2></textarea>
               </div>          
             </div>
+            @endif
           </div>
         </div>
       </div>
@@ -80,9 +85,11 @@
           document.getElementById("navbar").style.top = "0";
         } else {
           document.getElementById("navbar").style.top = "-68px";
+          @if(session('account'))
           if(document.getElementById('dropdown').className.indexOf('vh-hide') == -1) {
             hideShowBarBlock();
           }
+          @endif 
         }
 
         var ad_left = document.getElementById("ad-left");
@@ -103,6 +110,7 @@
           ad_right = document.getElementById("ad-right-tp");
           ad_left.style.top = currentScrollPos + "px";
           ad_right.style.top = currentScrollPos + "px";
+
         }
         prevScrollpos = currentScrollPos;
       }
