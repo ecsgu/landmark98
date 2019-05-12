@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
 
@@ -74,12 +78,13 @@
             </div>
         </div>
     </div>
+    @if(session('verify'))
+    <script>
+        window.onload=function(){alert('Chúng tôi đã gửi liên kết để xác nhận tài khoản vào email của bạn. Bấm vào để xác nhận. Kiểm tra hộp thư rác nếu bạn không thấy mail trong hộp thư chính.');}
+    </script>
+    @endif
 
-
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    
 
 
 </body>

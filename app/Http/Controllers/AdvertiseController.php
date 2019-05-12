@@ -9,9 +9,11 @@ use Auth;
 use DB;
 use Validator;
 use Session;
+use Mail;
 use App\Account;
 use App\Customer;
 use App\Position;
+use App\Forgotpw;
 
 class AdvertiseController extends Controller
 {
@@ -118,14 +120,47 @@ class AdvertiseController extends Controller
         $Account = Account::where('email',$request->input('email'))->get();
         if($Account->count()>0)
             return redirect()->back()->withErrors(['email' => "Email đã tồn tại"]);
-        $request->request->add(['role' => '3']);
+        $request->request->add(['role' => '1']);
         $CC = new CustomerController;
         $CC->store($request);
-        $this->login($request);
-        Auth::loginUsingId(['username' => $request->input('username')]);
-        Session::put('account', Auth::user());
+        $Account = Account::where('username',$request->input('username'))->first();
+        $forgotpw = new Forgotpw;
+        $forgotpw->username= $request->username;
+        $forgotpw->code = mt_rand(100000, 999999);
+        $forgotpw->save();
+        $this->sendEmail($Account,$forgotpw->code);
+
+        Session::put('verify', true);
         return redirect()->action('AdvertiseController@index');
 
+    }
+    public function sendEmail($account, $code)
+    {
+        $customer= $account->customer;
+        Mail::send(
+            'email.verify',
+            ['user' => $account, 'code' => $code , 'customer' => $customer],
+            function($message) use ($account , $customer){
+                $message->to($account->email);
+                $message->subject("Hello $customer->name , Xác nhận đăng ký quảng cáo Landmark98.");
+            }
+        );
+    }
+    public function verify($username,$code)
+    {
+        $account = Account::where('username',$username)->first();
+        $forgotpw = Forgotpw::where('username',$username)->first();
+        if($forgotpw->code == $code)
+        {
+            DB::table('account')
+            ->where('username', $username)
+            ->update(['role' => 3]);
+            Session::forget('verify');
+            DB::table('forgotpw')->where('username',$username)->delete();
+        }
+        else 
+            return abort(404);
+        return redirect()->action('AdvertiseController@index');
     }
     public function showlogin(){
         if(!session('advertiser'))

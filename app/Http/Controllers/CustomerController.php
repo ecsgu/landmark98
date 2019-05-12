@@ -76,7 +76,7 @@ class CustomerController extends Controller
         //
         $Customer = Customer::find($id);
         if(!$Customer || !session('account') || !session('admin'))
-            return abort(404);
+            return redirect()->action('TopicController@index');
         for($i=0;$i<$Customer->topic->count();$i++)
             if($Customer->topic[$i]->status != 2)
                 unset($Customer->topic[$i]);
@@ -93,6 +93,8 @@ class CustomerController extends Controller
     public static function edit(Request $request)
     {
         //
+        if(!session('account'))
+            return redirect()->action('TopicController@index');
         $Customer = Customer::find(session('account')->customer->id);
         File::delete(public_path()."/".$Customer->image);
         $Customer->image=$request->filename;
