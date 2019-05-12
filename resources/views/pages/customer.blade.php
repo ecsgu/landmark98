@@ -42,7 +42,7 @@
                     <div class="vh-overlay-title">
                         <label>
                             <span class="fas fa-camera vh-text-white"></span>
-                            <input type="file" form="updateimage" id="file2" name="image" class="vh-hide" oninput="ChangeAvatar()"/>
+                            <input type="file" accept="image/*, image/heic, image/heif" form="updateimage" id="file2" name="image" class="vh-hide" oninput="ChangeAvatar()"/>
                         </label>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                         <div class="vh-col l2 m2 s2 vh-center vh-xxlarge">
                             <label>
                                 <span class="fas fa-image" aria-hidden="true"></span>
-                                <input id="file" class="vh-hide" type="file" name="image" oninput="createThumbnail()">
+                                <input id="file" class="vh-hide" type="file" accept="image/*, image/heic, image/heif" name="image" oninput="createThumbnail()">
                             </label>
                         </div>
                     </div>

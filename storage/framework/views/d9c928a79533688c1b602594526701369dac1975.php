@@ -119,9 +119,9 @@
             return div;
         }
         function RemoveNoti(inp){
-                var parent = inp.parentElement;
-                if(inp.nextElementSibling != null)
-                    parent.removeChild(inp.nextElementSibling());
+            var parent = inp.parentElement;
+            if(inp.nextElementSibling != null)
+                parent.removeChild(inp.nextElementSibling);
         }
         function TestRePassword(pass, repass){
             if(pass.value != repass.value){
