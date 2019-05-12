@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Account;
+use App\Advertise;
 use File;
 use Hash;
 use Session;
@@ -74,13 +75,14 @@ class CustomerController extends Controller
     public function show($id)
     {
         //
+        $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $Customer = Customer::find($id);
         if(!$Customer || !session('account') || !session('admin'))
             return redirect()->action('TopicController@index');
         for($i=0;$i<$Customer->topic->count();$i++)
             if($Customer->topic[$i]->status != 2)
                 unset($Customer->topic[$i]);
-        return view('/pages/customer', compact('Customer'));
+        return view('/pages/customer', compact('Customer','Advertise'));
         //$account->save();
     }
 

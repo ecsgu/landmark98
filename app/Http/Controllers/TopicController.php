@@ -67,11 +67,12 @@ class TopicController extends Controller
     public function show($id)
     {
         //
+        $Advertise = Advertise::where('status','3')->whereDate('start','<=',date("Y-m-d H:i:s"))->whereDate('end','>=',now())->orderBy('start','asc')->get();
         $topic = Topic::find($id);
         if(!$topic || !session('account'))
             return abort(404);
         if($topic->status==2)
-            return view('pages/topic', compact('topic'));
+            return view('pages/topic', compact('topic','Advertise'));
         else
             return redirect()->back();
     }
