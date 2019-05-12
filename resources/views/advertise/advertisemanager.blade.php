@@ -40,13 +40,12 @@
                                                 <input type="button" value="Thanh toán ngân hàng" onclick="location.href='bank/{{$ad->id}}';">
                                                 @endif
                                                 @if($ad->status==4)
-                                                <form action="post" >
+                                                <form method="post" action="{{url('doianhadvertise')}}" enctype="multipart/form-data" id="$ad->id">
                                                     <input type="hidden" name="id" value="{{ $ad->id }}" />
                                                     <label>
-                                                        <input type="file" name="image" class="vh-hide" />
+                                                        <input type="file" name="image" class="vh-hide" oninput="submit('{{$ad->id}}')" />
                                                         <div class="vh-button" >Đổi ảnh</div>
                                                     </label>
-                                                    <button type="submit">Lưu</button>
                                                 </form>
                                                 @endif
                                             </td>
@@ -65,5 +64,8 @@
                  "order": [[ 0, "desc" ]],
                  "paging": true,
             } )};
+            function submit(id){
+                document.getElementById(id).submit();
+            }
         </script>
 @endsection

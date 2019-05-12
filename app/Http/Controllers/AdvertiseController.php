@@ -10,6 +10,7 @@ use DB;
 use Validator;
 use Session;
 use Mail;
+use File;
 use App\Account;
 use App\Customer;
 use App\Position;
@@ -302,6 +303,34 @@ class AdvertiseController extends Controller
         else
             return view('advertise/bank',compact('Advertise'));
 
+    }
+    public function doianh(Request $request)
+    {
+        $Advertise = Advertise::find($request->input('id'));
+        if(session('advertiser'))
+        {
+            if(session('advertiser')->username == $Advertise->username )
+            {
+                $file = $request->image;
+                $array = explode('.',$file->getClientOriginalName());
+                $Extend = end($array);
+
+                $Name = md5($file->getClientOriginalName() . "." . str_random());
+                // Lấy đuôi file
+
+                // Upload lên server
+                $filename=$file->move('upload', $Name.'.'.$Extend );
+
+                //echo "hello mother fucker";
+                //Update database topic
+                File::delete(public_path()."/".$Advertise->image);
+                $Advertise->image=$filename;
+                $Advertise->status=2;
+                $Advertise->save();
+            }
+            return redirect()->action('AdvertiseController@index');
+        }
+        return redirect()->action('AdvertiseController@index');
     }
     public function bank($id){
         $Advertise = Advertise::find($id);
