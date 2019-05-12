@@ -202,7 +202,7 @@
                     @if($topic->comment->where('status', 2)->count() > 1)
                     <div class="vh-hide" id="{{$topic->id}}"> 
                     @endif
-                    @foreach($topic->comment as $key=>$comment)
+                    @foreach($topic->comment->where('status', 2) as $key=>$comment)
                     <!-- 1 Comment -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">

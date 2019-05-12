@@ -303,8 +303,9 @@ class AdvertiseController extends Controller
             return view('advertise/bank',compact('Advertise'));
 
     }
-    public function bank(){
-        return view('advertise/bank');
+    public function bank($id){
+        $Advertise = Advertise::find($id);
+        return view('advertise/bank',compact('Advertise'));
     }
     public function paypal(){
         return view('advertise/paypal');

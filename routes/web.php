@@ -45,8 +45,7 @@ Route::post('advertiseregister','AdvertiseController@postnewadvertise');
 Route::post('advertisethanhtoan','AdvertiseController@thanhtoan');
 Route::get('paypal/{id}','AdvertiseController@thanhtoanpaypal');
 Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
-Route::get('bank', 'AdvertiseController@bank');
-Route::get('paypal', 'AdvertiseController@paypal');
+Route::get('bank/{id}', 'AdvertiseController@bank');
 Route::get('dieukhoan',function(){
 	return view('advertise/dieukhoan');
 });

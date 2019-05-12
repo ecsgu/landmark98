@@ -36,7 +36,8 @@
                                             <td>{{$ad->position}}</td>
                                             <td>{{ $ad->status==1?"Chưa thanh toán":($ad->status==2?"Đã thanh toán":"Đã duyệt")  }}</td>
                                             <td>@if($ad->status==1)
-                                                <input type="button" value="Thanh toán" onclick="location.href='paypal/{{$ad->id}}';">
+                                                <input type="button" value="Thanh toán paypal" onclick="location.href='paypal/{{$ad->id}}';">
+                                                <input type="button" value="Thanh toán ngân hàng" onclick="location.href='bank/{{$ad->id}}';">
                                                 @endif
                                             </td>
                                         </tr>
