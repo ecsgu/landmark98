@@ -48,6 +48,8 @@
                                             <td>@if($ad->status==2)<input type="button" onclick="duyetadvertise('{{$ad->id}}')" value="Duyệt">
                                                 <input type="button" onclick="xoaadvertise('{{$ad->id}}')" value="Không hợp lệ">
                                                 @endif
+                                                @if($ad->status==1)<input type="button" onclick="thanhtoanadvertise('{{$ad->id}}')" value="Xác nhận thanh toán">
+                                                @endif
                                              </td>
                                         </tr>
                                     @endforeach

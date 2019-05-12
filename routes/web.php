@@ -64,6 +64,7 @@ Route::get('admin/comment','WebmasterController@comment');
 Route::get('admin/advertise','WebmasterController@advertise');
 Route::post('admin/duyetadvertise','WebmasterController@duyetadvertise');
 Route::post('admin/xoaadvertise','WebmasterController@xoaadvertise');
+Route::post('admin/thanhtoanadvertise','WebmasterController@thanhtoanadvertise');
 Route::get('admin/notification','WebmasterController@notification');
 Route::post('admin/notification','WebmasterController@postnotification');
 Route::post('admin/xoanotification','WebmasterController@xoanotification');
