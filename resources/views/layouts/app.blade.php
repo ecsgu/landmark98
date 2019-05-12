@@ -71,14 +71,29 @@
                 return true;
             } 
         }
+        function TestPassword(pass){
+            if(pass.value.length >= 8){
+                pass.classList.remove("vh-border-red");
+                RemoveNoti(pass);
+                return true;
+            } else {
+                pass.classList.add("vh-border-red");
+                if(pass.nextElementSibling == null)
+                    pass.insertAdjacentElement("afterend",CreateNoti("Password phải 8 kí tự trở lên"));
+                return false;
+            }
+        }
         function TestPhone(phone){
             var patphone = /^0[35789]\d{8}$/g;
             if(patphone.test(phone.value)) {
                 phone.classList.remove("vh-border-red");
+                RemoveNoti(phone);
                 return true;
             } 
             else {
                 phone.classList.add("vh-border-red");
+                if(phone.nextElementSibling == null)
+                    phone.insertAdjacentElement("afterend",CreateNoti("Điện thoại không đúng đinh dạng"));
                 return false;
             } 
         }
@@ -86,20 +101,36 @@
             var patemail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
             if(patemail.test(email.value)){
                 email.classList.remove("vh-border-red");
+                RemoveNoti(email);
                 return true;
             } 
             else {
                 email.classList.add("vh-border-red");
+                if(email.nextElementSibling == null)
+                    email.insertAdjacentElement("afterend",CreateNoti("Email không đúng đinh dạng"));
                 return false;
             } 
         }
-        function TestPassword(pass, repass){
+        function CreateNoti(str){
+            var div = document.createElement("DIV");
+            div.classList.add("vh-tiny","vh-text-red");
+            div.innerText = str;
+            return div;
+        }
+        function RemoveNoti(inp){
+                var parent = inp.parentElement;
+                parent.removeChild(inp.nextSibling)
+        }
+        function TestRePassword(pass, repass){
             if(pass.value != repass.value){
                 repass.classList.add("vh-border-red");
+                if(repass.nextElementSibling == null)
+                    repass.insertAdjacentElement("afterend",CreateNoti("Password không trùng khớp"));
                 return false;
             } 
             else {
                 repass.classList.remove("vh-border-red");
+                RemoveNoti(repass);
                 return true;
             } 
         }
@@ -150,10 +181,10 @@
             TestInput(document.getElementById("reg-username"));
         }
         function onblur_password(){
-            TestInput(document.getElementById("reg-password"));
+            TestPassword(document.getElementById("reg-password"));
         }
         function onblur_repassword(){
-            TestPassword(document.getElementById("reg-password"),document.getElementById("reg-repassword"));
+            TestRePassword(document.getElementById("reg-password"),document.getElementById("reg-repassword"));
         }
         function onblur_email(){
             TestEmail(document.getElementById("reg-email"));
@@ -194,7 +225,7 @@
                 previous.click();
                 email.focus();
             }
-            if(!TestPassword(pwd,repwd)){
+            if(!TestRePassword(pwd,repwd)){
                 notErr = false;
                 previous.click();
                 repwd.focus();
