@@ -15,6 +15,7 @@ use App\Comment;
 use App\Account;
 use App\Notification;
 use App\Advertise;
+use App\Revenue;
 
 class WebmasterController extends Controller
 {
@@ -28,7 +29,7 @@ class WebmasterController extends Controller
         //
         if(session('admin')){
             $first = new Carbon('first day of this month');
-            $Advertise = Advertise::where('status',3)->whereDate('end','<=',now())->whereDate('end','>=',now())->get();
+            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','>=',now())->get();
             $money =0;
             foreach($Advertise as $ad)
                 $money+=$ad->money;
@@ -215,6 +216,35 @@ class WebmasterController extends Controller
     {
         Session::forget('admin');
         return redirect()->action('WebmasterController@index');
+    }
+    public function revenue()
+    {
+        $Revenue = Revenue::where('month',now()->month)->where('year',now()->year)->first();
+        $first = new Carbon('first day of this month');
+        if($Revenue)
+        {
+            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','>=',now())->get();
+            $money =0;
+            foreach($Advertise as $ad)
+                $money+=$ad->money;
+            $Revenue->money = $money;
+            $Revenue->save();
+        }
+        else
+        {
+
+            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','>=',now())->get();
+            $money =0;
+            foreach($Advertise as $ad)
+                $money+=$ad->money;
+            $Revenue = new Revenue;
+            $Revenue->month=now()->month;
+            $Revenue->year=now()->year;
+            $Revenue->money = $money;
+            $Revenue->save();
+        }
+        $Revenue = Revenue::all();
+        return view('webmaster/revenue',compact('Revenue'));
     }
     /**
      * Show the form for creating a new resource.

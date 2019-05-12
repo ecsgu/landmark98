@@ -70,6 +70,7 @@ Route::get('admin/notification','WebmasterController@notification');
 Route::post('admin/notification','WebmasterController@postnotification');
 Route::post('admin/xoanotification','WebmasterController@xoanotification');
 Route::get('admin/forgot','WebmasterController@forgot');
+Route::get('admin/revenue','WebmasterController@revenue');
 Route::resource('admin','WebmasterController');
 //------------------
 Route::resource('Customer','CustomerController',['only' => ['index','store','show','update','edit']]);

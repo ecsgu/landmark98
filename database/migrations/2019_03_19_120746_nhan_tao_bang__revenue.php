@@ -15,12 +15,9 @@ class NhanTaoBangRevenue extends Migration
     {
         //
         Schema::create('revenue',function(Blueprint $table){
+            $table->increments('id');
             $table->Integer('month');
             $table->Integer('year');
-            $table->Integer('left-top');
-            $table->Integer('left-bottom');
-            $table->Integer('right-top');
-            $table->Integer('right-bottom');
             $table->Integer('money');
             $table->timestamps();
         });

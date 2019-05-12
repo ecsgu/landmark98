@@ -55,6 +55,11 @@
                         <a href="{{url('admin')}}"> <i class="menu-icon fa fa-home"></i>admin</a>
                     </li>
                     <h3 class="menu-title">Bảng</h3><!-- /.menu-title -->
+                    @if((session('admin')->role & 4) != 0)
+                    <li>
+                        <a href="{{ url('admin/revenue') }}"> <i class="menu-icon fa fa-pencil"></i>Thống kê</a>
+                    </li>
+                    @endif
                     @if((session('admin')->role & 8) != 0)
                     <li>
                         <a href="{{ url('admin/topic') }}"> <i class="menu-icon fa fa-pencil"></i>Bài viết</a>
