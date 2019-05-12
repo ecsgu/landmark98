@@ -75,7 +75,7 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find($id);
-        if(!$Customer)
+        if(!$Customer || !session('account') || !session('admin'))
             return abort(404);
         for($i=0;$i<$Customer->topic->count();$i++)
             if($Customer->topic[$i]->status != 2)
