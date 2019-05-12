@@ -30,6 +30,7 @@
     @if(session('account'))
     <div id="dropdown" class="vh-bar-block vh-card vh-safety-blue vh-hide" style="position:fixed;z-index:1;right:0px">
       <a href="{{ url('Customer',[session('account')->username]) }}" class="vh-bar-item vh-button">{{session('account')->customer->name}}</a>
+      <a href="{{ url('advertise') }}" class="vh-bar-item vh-button">Quảng cáo</a>
       <a href="{{url('logout')}}" class="vh-bar-item vh-button">Đăng xuất</a>
     </div>
     @endif

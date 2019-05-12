@@ -156,3 +156,21 @@ function deletenotification(id)
         });
     }
 }
+function thanhtoanadvertise(id)
+{
+    var formData = new FormData();
+    formData.append('id', id);
+    $.ajax({
+        type: 'post',
+        url: 'thanhtoanadvertise',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(success) {
+            if(success=="true")
+                location.href="";
+            else
+                alert("Bạn không có quyền này");
+        }
+    });
+}
