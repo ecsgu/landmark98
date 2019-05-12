@@ -84,6 +84,7 @@
             hideShowBarBlock();
           }
         }
+
         var ad_left = document.getElementById("ad-left");
         var ad_right = document.getElementById("ad-right");
         if(currentScrollPos + $(window).height() >= 70 + ad_left.offsetHeight){
@@ -96,6 +97,8 @@
         } else {
           ad_right.style.top = "0px"
         }
+        
+        ad_left = document.getElementById("ad-left-tp");
         prevScrollpos = currentScrollPos;
       }
     </script>
