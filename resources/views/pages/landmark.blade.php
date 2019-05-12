@@ -5,37 +5,39 @@
     <div class="vh-row">
         <!-- Quảng cáo bên trái -->
         <div class="vh-col l3 m3 vh-hide-small">
-            <div id="landmark-notification" >
-                @foreach($Notification as $noti)
-                    @switch($noti->level)
-                    @case(1)
-                        <div class="info">{{$noti->caption}}</div>
-                        @break
-                    @case(2)
-                        <div class="warring">{{$noti->caption}}</div>
-                        @break
-                    @case(3)
-                        <div class="danger">{{$noti->caption}}</div>
-                        @break
-                @endswitch
-                @endforeach
+            <div id="ad-left" style="position: relative;">
+                <div >
+                    @foreach($Notification as $noti)
+                        @switch($noti->level)
+                        @case(1)
+                            <div class="info">{{$noti->caption}}</div>
+                            @break
+                        @case(2)
+                            <div class="warring">{{$noti->caption}}</div>
+                            @break
+                        @case(3)
+                            <div class="danger">{{$noti->caption}}</div>
+                            @break
+                    @endswitch
+                    @endforeach
+                </div>
+                <div >
+                    <div class="vh-margin-top vh-padding">
+                        @if($Advertise->where('position',1)->first())
+                            <a id="ad_1" target="_blank" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
+                        @else
+                            <a id="ad_1" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                        @endif
+                    </div>
+                    <div class="vh-margin-top vh-padding">
+                        @if($Advertise->where('position',3)->first())
+                            <a id="ad_3" target="_blank" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
+                        @else
+                            <a id="ad_3" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                        @endif
+                    </div>
+                </div >
             </div>
-        <div id="ad-left" style="position: relative;">
-            <div class="vh-margin-top vh-padding">
-                @if($Advertise->where('position',1)->first())
-                    <a id="ad_1" target="_blank" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
-                @else
-                    <a id="ad_1" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
-                @endif
-            </div>
-            <div class="vh-margin-top vh-padding">
-                @if($Advertise->where('position',3)->first())
-                    <a id="ad_3" target="_blank" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
-                @else
-                    <a id="ad_3" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
-                @endif
-            </div>
-        </div >
         </div>
         <!-- Bài post -->
         <div class="vh-col l6 m6 s12">
