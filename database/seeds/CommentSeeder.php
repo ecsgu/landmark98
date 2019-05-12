@@ -16,7 +16,7 @@ class CommentSeeder extends Seeder
         $topic = DB::table('topic')->get();
         $account = DB::table('account')->get();
         $faker = Faker\Factory::create();
-        $limits=10;
+        $limits=100;
 
         for($i=0;$i<$limits;$i++)
         {

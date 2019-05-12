@@ -20,7 +20,7 @@ class NotificationSeeder extends Seeder
             DB::table('notification')->insert([
                 'caption' => $faker->sentence,
                 'username' => $faker->username,
-                'end' => now(), 
+                'end' => now()->addDay(), 
                 'level' => rand(1,3),
                 'created_at' => now(),
                 'updated_at' => now()

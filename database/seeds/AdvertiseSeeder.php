@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Carbon\Carbon;
 class AdvertiseSeeder extends Seeder
 {
     /**
@@ -13,20 +13,20 @@ class AdvertiseSeeder extends Seeder
     {
         //
         $faker = Faker\Factory::create();
-        $limits=10;
         $account = DB::table('account')->get();
-        for($i=0;$i<$limits;$i++)
+
+        for($i=1;$i<12;$i++)
         {
             DB::table('advertise')->insert([
-                'linkad' => 'http://'.$faker->domainName,
-                'image' => 'image/'.$faker->word,
-                'username' => $account->random()->username,
-                'start' => now(),
-                'end' => now(), 
-                'position' => $faker->word,
-                'money' => rand(1,100000),
-                'click' => rand(1,99999999),
-                'status' => rand(1,3),
+                'linkad' => 'advertise',
+                'image' => ($i==5)?'upload/3.png':'upload/1.png',
+                'username' => 'admin',
+                'start' => Carbon::minValue(),
+                'end' => Carbon::maxValue(), 
+                'position' => $i,
+                'money' => 0,
+                'click' => 0,
+                'status' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

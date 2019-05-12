@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use Validator;
 use Session;
+use Carbon\Carbon;
 use App\Topic;
 use App\Comment;
 use App\Account;
@@ -25,8 +26,14 @@ class WebmasterController extends Controller
     public function index()
     {
         //
-        if(session('admin'))
-            return view('webmaster/webmaster');
+        if(session('admin')){
+            $first = new Carbon('first day of this month');
+            $Advertise = Advertise::where('status',3)->whereDate('end','<=',now())->whereDate('end','>=',now())->get();
+            $money =0;
+            foreach($Advertise as $ad)
+                $money+=$ad->money;
+            return view('webmaster/webmaster',compact('money'));
+        }
         else
             return view ('webmaster/login');
 
