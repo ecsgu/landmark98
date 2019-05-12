@@ -209,7 +209,10 @@
                     @if($topic->comment->where('status', 2)->count() > 1)
                     <div class="vh-hide" id="{{$topic->id}}"> 
                     @endif
-                    @foreach($topic->comment->where('status', 2) as $key=>$comment)
+                    @php
+                        $key=0;
+                    @endphp
+                    @foreach($topic->comment->where('status', 2) as $comment)
                     <!-- 1 Comment -->
                     <div class="vh-row vh-margin-top">
                         <div class="vh-col l1 m2 s2">
@@ -229,6 +232,9 @@
                     @if($topic->comment->where('status', 2)->count() - 2 == $key) 
                     </div> 
                     @endif
+                    @php
+                        $key++;
+                    @endphp
                     @endforeach
                     @if($topic->comment->where('status', 2)->count() > 1)
                     <a id="btn_{{$topic->id}}" href="javascript:void()" onclick="ShowMore('{{$topic->id}}','btn_{{ $topic->id}}')">Xem thêm</a>
