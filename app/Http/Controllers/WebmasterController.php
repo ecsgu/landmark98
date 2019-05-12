@@ -29,7 +29,7 @@ class WebmasterController extends Controller
         //
         if(session('admin')){
             $first = new Carbon('first day of this month');
-            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','>=',now())->get();
+            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','<=',now())->get();
             $money =0;
             foreach($Advertise as $ad)
                 $money+=$ad->money;
@@ -223,7 +223,7 @@ class WebmasterController extends Controller
         $first = new Carbon('first day of this month');
         if($Revenue)
         {
-            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','>=',now())->get();
+            $Advertise = Advertise::where('status',3)->whereDate('start','>=',$first)->whereDate('end','<=',now())->get();
             $money =0;
             foreach($Advertise as $ad)
                 $money+=$ad->money;
