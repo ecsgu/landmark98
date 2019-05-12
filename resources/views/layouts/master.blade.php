@@ -101,12 +101,8 @@
         } else {
           ad_left = document.getElementById("ad-left-tp");
           ad_right = document.getElementById("ad-right-tp");
-          if(currentScrollPos > ad_left.offsetTop){
-            ad_left.style.top = currentScrollPos + "px"
-          } else {
-            ad_left.style = "0px";
-          }
-          
+          ad_left.style.top = currentScrollPos + "px";
+          ad_right.style.top = currentScrollPos + "px";
         }
         prevScrollpos = currentScrollPos;
       }
