@@ -87,18 +87,27 @@
 
         var ad_left = document.getElementById("ad-left");
         var ad_right = document.getElementById("ad-right");
-        if(currentScrollPos + $(window).height() >= 70 + ad_left.offsetHeight){
-          ad_left.style.top = (currentScrollPos - 100 - (ad_left.offsetHeight - $(window).height()) + "px");
+        if(ad_left != null){
+          if(currentScrollPos + $(window).height() >= 70 + ad_left.offsetHeight){
+            ad_left.style.top = (currentScrollPos - 100 - (ad_left.offsetHeight - $(window).height()) + "px");
+          } else {
+              ad_left.style.top = "0px";
+          }
+          if(currentScrollPos + $(window).height() >= 70 + ad_right.offsetHeight){
+            ad_right.style.top = (currentScrollPos - 100 - (ad_right.offsetHeight - $(window).height()) + "px");
+          } else {
+            ad_right.style.top = "0px"
+          }
         } else {
-            ad_left.style.top = "0px";
+          ad_left = document.getElementById("ad-left-tp");
+          ad_right = document.getElementById("ad-right-tp");
+          if(currentScrollPos > ad_left.offsetTop){
+            ad_left.style.top = currentScrollPos + "px"
+          } else {
+            ad_left.style = "0px";
+          }
+          
         }
-        if(currentScrollPos + $(window).height() >= 70 + ad_right.offsetHeight){
-          ad_right.style.top = (currentScrollPos - 100 - (ad_right.offsetHeight - $(window).height()) + "px");
-        } else {
-          ad_right.style.top = "0px"
-        }
-        
-        ad_left = document.getElementById("ad-left-tp");
         prevScrollpos = currentScrollPos;
       }
     </script>
