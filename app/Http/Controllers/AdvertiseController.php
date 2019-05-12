@@ -155,7 +155,7 @@ class AdvertiseController extends Controller
             DB::table('account')
             ->where('username', $username)
             ->update(['role' => 3]);
-            Session::forget('verify');
+            session()->forget('verify');
             DB::table('forgotpw')->where('username',$username)->delete();
         }
         else 

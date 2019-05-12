@@ -101,11 +101,12 @@
             </div>
         </div>
     </div>
+    @if(session('verify'))
     <script>
-        window.onload=function(){
-            alert('Chúng tôi đã gửi liên kết xác nhận đăng ký vào email của bạn. Bấm vào liên kết để xác nhận rằng bạn đã đăng ký. Kiểm tra hộp thư rác nếu không thấy thư trong hộp thư chính. Trân trọng');
-        }
+        window.onload=function(){alert('Chúng tôi đã gửi liên kết để xác nhận tài khoản vào email của bạn. Bấm vào để xác nhận. Kiểm tra hộp thư rác nếu bạn không thấy mail trong hộp thư chính.');}
     </script>
+    @endif
+
 
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>

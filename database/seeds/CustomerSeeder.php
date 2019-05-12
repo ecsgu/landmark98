@@ -130,7 +130,7 @@ class CustomerSeeder extends Seeder
 	            'room' => rand(1,400),
 	            'created_at' => now(),
 	            'updated_at' => now(),
-	            'image' => 'upload/'.$faker->word()
+	            'image' => 'upload/defaultCus.jpg'
 	        ]);
 	        DB::table('account')->insert([
 	           	'username' => $username,
