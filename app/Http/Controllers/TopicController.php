@@ -68,6 +68,8 @@ class TopicController extends Controller
     {
         //
         $topic = Topic::find($id);
+        if(!$topic)
+            return abort(404);
         if($topic->status==2)
             return view('pages/topic', compact('topic'));
         else

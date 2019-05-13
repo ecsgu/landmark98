@@ -75,6 +75,8 @@ class CustomerController extends Controller
     {
         //
         $Customer = Customer::find($id);
+        if(!$Customer)
+            return abort(404);
         for($i=0;$i<$Customer->topic->count();$i++)
             if($Customer->topic[$i]->status != 2)
                 unset($Customer->topic[$i]);
