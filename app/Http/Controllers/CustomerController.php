@@ -20,7 +20,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        return redirect()->back();
+        return abort(404);
     }
 
     /**
@@ -31,7 +31,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
-        echo "Create";
+        return abort(404);
     }
 
     /**
@@ -99,6 +99,7 @@ class CustomerController extends Controller
         $password = session('account')->password;
         Auth::loginUsingId(['username' => $username]);
         Session::put('account', Auth::user());
+        return redirect()->action('CustomerController@show',[$Customer->id]);
     }
 
     /**

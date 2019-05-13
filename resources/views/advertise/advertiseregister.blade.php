@@ -70,7 +70,7 @@
                 <div  class="form-group col-sm-12">
                 <label>
                     <input type="checkbox" oninput="agree(this.checked)"> Đồng ý
-                    <a style="color: red" href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
+                    <a style="color: red" href="{{url('dieukhoan')}}" target="_blank">Điều khoản hợp đồng</a>
                 </label>
                 <div>
                 <button type="submit" name="thanhtoan" id="thanhtoan" value="paypal" onclick="" class="btn btn-success btn-flat m-b-30 m-t-30" disabled="">Thanh toán paypal</button>

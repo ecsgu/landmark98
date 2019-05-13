@@ -35,10 +35,9 @@ class FileController extends Controller
             $request->request->add(['filename' => $filename]);
         }
         if(isset($request->caption))
-            TopicController::store($request);
+            return TopicController::store($request);
         else
-            CustomerController::edit($request);
-        header("Refresh:0; url=./");
+            return CustomerController::edit($request);
     }
     public function doUploadtmp(Request $request)
     {

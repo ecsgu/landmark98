@@ -122,6 +122,8 @@ class AdvertiseController extends Controller
         $CC = new CustomerController;
         $CC->store($request);
         $this->login($request);
+        Auth::loginUsingId(['username' => $request->input('username')]);
+        Session::put('account', Auth::user());
         return redirect()->action('AdvertiseController@index');
 
     }

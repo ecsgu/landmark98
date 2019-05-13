@@ -26,7 +26,7 @@
                         <div class="vh-small ">Tên đăng nhập</div>
                         <input id="username" style="height: 35px" type="text" class="form-control vh-round-medium" name="username" value="{{ old('username') }}" required autofocus>
                         @if ($errors->has('fail'))
-                            <div class="vh-small">
+                            <div style="color:red;" class="vh-small">
                                 <strong>{{ $errors->first('fail') }}</strong>
                             </div>
                         @endif

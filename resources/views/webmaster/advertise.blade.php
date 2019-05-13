@@ -32,7 +32,7 @@
                                         <tr class="@if($ad->status==2) vh-pale-red @endif">
                                             <td>{{$ad->id}}</td>
                                             <td><a target="_blank" href="{{$ad->linkad}}">{{$ad->linkad}}</a></td>
-                                            <td><img src="{{url($ad->image)}}"></td>
+                                            <td><a target="_blank" href="{{url($ad->image)}}"><img src="{{url($ad->image)}}"></a></td>
                                             <td><a target="_blank" href="../Customer/{{$ad->username}}">{{$ad->username}}</a></td>
                                             <td>{{$ad->start}}</td>
                                             <td>{{$ad->end}}</td>

@@ -22,16 +22,16 @@
             </div>
             <div class="vh-margin-top">
                 @if($Advertise->where('position',1)->first())
-                    <a id="ad_1" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
+                    <a id="ad_1" target="_blank" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
                 @else
-                    <a id="ad_1" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                    <a id="ad_1" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
             </div>
             <div class="vh-margin-top">
                 @if($Advertise->where('position',3)->first())
-                    <a id="ad_3" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
+                    <a id="ad_3" target="_blank" href="{{$Advertise->where('position',3)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',3)->first()->image) }}"/></a>
                 @else
-                    <a id="ad_3" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                    <a id="ad_3" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
             </div>
         </div>
@@ -157,14 +157,14 @@
         <div class="vh-col l3 m3 vh-hide-small">
             <div >
                 @if($Advertise->where('position',2)->first())
-                    <a id="ad_2" href="{{$Advertise->where('position',2)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',2)->first()->image) }}"/></a>
+                    <a id="ad_2" target="_blank" href="{{$Advertise->where('position',2)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',2)->first()->image) }}"/></a>
                 @else
-                    <a id="ad_2" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                    <a id="ad_2" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
                 @if($Advertise->where('position',4)->first())
-                <a id="ad_4" href="{{$Advertise->where('position',4)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',4)->first()->image) }}"/></a>
+                <a id="ad_4" target="_blank" href="{{$Advertise->where('position',4)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',4)->first()->image) }}"/></a>
                 @else
-                <a id="ad_4" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
+                <a id="ad_4" target="_blank" href="advertise"><img class="vh-image" src="{{ asset('upload/1.PNG') }}"/></a>
                 @endif
             <div>
         </div>

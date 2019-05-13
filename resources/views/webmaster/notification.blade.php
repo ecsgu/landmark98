@@ -59,7 +59,7 @@
                                             <td>{{$noti->end}}</td>
                                             <td>{{$noti->level==1?"Bình thường":$noti->level==2?"Cảnh báo":"Khẩn cấp"}}</td>
                                             <td>
-                                                Chưa có
+                                                <input type="button" value="Xóa" onclick="deletenotification('{{$noti->id}}')">
                                             </td>
                                         </tr>
                                     @endforeach

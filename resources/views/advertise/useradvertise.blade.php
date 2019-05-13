@@ -89,7 +89,7 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox"> Đồng ý
-                                <a href="https://www.google.com/" target="_blank">Điều khoảng hợp đồng</a>
+                                <a href="{{url('dieukhoan')}}" target="_blank">Điều khoản hợp đồng</a>
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" >Đăng kí</button>

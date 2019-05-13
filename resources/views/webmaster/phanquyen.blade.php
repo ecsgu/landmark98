@@ -51,7 +51,7 @@
                                                 </div>
                                                 <div class="vh-tooltip">
                                                     <img src="{{asset('Images/Decentralization/suathongtin.png')}}" alt="Sửa thông tin" onclick="phanquyen('{{ $account->username }}',5)" @if( ($account->role & 32) == 0 ) class="vh-grayscale-max" @endif />
-                                                    <div class="vh-tooltiptext-top">Sửa thông tin</div>
+                                                    <div class="vh-tooltiptext-top">Thông báo</div>
                                                 </div>
                                                 <div class="vh-tooltip">
                                                     <img src="{{asset('Images/Decentralization/phanquyen.png')}}" alt="Phân quyền" onclick="phanquyen('{{ $account->username }}',6)" @if( ($account->role & 64) == 0 ) class="vh-grayscale-max" @endif />

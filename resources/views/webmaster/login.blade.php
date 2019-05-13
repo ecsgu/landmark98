@@ -42,7 +42,7 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
+                    <a href="#">
                         <img class="align-content" src="images/Logo.png" alt="">
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                                 <input type="checkbox"> Nhớ tài khoản
                             </label>
                                     <label class="pull-right">
-                                <a href="#">Quên mật khẩu</a>
+                                <a href="{{url('password/reset')}}">Quên mật khẩu</a>
                             </label>
 
                                 </div>

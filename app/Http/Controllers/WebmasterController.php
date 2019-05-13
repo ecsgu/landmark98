@@ -98,6 +98,15 @@ class WebmasterController extends Controller
         $Notification->save();
          return redirect()->back();
     }
+    public function xoanotification(Request $request)
+    {
+        if((session('admin')->role & 32)!=0 ){
+            $Notification = Notification::find($request->id);
+            $Notification->delete();
+            return "true";
+        }
+        return "false";
+    }
     public function indexphanquyen()
     {
         if((session('admin')->role & 64)!=0 )

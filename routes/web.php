@@ -46,6 +46,9 @@ Route::get('paypal/{id}','AdvertiseController@thanhtoanpaypal');
 Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
 Route::get('bank', 'AdvertiseController@bank');
 Route::get('paypal', 'AdvertiseController@paypal');
+Route::get('dieukhoan',function(){
+	return view('advertise/dieukhoan');
+});
 //route webmaster
 
 Route::get('admin/phanquyen','WebmasterController@indexphanquyen');
@@ -63,6 +66,7 @@ Route::post('admin/duyetadvertise','WebmasterController@duyetadvertise');
 Route::post('admin/xoaadvertise','WebmasterController@xoaadvertise');
 Route::get('admin/notification','WebmasterController@notification');
 Route::post('admin/notification','WebmasterController@postnotification');
+Route::post('admin/xoanotification','WebmasterController@xoanotification');
 Route::get('admin/forgot','WebmasterController@forgot');
 Route::resource('admin','WebmasterController');
 //------------------

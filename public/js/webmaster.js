@@ -135,3 +135,24 @@ function xoaadvertise(id)
         }
     });
 }
+function deletenotification(id)
+{
+    if(confirm("Bạn chắc chắn xóa thông báo này?"))
+    {
+        var formData = new FormData();
+        formData.append('id', id);
+        $.ajax({
+            type: 'post',
+            url: 'xoanotification',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success : function(success) {
+                if(success=="true")
+                    location.href="";
+                else
+                    alert("Bạn không có quyền này");
+            }
+        });
+    }
+}
