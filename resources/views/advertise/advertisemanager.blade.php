@@ -35,9 +35,7 @@
                                             <td>{{$ad->end}}</td>
                                             <td>{{$ad->position}}</td>
                                             <td>{{ $ad->status==1?"Chưa thanh toán":($ad->status==2?"Đã thanh toán":"Đã duyệt")  }}</td>
-                                            <td>@if($ad->status==2)<input type="button" onclick="duyetadvertise('{{$ad->id}}')" value="Duyệt">
-                                                @endif
-                                             </td>
+                                            <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

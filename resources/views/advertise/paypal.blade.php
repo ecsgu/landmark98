@@ -134,7 +134,21 @@
           // 2. Make a request to your server
             return actions.payment.execute().then(function(){
                 //window.location="http://www.vietjack.com";
-                window.location="{{asset('/')}}"
+                formData = new FormData();
+                formData.append('id', {!!$Advertise->id!!});
+                $.ajax({
+                    type: 'post',
+                    url: 'advertisethanhtoan',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success : function(success) {
+                        if(success=="true")
+                            window.location="{{url('advertise')}}"
+                        else
+                            alert("Bạn không có quyền này");
+                    }
+                });
                 //window.alert('vuithoima');
             });
 

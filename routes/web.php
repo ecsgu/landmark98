@@ -41,6 +41,7 @@ Route::get('advertiselogout','AdvertiseController@logout');
 Route::get('advertiseregister','AdvertiseController@showposition');
 Route::post('deleteadvertise','AdvertiseController@deleteadvertise');
 Route::post('advertiseregister','AdvertiseController@postnewadvertise');
+Route::post('advertisethanhtoan','AdvertiseController@thanhtoan');
 Route::get('advertiseregister/{position}','AdvertiseController@newadvertise');
 Route::get('bank', 'AdvertiseController@bank');
 Route::get('paypal', 'AdvertiseController@paypal');

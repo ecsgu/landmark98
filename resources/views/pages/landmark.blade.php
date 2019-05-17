@@ -21,7 +21,6 @@
                 @endforeach
             </div>
             <div class="vh-margin-top">
-                {{now()}}
                 @if($Advertise->where('position',1)->first())
                     <a id="ad_1" href="{{$Advertise->where('position',1)->first()->linkad}}"><img class="vh-image" src="{{ url($Advertise->where('position',1)->first()->image) }}"/></a>
                 @else
@@ -82,11 +81,13 @@
         @foreach($Topic as $keytopic=>$topic)
 
             @php
-            $ad = $Advertise->where('position', 5 )->random();
+            if($Advertise->where('position', 5 )->count()>0)
+            {
+                $ad = $Advertise->where('position', 5 )->random();
+                if(($keytopic+1) % 3 ==0)
+                echo ('<a href="{{$ad->linkad}}" class="vh-margin-top"><img class="vh-image" src="{{ url($ad->image) }}"/>');
+            }
             @endphp
-            @if(($keytopic+1) % 3 ==0)
-            <a href="{{$ad->linkad}}" class="vh-margin-top"><img class="vh-image" src="{{ url($ad->image) }}"/>
-            @endif
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">

@@ -109,7 +109,7 @@ class AdvertiseController extends Controller
         //
     }
     public function showregister(){
-        return view('advertise/useradvertise',compact('Position'));
+        return view('advertise/useradvertise');
     }
     public function register(Request $request){
         $Account = Account::where('username',$request->input('username'))->get();
@@ -200,6 +200,17 @@ class AdvertiseController extends Controller
                 return "false";
             else
                 $Advertise->delete();
+            return "true";
+        }
+        return "false";
+    }
+    public function thanhtoan(Request $request)
+    {
+        if(session('advertiser'))
+        {
+            $Advertise = Advertise::find($request->id);
+            $Advertise->status=2;
+            $Advertise->save();
             return "true";
         }
         return "false";
