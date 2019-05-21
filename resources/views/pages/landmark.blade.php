@@ -79,15 +79,12 @@
                 <img class="vh-image vh-col s3" src="{{ asset('upload/2.PNG') }}"/>
             </div>
         @foreach($Topic as $keytopic=>$topic)
-
-            @php
-            if($Advertise->where('position', 5 )->count()>0)
-            {
+            @if(($keytopic+1) % 5 ==0)
+                @php
                 $ad = $Advertise->where('position', 5 )->random();
-                if(($keytopic+1) % 3 ==0)
-                echo ('<a href="{{$ad->linkad}}" class="vh-margin-top"><img class="vh-image" src="{{ url($ad->image) }}"/>');
-            }
-            @endphp
+                @endphp
+                <a href="{{$ad->linkad}}" class="vh-margin-top"><img width="100%" height="180px"  src="{{$ad->image}}"/></a>
+            @endif
             <div class="vh-card-4 vh-round vh-padding vh-margin-top">
                 <!-- User post -->
                 <div class="vh-row">

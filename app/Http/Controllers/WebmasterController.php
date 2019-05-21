@@ -69,6 +69,20 @@ class WebmasterController extends Controller
         }
         return "false";
     }
+    public function xoaadvertise(Request $request)
+    {
+        if((session('admin')->role & 16)!=0 )
+        {
+            $advertise = Advertise::find($request->id);
+            if($advertise->status != 3){
+                $advertise->status=4;
+                $advertise->save();
+                return "true";
+            }
+            return "false";
+        }
+        return "false";
+    }
     public function notification()
     {
         $Notification = Notification::orderBy('end', 'desc')->get();
